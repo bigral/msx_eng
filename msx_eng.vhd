@@ -104,6 +104,8 @@ architecture behavioral of msx_eng is
 	-- 7000h (mirrors: 7001h~77FFh)
 	signal iascii_mapper_reg1: std_logic_vector(7 downto 0) := "00000000"; 
 	
+	signal idata_exp3_o: std_logic_vector(7 downto 0) := "00000000"; 
+	signal idata_exp3_i: std_logic_vector(7 downto 0) := "00000000";
 begin
 -- msx1 I/O
 	iio_s		<= '1' when iorq_n_i = '0' and m1_n_i = '1' else '0';
@@ -196,17 +198,30 @@ begin
 -- msx2 slot expander in primary slot 3
 	slot3_exp: entity work.exp_slot
 	port map (
-		reset_n_i		=> reset_n_i,
-		addr_i			=> addr_i,
-		slt_s_n_i		=> iprim_slot_n_s(3),
-		rd_n_i			=> rd_n_i,
-		wr_n_i			=> wr_n_i,
+		reset_i		=> not reset_n_i,
+		ipl_en_i		=> '0',
+		addr_i		=> addr_i,
+		sltsl_n_i	=> iprim_slot_n_s(3),
+		rd_n_i		=> rd_n_i,
+		wr_n_i		=> wr_n_i,
+		data_i		=> idata_exp3_i,
 		
 		has_data_o		=> exp3_has_data,
-		exp_slt_s_n_o	=> exp3_slt_s_n_o,
+		expsltsl_n_o	=> exp3_slt_s_n_o,
 		
-		data_io			=> data_io
+		data_o			=> idata_exp3_o
 	);
+	
+	process(idata_exp3_o, rd_n_i, exp3_has_data, iprim_slot_n_s)
+	begin
+		if exp3_has_data = '1' and rd_n_i = '0' and iprim_slot_n_s(3) = '0' then
+			data_io <= idata_exp3_o;
+			
+		elsif wr_n_i = '0' and iprim_slot_n_s(3) = '0' then
+			idata_exp3_i <= data_io;
+			
+		end if;
+	end process;
 	
 -- msx2 mapper
 	imapper_s	<= '1' when iio_s = '1' and addr_i(7 downto 2) = "111111" else '0'; -- MSX2 Mapper => FC-FF

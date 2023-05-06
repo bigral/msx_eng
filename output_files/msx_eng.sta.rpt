@@ -1,0 +1,1438 @@
+TimeQuest Timing Analyzer report for msx_eng
+Sat May 06 19:43:58 2023
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. TimeQuest Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Fmax Summary
+  6. Setup Summary
+  7. Hold Summary
+  8. Recovery Summary
+  9. Removal Summary
+ 10. Minimum Pulse Width Summary
+ 11. Setup: 'addr_i[0]'
+ 12. Hold: 'addr_i[0]'
+ 13. Minimum Pulse Width: 'addr_i[0]'
+ 14. Setup Times
+ 15. Hold Times
+ 16. Clock to Output Times
+ 17. Minimum Clock to Output Times
+ 18. Propagation Delay
+ 19. Minimum Propagation Delay
+ 20. Setup Transfers
+ 21. Hold Transfers
+ 22. Report TCCS
+ 23. Report RSKM
+ 24. Unconstrained Paths
+ 25. TimeQuest Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                                      ;
++--------------------+-------------------------------------------------------------------+
+; Quartus II Version ; Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition ;
+; Revision Name      ; msx_eng                                                           ;
+; Device Family      ; MAX3000A                                                          ;
+; Device Name        ; EPM3128ATC100-10                                                  ;
+; Timing Models      ; Final                                                             ;
+; Delay Model        ; Slow Model                                                        ;
+; Rise/Fall Delays   ; Unavailable                                                       ;
++--------------------+-------------------------------------------------------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                                ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets       ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------------+
+; addr_i[0]  ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { addr_i[0] } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------------+
+
+
++-------------------------------------------------+
+; Fmax Summary                                    ;
++-----------+-----------------+------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name ; Note ;
++-----------+-----------------+------------+------+
+; 27.62 MHz ; 27.62 MHz       ; addr_i[0]  ;      ;
++-----------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++-------------------------------------+
+; Setup Summary                       ;
++-----------+---------+---------------+
+; Clock     ; Slack   ; End Point TNS ;
++-----------+---------+---------------+
+; addr_i[0] ; -23.600 ; -187.000      ;
++-----------+---------+---------------+
+
+
++-----------------------------------+
+; Hold Summary                      ;
++-----------+-------+---------------+
+; Clock     ; Slack ; End Point TNS ;
++-----------+-------+---------------+
+; addr_i[0] ; 6.600 ; 0.000         ;
++-----------+-------+---------------+
+
+
+--------------------
+; Recovery Summary ;
+--------------------
+No paths to report.
+
+
+-------------------
+; Removal Summary ;
+-------------------
+No paths to report.
+
+
++------------------------------------+
+; Minimum Pulse Width Summary        ;
++-----------+--------+---------------+
+; Clock     ; Slack  ; End Point TNS ;
++-----------+--------+---------------+
+; addr_i[0] ; -3.500 ; -56.000       ;
++-----------+--------+---------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'addr_i[0]'                                                                                                                                ;
++---------+---------------------------------+---------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack   ; From Node                       ; To Node                         ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++---------+---------------------------------+---------------------------------+--------------+-------------+--------------+------------+------------+
+; -23.600 ; exp_slot:slot3_exp|exp_reg_s[0] ; exp_slot:slot3_exp|exp_reg_s[0] ; addr_i[0]    ; addr_i[0]   ; 1.000        ; 0.000      ; 21.700     ;
+; -23.500 ; exp_slot:slot3_exp|exp_reg_s[1] ; exp_slot:slot3_exp|exp_reg_s[1] ; addr_i[0]    ; addr_i[0]   ; 1.000        ; 0.000      ; 21.600     ;
+; -23.400 ; exp_slot:slot3_exp|exp_reg_s[2] ; exp_slot:slot3_exp|exp_reg_s[2] ; addr_i[0]    ; addr_i[0]   ; 1.000        ; 0.000      ; 21.500     ;
+; -23.300 ; exp_slot:slot3_exp|exp_reg_s[5] ; exp_slot:slot3_exp|exp_reg_s[5] ; addr_i[0]    ; addr_i[0]   ; 1.000        ; 0.000      ; 21.400     ;
+; -23.300 ; exp_slot:slot3_exp|exp_reg_s[6] ; exp_slot:slot3_exp|exp_reg_s[6] ; addr_i[0]    ; addr_i[0]   ; 1.000        ; 0.000      ; 21.400     ;
+; -23.300 ; exp_slot:slot3_exp|exp_reg_s[7] ; exp_slot:slot3_exp|exp_reg_s[7] ; addr_i[0]    ; addr_i[0]   ; 1.000        ; 0.000      ; 21.400     ;
+; -23.300 ; exp_slot:slot3_exp|exp_reg_s[3] ; exp_slot:slot3_exp|exp_reg_s[3] ; addr_i[0]    ; addr_i[0]   ; 1.000        ; 0.000      ; 21.400     ;
+; -23.300 ; exp_slot:slot3_exp|exp_reg_s[4] ; exp_slot:slot3_exp|exp_reg_s[4] ; addr_i[0]    ; addr_i[0]   ; 1.000        ; 0.000      ; 21.400     ;
+; -17.600 ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[0] ; addr_i[0]    ; addr_i[0]   ; 0.500        ; 10.300     ; 25.500     ;
+; -17.500 ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[1] ; addr_i[0]    ; addr_i[0]   ; 0.500        ; 10.300     ; 25.400     ;
+; -17.400 ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[2] ; addr_i[0]    ; addr_i[0]   ; 0.500        ; 10.300     ; 25.300     ;
+; -17.300 ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[5] ; addr_i[0]    ; addr_i[0]   ; 0.500        ; 10.300     ; 25.200     ;
+; -17.300 ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[6] ; addr_i[0]    ; addr_i[0]   ; 0.500        ; 10.300     ; 25.200     ;
+; -17.300 ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[7] ; addr_i[0]    ; addr_i[0]   ; 0.500        ; 10.300     ; 25.200     ;
+; -17.300 ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[3] ; addr_i[0]    ; addr_i[0]   ; 0.500        ; 10.300     ; 25.200     ;
+; -17.300 ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[4] ; addr_i[0]    ; addr_i[0]   ; 0.500        ; 10.300     ; 25.200     ;
+; -17.100 ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[0] ; addr_i[0]    ; addr_i[0]   ; 1.000        ; 10.300     ; 25.500     ;
+; -17.000 ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[1] ; addr_i[0]    ; addr_i[0]   ; 1.000        ; 10.300     ; 25.400     ;
+; -16.900 ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[2] ; addr_i[0]    ; addr_i[0]   ; 1.000        ; 10.300     ; 25.300     ;
+; -16.800 ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[5] ; addr_i[0]    ; addr_i[0]   ; 1.000        ; 10.300     ; 25.200     ;
+; -16.800 ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[6] ; addr_i[0]    ; addr_i[0]   ; 1.000        ; 10.300     ; 25.200     ;
+; -16.800 ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[7] ; addr_i[0]    ; addr_i[0]   ; 1.000        ; 10.300     ; 25.200     ;
+; -16.800 ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[3] ; addr_i[0]    ; addr_i[0]   ; 1.000        ; 10.300     ; 25.200     ;
+; -16.800 ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[4] ; addr_i[0]    ; addr_i[0]   ; 1.000        ; 10.300     ; 25.200     ;
++---------+---------------------------------+---------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'addr_i[0]'                                                                                                                                ;
++--------+---------------------------------+---------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                       ; To Node                         ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+---------------------------------+---------------------------------+--------------+-------------+--------------+------------+------------+
+; 6.600  ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[0] ; addr_i[0]    ; addr_i[0]   ; 0.000        ; 10.300     ; 18.200     ;
+; 6.600  ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[1] ; addr_i[0]    ; addr_i[0]   ; 0.000        ; 10.300     ; 18.200     ;
+; 6.600  ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[5] ; addr_i[0]    ; addr_i[0]   ; 0.000        ; 10.300     ; 18.200     ;
+; 6.600  ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[6] ; addr_i[0]    ; addr_i[0]   ; 0.000        ; 10.300     ; 18.200     ;
+; 6.600  ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[7] ; addr_i[0]    ; addr_i[0]   ; 0.000        ; 10.300     ; 18.200     ;
+; 6.600  ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[2] ; addr_i[0]    ; addr_i[0]   ; 0.000        ; 10.300     ; 18.200     ;
+; 6.600  ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[3] ; addr_i[0]    ; addr_i[0]   ; 0.000        ; 10.300     ; 18.200     ;
+; 6.600  ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[4] ; addr_i[0]    ; addr_i[0]   ; 0.000        ; 10.300     ; 18.200     ;
+; 7.100  ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[0] ; addr_i[0]    ; addr_i[0]   ; -0.500       ; 10.300     ; 18.200     ;
+; 7.100  ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[1] ; addr_i[0]    ; addr_i[0]   ; -0.500       ; 10.300     ; 18.200     ;
+; 7.100  ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[5] ; addr_i[0]    ; addr_i[0]   ; -0.500       ; 10.300     ; 18.200     ;
+; 7.100  ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[6] ; addr_i[0]    ; addr_i[0]   ; -0.500       ; 10.300     ; 18.200     ;
+; 7.100  ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[7] ; addr_i[0]    ; addr_i[0]   ; -0.500       ; 10.300     ; 18.200     ;
+; 7.100  ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[2] ; addr_i[0]    ; addr_i[0]   ; -0.500       ; 10.300     ; 18.200     ;
+; 7.100  ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[3] ; addr_i[0]    ; addr_i[0]   ; -0.500       ; 10.300     ; 18.200     ;
+; 7.100  ; addr_i[0]                       ; exp_slot:slot3_exp|exp_reg_s[4] ; addr_i[0]    ; addr_i[0]   ; -0.500       ; 10.300     ; 18.200     ;
+; 20.100 ; exp_slot:slot3_exp|exp_reg_s[5] ; exp_slot:slot3_exp|exp_reg_s[5] ; addr_i[0]    ; addr_i[0]   ; 0.000        ; 0.000      ; 21.400     ;
+; 20.100 ; exp_slot:slot3_exp|exp_reg_s[6] ; exp_slot:slot3_exp|exp_reg_s[6] ; addr_i[0]    ; addr_i[0]   ; 0.000        ; 0.000      ; 21.400     ;
+; 20.100 ; exp_slot:slot3_exp|exp_reg_s[7] ; exp_slot:slot3_exp|exp_reg_s[7] ; addr_i[0]    ; addr_i[0]   ; 0.000        ; 0.000      ; 21.400     ;
+; 20.100 ; exp_slot:slot3_exp|exp_reg_s[3] ; exp_slot:slot3_exp|exp_reg_s[3] ; addr_i[0]    ; addr_i[0]   ; 0.000        ; 0.000      ; 21.400     ;
+; 20.100 ; exp_slot:slot3_exp|exp_reg_s[4] ; exp_slot:slot3_exp|exp_reg_s[4] ; addr_i[0]    ; addr_i[0]   ; 0.000        ; 0.000      ; 21.400     ;
+; 20.200 ; exp_slot:slot3_exp|exp_reg_s[2] ; exp_slot:slot3_exp|exp_reg_s[2] ; addr_i[0]    ; addr_i[0]   ; 0.000        ; 0.000      ; 21.500     ;
+; 20.300 ; exp_slot:slot3_exp|exp_reg_s[1] ; exp_slot:slot3_exp|exp_reg_s[1] ; addr_i[0]    ; addr_i[0]   ; 0.000        ; 0.000      ; 21.600     ;
+; 20.400 ; exp_slot:slot3_exp|exp_reg_s[0] ; exp_slot:slot3_exp|exp_reg_s[0] ; addr_i[0]    ; addr_i[0]   ; 0.000        ; 0.000      ; 21.700     ;
++--------+---------------------------------+---------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Minimum Pulse Width: 'addr_i[0]'                                                                                      ;
++--------+--------------+----------------+------------------+-----------+------------+----------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock     ; Clock Edge ; Target                           ;
++--------+--------------+----------------+------------------+-----------+------------+----------------------------------+
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; addr_i[0] ; Fall       ; exp_slot:slot3_exp|exp_reg_s[0]  ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; addr_i[0] ; Fall       ; exp_slot:slot3_exp|exp_reg_s[0]  ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; addr_i[0] ; Fall       ; exp_slot:slot3_exp|exp_reg_s[1]  ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; addr_i[0] ; Fall       ; exp_slot:slot3_exp|exp_reg_s[1]  ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; addr_i[0] ; Fall       ; exp_slot:slot3_exp|exp_reg_s[2]  ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; addr_i[0] ; Fall       ; exp_slot:slot3_exp|exp_reg_s[2]  ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; addr_i[0] ; Fall       ; exp_slot:slot3_exp|exp_reg_s[3]  ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; addr_i[0] ; Fall       ; exp_slot:slot3_exp|exp_reg_s[3]  ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; addr_i[0] ; Fall       ; exp_slot:slot3_exp|exp_reg_s[4]  ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; addr_i[0] ; Fall       ; exp_slot:slot3_exp|exp_reg_s[4]  ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; addr_i[0] ; Fall       ; exp_slot:slot3_exp|exp_reg_s[5]  ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; addr_i[0] ; Fall       ; exp_slot:slot3_exp|exp_reg_s[5]  ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; addr_i[0] ; Fall       ; exp_slot:slot3_exp|exp_reg_s[6]  ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; addr_i[0] ; Fall       ; exp_slot:slot3_exp|exp_reg_s[6]  ;
+; -3.500 ; 0.500        ; 4.000          ; High Pulse Width ; addr_i[0] ; Fall       ; exp_slot:slot3_exp|exp_reg_s[7]  ;
+; -3.500 ; 0.500        ; 4.000          ; Low Pulse Width  ; addr_i[0] ; Fall       ; exp_slot:slot3_exp|exp_reg_s[7]  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; addr_i[0] ; Rise       ; addr_i[0]|dataout                ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; addr_i[0] ; Rise       ; addr_i[0]|dataout                ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; addr_i[0] ; Rise       ; slot3_exp|exp_reg_s[0]|[1]       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; addr_i[0] ; Rise       ; slot3_exp|exp_reg_s[0]|[1]       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; addr_i[0] ; Rise       ; slot3_exp|exp_reg_s[1]|[1]       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; addr_i[0] ; Rise       ; slot3_exp|exp_reg_s[1]|[1]       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; addr_i[0] ; Rise       ; slot3_exp|exp_reg_s[2]|[1]       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; addr_i[0] ; Rise       ; slot3_exp|exp_reg_s[2]|[1]       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; addr_i[0] ; Rise       ; slot3_exp|exp_reg_s[3]|[1]       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; addr_i[0] ; Rise       ; slot3_exp|exp_reg_s[3]|[1]       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; addr_i[0] ; Rise       ; slot3_exp|exp_reg_s[4]|[1]       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; addr_i[0] ; Rise       ; slot3_exp|exp_reg_s[4]|[1]       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; addr_i[0] ; Rise       ; slot3_exp|exp_reg_s[5]|[1]       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; addr_i[0] ; Rise       ; slot3_exp|exp_reg_s[5]|[1]       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; addr_i[0] ; Rise       ; slot3_exp|exp_reg_s[6]|[1]       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; addr_i[0] ; Rise       ; slot3_exp|exp_reg_s[6]|[1]       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; addr_i[0] ; Rise       ; slot3_exp|exp_reg_s[7]|[1]       ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; addr_i[0] ; Rise       ; slot3_exp|exp_reg_s[7]|[1]       ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; addr_i[0] ; Rise       ; slot3_exp|exp_wr_s~16|datain[12] ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; addr_i[0] ; Rise       ; slot3_exp|exp_wr_s~16|datain[12] ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; addr_i[0] ; Rise       ; slot3_exp|exp_wr_s~16|dataout    ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; addr_i[0] ; Rise       ; slot3_exp|exp_wr_s~16|dataout    ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; addr_i[0] ; Rise       ; slot3_exp|exp_wr_s~8|datain[12]  ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; addr_i[0] ; Rise       ; slot3_exp|exp_wr_s~8|datain[12]  ;
+; 0.500  ; 0.500        ; 0.000          ; High Pulse Width ; addr_i[0] ; Rise       ; slot3_exp|exp_wr_s~8|dataout     ;
+; 0.500  ; 0.500        ; 0.000          ; Low Pulse Width  ; addr_i[0] ; Rise       ; slot3_exp|exp_wr_s~8|dataout     ;
++--------+--------------+----------------+------------------+-----------+------------+----------------------------------+
+
+
++--------------------------------------------------------------------------------+
+; Setup Times                                                                    ;
++------------------+------------+--------+--------+------------+-----------------+
+; Data Port        ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++------------------+------------+--------+--------+------------+-----------------+
+; addr_i[*]        ; addr_i[0]  ; 32.400 ; 32.400 ; Fall       ; addr_i[0]       ;
+;  addr_i[0]       ; addr_i[0]  ; 18.100 ; 18.100 ; Fall       ; addr_i[0]       ;
+;  addr_i[1]       ; addr_i[0]  ; 18.100 ; 18.100 ; Fall       ; addr_i[0]       ;
+;  addr_i[2]       ; addr_i[0]  ; 32.400 ; 32.400 ; Fall       ; addr_i[0]       ;
+;  addr_i[3]       ; addr_i[0]  ; 32.400 ; 32.400 ; Fall       ; addr_i[0]       ;
+;  addr_i[4]       ; addr_i[0]  ; 32.400 ; 32.400 ; Fall       ; addr_i[0]       ;
+;  addr_i[5]       ; addr_i[0]  ; 32.400 ; 32.400 ; Fall       ; addr_i[0]       ;
+;  addr_i[6]       ; addr_i[0]  ; 32.400 ; 32.400 ; Fall       ; addr_i[0]       ;
+;  addr_i[7]       ; addr_i[0]  ; 32.400 ; 32.400 ; Fall       ; addr_i[0]       ;
+;  addr_i[8]       ; addr_i[0]  ; 18.000 ; 18.000 ; Fall       ; addr_i[0]       ;
+;  addr_i[9]       ; addr_i[0]  ; 18.000 ; 18.000 ; Fall       ; addr_i[0]       ;
+;  addr_i[10]      ; addr_i[0]  ; 18.000 ; 18.000 ; Fall       ; addr_i[0]       ;
+;  addr_i[11]      ; addr_i[0]  ; 18.100 ; 18.100 ; Fall       ; addr_i[0]       ;
+;  addr_i[12]      ; addr_i[0]  ; 18.100 ; 18.100 ; Fall       ; addr_i[0]       ;
+;  addr_i[13]      ; addr_i[0]  ; 18.100 ; 18.100 ; Fall       ; addr_i[0]       ;
+;  addr_i[14]      ; addr_i[0]  ; 29.300 ; 29.300 ; Fall       ; addr_i[0]       ;
+;  addr_i[15]      ; addr_i[0]  ; 29.300 ; 29.300 ; Fall       ; addr_i[0]       ;
+; iorq_n_i         ; addr_i[0]  ; 32.200 ; 32.200 ; Fall       ; addr_i[0]       ;
+; m1_n_i           ; addr_i[0]  ; 32.200 ; 32.200 ; Fall       ; addr_i[0]       ;
+; mreq_n_i         ; addr_i[0]  ; 18.100 ; 18.100 ; Fall       ; addr_i[0]       ;
+; ppi_port_a_i[*]  ; addr_i[0]  ; 25.100 ; 25.100 ; Fall       ; addr_i[0]       ;
+;  ppi_port_a_i[0] ; addr_i[0]  ; 25.100 ; 25.100 ; Fall       ; addr_i[0]       ;
+;  ppi_port_a_i[1] ; addr_i[0]  ; 25.100 ; 25.100 ; Fall       ; addr_i[0]       ;
+;  ppi_port_a_i[2] ; addr_i[0]  ; 25.100 ; 25.100 ; Fall       ; addr_i[0]       ;
+;  ppi_port_a_i[3] ; addr_i[0]  ; 25.100 ; 25.100 ; Fall       ; addr_i[0]       ;
+;  ppi_port_a_i[4] ; addr_i[0]  ; 25.100 ; 25.100 ; Fall       ; addr_i[0]       ;
+;  ppi_port_a_i[5] ; addr_i[0]  ; 25.100 ; 25.100 ; Fall       ; addr_i[0]       ;
+;  ppi_port_a_i[6] ; addr_i[0]  ; 25.100 ; 25.100 ; Fall       ; addr_i[0]       ;
+;  ppi_port_a_i[7] ; addr_i[0]  ; 25.100 ; 25.100 ; Fall       ; addr_i[0]       ;
+; rd_n_i           ; addr_i[0]  ; 18.100 ; 18.100 ; Fall       ; addr_i[0]       ;
+; reset_n_i        ; addr_i[0]  ; 32.100 ; 32.100 ; Fall       ; addr_i[0]       ;
+; rfsh_n_i         ; addr_i[0]  ; 18.100 ; 18.100 ; Fall       ; addr_i[0]       ;
+; wr_n_i           ; addr_i[0]  ; 10.800 ; 10.800 ; Fall       ; addr_i[0]       ;
++------------------+------------+--------+--------+------------+-----------------+
+
+
++----------------------------------------------------------------------------------+
+; Hold Times                                                                       ;
++------------------+------------+---------+---------+------------+-----------------+
+; Data Port        ; Clock Port ; Rise    ; Fall    ; Clock Edge ; Clock Reference ;
++------------------+------------+---------+---------+------------+-----------------+
+; addr_i[*]        ; addr_i[0]  ; -6.500  ; -6.500  ; Fall       ; addr_i[0]       ;
+;  addr_i[0]       ; addr_i[0]  ; -6.600  ; -6.600  ; Fall       ; addr_i[0]       ;
+;  addr_i[1]       ; addr_i[0]  ; -6.600  ; -6.600  ; Fall       ; addr_i[0]       ;
+;  addr_i[2]       ; addr_i[0]  ; -6.600  ; -6.600  ; Fall       ; addr_i[0]       ;
+;  addr_i[3]       ; addr_i[0]  ; -6.600  ; -6.600  ; Fall       ; addr_i[0]       ;
+;  addr_i[4]       ; addr_i[0]  ; -6.600  ; -6.600  ; Fall       ; addr_i[0]       ;
+;  addr_i[5]       ; addr_i[0]  ; -6.600  ; -6.600  ; Fall       ; addr_i[0]       ;
+;  addr_i[6]       ; addr_i[0]  ; -6.600  ; -6.600  ; Fall       ; addr_i[0]       ;
+;  addr_i[7]       ; addr_i[0]  ; -6.600  ; -6.600  ; Fall       ; addr_i[0]       ;
+;  addr_i[8]       ; addr_i[0]  ; -6.500  ; -6.500  ; Fall       ; addr_i[0]       ;
+;  addr_i[9]       ; addr_i[0]  ; -6.500  ; -6.500  ; Fall       ; addr_i[0]       ;
+;  addr_i[10]      ; addr_i[0]  ; -6.500  ; -6.500  ; Fall       ; addr_i[0]       ;
+;  addr_i[11]      ; addr_i[0]  ; -6.600  ; -6.600  ; Fall       ; addr_i[0]       ;
+;  addr_i[12]      ; addr_i[0]  ; -6.600  ; -6.600  ; Fall       ; addr_i[0]       ;
+;  addr_i[13]      ; addr_i[0]  ; -6.600  ; -6.600  ; Fall       ; addr_i[0]       ;
+;  addr_i[14]      ; addr_i[0]  ; -6.700  ; -6.700  ; Fall       ; addr_i[0]       ;
+;  addr_i[15]      ; addr_i[0]  ; -6.700  ; -6.700  ; Fall       ; addr_i[0]       ;
+; iorq_n_i         ; addr_i[0]  ; -16.900 ; -16.900 ; Fall       ; addr_i[0]       ;
+; m1_n_i           ; addr_i[0]  ; -16.900 ; -16.900 ; Fall       ; addr_i[0]       ;
+; mreq_n_i         ; addr_i[0]  ; -2.800  ; -2.800  ; Fall       ; addr_i[0]       ;
+; ppi_port_a_i[*]  ; addr_i[0]  ; -9.800  ; -9.800  ; Fall       ; addr_i[0]       ;
+;  ppi_port_a_i[0] ; addr_i[0]  ; -9.800  ; -9.800  ; Fall       ; addr_i[0]       ;
+;  ppi_port_a_i[1] ; addr_i[0]  ; -9.800  ; -9.800  ; Fall       ; addr_i[0]       ;
+;  ppi_port_a_i[2] ; addr_i[0]  ; -9.800  ; -9.800  ; Fall       ; addr_i[0]       ;
+;  ppi_port_a_i[3] ; addr_i[0]  ; -9.800  ; -9.800  ; Fall       ; addr_i[0]       ;
+;  ppi_port_a_i[4] ; addr_i[0]  ; -9.800  ; -9.800  ; Fall       ; addr_i[0]       ;
+;  ppi_port_a_i[5] ; addr_i[0]  ; -9.800  ; -9.800  ; Fall       ; addr_i[0]       ;
+;  ppi_port_a_i[6] ; addr_i[0]  ; -9.800  ; -9.800  ; Fall       ; addr_i[0]       ;
+;  ppi_port_a_i[7] ; addr_i[0]  ; -9.800  ; -9.800  ; Fall       ; addr_i[0]       ;
+; rd_n_i           ; addr_i[0]  ; -6.600  ; -6.600  ; Fall       ; addr_i[0]       ;
+; reset_n_i        ; addr_i[0]  ; -16.800 ; -16.800 ; Fall       ; addr_i[0]       ;
+; rfsh_n_i         ; addr_i[0]  ; -2.800  ; -2.800  ; Fall       ; addr_i[0]       ;
+; wr_n_i           ; addr_i[0]  ; -2.800  ; -2.800  ; Fall       ; addr_i[0]       ;
++------------------+------------+---------+---------+------------+-----------------+
+
+
++-------------------------------------------------------------------------------+
+; Clock to Output Times                                                         ;
++-----------------+------------+--------+--------+------------+-----------------+
+; Data Port       ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------------+------------+--------+--------+------------+-----------------+
+; data_io[*]      ; addr_i[0]  ; 14.100 ; 14.100 ; Rise       ; addr_i[0]       ;
+;  data_io[0]     ; addr_i[0]  ; 14.100 ; 14.100 ; Rise       ; addr_i[0]       ;
+;  data_io[1]     ; addr_i[0]  ; 14.100 ; 14.100 ; Rise       ; addr_i[0]       ;
+;  data_io[2]     ; addr_i[0]  ; 14.100 ; 14.100 ; Rise       ; addr_i[0]       ;
+;  data_io[3]     ; addr_i[0]  ; 14.100 ; 14.100 ; Rise       ; addr_i[0]       ;
+;  data_io[4]     ; addr_i[0]  ; 14.100 ; 14.100 ; Rise       ; addr_i[0]       ;
+;  data_io[5]     ; addr_i[0]  ; 14.100 ; 14.100 ; Rise       ; addr_i[0]       ;
+;  data_io[6]     ; addr_i[0]  ; 14.100 ; 14.100 ; Rise       ; addr_i[0]       ;
+;  data_io[7]     ; addr_i[0]  ; 14.100 ; 14.100 ; Rise       ; addr_i[0]       ;
+; psg_bc1_o       ; addr_i[0]  ; 10.300 ; 10.300 ; Rise       ; addr_i[0]       ;
+; ram_cs_n_o      ; addr_i[0]  ; 14.100 ; 14.100 ; Rise       ; addr_i[0]       ;
+; rom_addr_o[*]   ; addr_i[0]  ; 32.000 ; 32.000 ; Rise       ; addr_i[0]       ;
+;  rom_addr_o[14] ; addr_i[0]  ; 29.400 ; 29.400 ; Rise       ; addr_i[0]       ;
+;  rom_addr_o[15] ; addr_i[0]  ; 29.300 ; 29.300 ; Rise       ; addr_i[0]       ;
+;  rom_addr_o[16] ; addr_i[0]  ; 32.000 ; 32.000 ; Rise       ; addr_i[0]       ;
+; data_io[*]      ; addr_i[0]  ; 20.600 ; 20.600 ; Fall       ; addr_i[0]       ;
+;  data_io[0]     ; addr_i[0]  ; 20.600 ; 20.600 ; Fall       ; addr_i[0]       ;
+;  data_io[1]     ; addr_i[0]  ; 20.600 ; 20.600 ; Fall       ; addr_i[0]       ;
+;  data_io[2]     ; addr_i[0]  ; 20.600 ; 20.600 ; Fall       ; addr_i[0]       ;
+;  data_io[3]     ; addr_i[0]  ; 20.600 ; 20.600 ; Fall       ; addr_i[0]       ;
+;  data_io[4]     ; addr_i[0]  ; 20.600 ; 20.600 ; Fall       ; addr_i[0]       ;
+;  data_io[5]     ; addr_i[0]  ; 20.600 ; 20.600 ; Fall       ; addr_i[0]       ;
+;  data_io[6]     ; addr_i[0]  ; 20.600 ; 20.600 ; Fall       ; addr_i[0]       ;
+;  data_io[7]     ; addr_i[0]  ; 20.600 ; 20.600 ; Fall       ; addr_i[0]       ;
+; psg_bc1_o       ; addr_i[0]  ; 10.300 ; 10.300 ; Fall       ; addr_i[0]       ;
+; ram_cs_n_o      ; addr_i[0]  ; 20.600 ; 20.600 ; Fall       ; addr_i[0]       ;
+; rom_addr_o[*]   ; addr_i[0]  ; 38.500 ; 38.500 ; Fall       ; addr_i[0]       ;
+;  rom_addr_o[14] ; addr_i[0]  ; 35.900 ; 35.900 ; Fall       ; addr_i[0]       ;
+;  rom_addr_o[15] ; addr_i[0]  ; 35.800 ; 35.800 ; Fall       ; addr_i[0]       ;
+;  rom_addr_o[16] ; addr_i[0]  ; 38.500 ; 38.500 ; Fall       ; addr_i[0]       ;
+; rom_cs_n_o      ; addr_i[0]  ; 20.600 ; 20.600 ; Fall       ; addr_i[0]       ;
++-----------------+------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                                 ;
++-----------------+------------+--------+--------+------------+-----------------+
+; Data Port       ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------------+------------+--------+--------+------------+-----------------+
+; data_io[*]      ; addr_i[0]  ; 10.300 ; 10.300 ; Rise       ; addr_i[0]       ;
+;  data_io[0]     ; addr_i[0]  ; 10.300 ; 10.300 ; Rise       ; addr_i[0]       ;
+;  data_io[1]     ; addr_i[0]  ; 10.300 ; 10.300 ; Rise       ; addr_i[0]       ;
+;  data_io[2]     ; addr_i[0]  ; 10.300 ; 10.300 ; Rise       ; addr_i[0]       ;
+;  data_io[3]     ; addr_i[0]  ; 10.300 ; 10.300 ; Rise       ; addr_i[0]       ;
+;  data_io[4]     ; addr_i[0]  ; 10.300 ; 10.300 ; Rise       ; addr_i[0]       ;
+;  data_io[5]     ; addr_i[0]  ; 10.300 ; 10.300 ; Rise       ; addr_i[0]       ;
+;  data_io[6]     ; addr_i[0]  ; 10.300 ; 10.300 ; Rise       ; addr_i[0]       ;
+;  data_io[7]     ; addr_i[0]  ; 10.300 ; 10.300 ; Rise       ; addr_i[0]       ;
+; psg_bc1_o       ; addr_i[0]  ; 10.300 ; 10.300 ; Rise       ; addr_i[0]       ;
+; ram_cs_n_o      ; addr_i[0]  ; 14.100 ; 14.100 ; Rise       ; addr_i[0]       ;
+; rom_addr_o[*]   ; addr_i[0]  ; 14.100 ; 14.100 ; Rise       ; addr_i[0]       ;
+;  rom_addr_o[14] ; addr_i[0]  ; 17.400 ; 17.400 ; Rise       ; addr_i[0]       ;
+;  rom_addr_o[15] ; addr_i[0]  ; 14.100 ; 14.100 ; Rise       ; addr_i[0]       ;
+;  rom_addr_o[16] ; addr_i[0]  ; 28.200 ; 28.200 ; Rise       ; addr_i[0]       ;
+; data_io[*]      ; addr_i[0]  ; 10.300 ; 10.300 ; Fall       ; addr_i[0]       ;
+;  data_io[0]     ; addr_i[0]  ; 10.300 ; 10.300 ; Fall       ; addr_i[0]       ;
+;  data_io[1]     ; addr_i[0]  ; 10.300 ; 10.300 ; Fall       ; addr_i[0]       ;
+;  data_io[2]     ; addr_i[0]  ; 10.300 ; 10.300 ; Fall       ; addr_i[0]       ;
+;  data_io[3]     ; addr_i[0]  ; 10.300 ; 10.300 ; Fall       ; addr_i[0]       ;
+;  data_io[4]     ; addr_i[0]  ; 10.300 ; 10.300 ; Fall       ; addr_i[0]       ;
+;  data_io[5]     ; addr_i[0]  ; 10.300 ; 10.300 ; Fall       ; addr_i[0]       ;
+;  data_io[6]     ; addr_i[0]  ; 10.300 ; 10.300 ; Fall       ; addr_i[0]       ;
+;  data_io[7]     ; addr_i[0]  ; 10.300 ; 10.300 ; Fall       ; addr_i[0]       ;
+; psg_bc1_o       ; addr_i[0]  ; 10.300 ; 10.300 ; Fall       ; addr_i[0]       ;
+; ram_cs_n_o      ; addr_i[0]  ; 14.100 ; 14.100 ; Fall       ; addr_i[0]       ;
+; rom_addr_o[*]   ; addr_i[0]  ; 14.100 ; 14.100 ; Fall       ; addr_i[0]       ;
+;  rom_addr_o[14] ; addr_i[0]  ; 17.400 ; 17.400 ; Fall       ; addr_i[0]       ;
+;  rom_addr_o[15] ; addr_i[0]  ; 14.100 ; 14.100 ; Fall       ; addr_i[0]       ;
+;  rom_addr_o[16] ; addr_i[0]  ; 28.200 ; 28.200 ; Fall       ; addr_i[0]       ;
+; rom_cs_n_o      ; addr_i[0]  ; 20.600 ; 20.600 ; Fall       ; addr_i[0]       ;
++-----------------+------------+--------+--------+------------+-----------------+
+
+
++----------------------------------------------------------------------+
+; Propagation Delay                                                    ;
++-----------------+----------------+--------+--------+--------+--------+
+; Input Port      ; Output Port    ; RR     ; RF     ; FR     ; FF     ;
++-----------------+----------------+--------+--------+--------+--------+
+; addr_i[1]       ; data_io[0]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[1]       ; data_io[1]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[1]       ; data_io[2]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[1]       ; data_io[3]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[1]       ; data_io[4]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[1]       ; data_io[5]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[1]       ; data_io[6]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[1]       ; data_io[7]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[1]       ; ram_cs_n_o     ;        ; 14.100 ; 14.100 ;        ;
+; addr_i[1]       ; rom_addr_o[14] ; 29.400 ; 25.600 ; 25.600 ; 29.400 ;
+; addr_i[1]       ; rom_addr_o[15] ; 29.300 ; 25.500 ; 25.500 ; 29.300 ;
+; addr_i[1]       ; rom_addr_o[16] ; 32.000 ; 28.200 ; 28.200 ; 32.000 ;
+; addr_i[2]       ; data_io[0]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[2]       ; data_io[1]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[2]       ; data_io[2]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[2]       ; data_io[3]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[2]       ; data_io[4]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[2]       ; data_io[5]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[2]       ; data_io[6]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[2]       ; data_io[7]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[2]       ; ppi_cs_n_o     ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[2]       ; psg_bc1_o      ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[2]       ; ram_cs_n_o     ;        ; 24.600 ; 24.600 ;        ;
+; addr_i[2]       ; rom_addr_o[14] ; 39.900 ; 43.700 ; 43.700 ; 39.900 ;
+; addr_i[2]       ; rom_addr_o[15] ; 39.800 ; 43.600 ; 43.600 ; 39.800 ;
+; addr_i[2]       ; rom_addr_o[16] ; 42.500 ; 46.300 ; 46.300 ; 42.500 ;
+; addr_i[2]       ; rom_cs_n_o     ; 24.600 ; 24.600 ; 24.600 ; 24.600 ;
+; addr_i[2]       ; vdp_csrd_n_o   ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[2]       ; vdp_cswr_n_o   ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[3]       ; data_io[0]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[3]       ; data_io[1]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[3]       ; data_io[2]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[3]       ; data_io[3]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[3]       ; data_io[4]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[3]       ; data_io[5]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[3]       ; data_io[6]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[3]       ; data_io[7]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[3]       ; ppi_cs_n_o     ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[3]       ; psg_bc1_o      ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[3]       ; ram_cs_n_o     ; 24.600 ; 14.100 ; 14.100 ; 24.600 ;
+; addr_i[3]       ; rom_addr_o[14] ; 43.700 ; 39.900 ; 39.900 ; 43.700 ;
+; addr_i[3]       ; rom_addr_o[15] ; 43.600 ; 39.800 ; 39.800 ; 43.600 ;
+; addr_i[3]       ; rom_addr_o[16] ; 46.300 ; 42.500 ; 42.500 ; 46.300 ;
+; addr_i[3]       ; rom_cs_n_o     ; 24.600 ; 24.600 ; 24.600 ; 24.600 ;
+; addr_i[3]       ; vdp_csrd_n_o   ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[3]       ; vdp_cswr_n_o   ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[4]       ; data_io[0]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[4]       ; data_io[1]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[4]       ; data_io[2]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[4]       ; data_io[3]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[4]       ; data_io[4]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[4]       ; data_io[5]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[4]       ; data_io[6]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[4]       ; data_io[7]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[4]       ; ppi_cs_n_o     ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[4]       ; psg_bc1_o      ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[4]       ; ram_cs_n_o     ;        ; 24.600 ; 24.600 ;        ;
+; addr_i[4]       ; rom_addr_o[14] ; 39.900 ; 43.700 ; 43.700 ; 39.900 ;
+; addr_i[4]       ; rom_addr_o[15] ; 39.800 ; 43.600 ; 43.600 ; 39.800 ;
+; addr_i[4]       ; rom_addr_o[16] ; 42.500 ; 46.300 ; 46.300 ; 42.500 ;
+; addr_i[4]       ; rom_cs_n_o     ; 24.600 ; 24.600 ; 24.600 ; 24.600 ;
+; addr_i[4]       ; vdp_csrd_n_o   ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[4]       ; vdp_cswr_n_o   ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[5]       ; data_io[0]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[5]       ; data_io[1]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[5]       ; data_io[2]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[5]       ; data_io[3]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[5]       ; data_io[4]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[5]       ; data_io[5]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[5]       ; data_io[6]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[5]       ; data_io[7]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[5]       ; ppi_cs_n_o     ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[5]       ; psg_bc1_o      ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[5]       ; ram_cs_n_o     ; 24.600 ; 14.100 ; 14.100 ; 24.600 ;
+; addr_i[5]       ; rom_addr_o[14] ; 43.700 ; 39.900 ; 39.900 ; 43.700 ;
+; addr_i[5]       ; rom_addr_o[15] ; 43.600 ; 39.800 ; 39.800 ; 43.600 ;
+; addr_i[5]       ; rom_addr_o[16] ; 46.300 ; 42.500 ; 42.500 ; 46.300 ;
+; addr_i[5]       ; rom_cs_n_o     ; 24.600 ; 24.600 ; 24.600 ; 24.600 ;
+; addr_i[5]       ; vdp_csrd_n_o   ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[5]       ; vdp_cswr_n_o   ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[6]       ; data_io[0]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[6]       ; data_io[1]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[6]       ; data_io[2]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[6]       ; data_io[3]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[6]       ; data_io[4]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[6]       ; data_io[5]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[6]       ; data_io[6]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[6]       ; data_io[7]     ; 28.400 ; 24.600 ; 24.600 ; 28.400 ;
+; addr_i[6]       ; ppi_cs_n_o     ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[6]       ; psg_bc1_o      ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[6]       ; ram_cs_n_o     ;        ; 24.600 ; 24.600 ;        ;
+; addr_i[6]       ; rom_addr_o[14] ; 39.900 ; 43.700 ; 43.700 ; 39.900 ;
+; addr_i[6]       ; rom_addr_o[15] ; 39.800 ; 43.600 ; 43.600 ; 39.800 ;
+; addr_i[6]       ; rom_addr_o[16] ; 42.500 ; 46.300 ; 46.300 ; 42.500 ;
+; addr_i[6]       ; rom_cs_n_o     ; 24.600 ; 24.600 ; 24.600 ; 24.600 ;
+; addr_i[6]       ; vdp_csrd_n_o   ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[6]       ; vdp_cswr_n_o   ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[7]       ; data_io[0]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[7]       ; data_io[1]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[7]       ; data_io[2]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[7]       ; data_io[3]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[7]       ; data_io[4]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[7]       ; data_io[5]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[7]       ; data_io[6]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[7]       ; data_io[7]     ; 24.600 ; 28.400 ; 28.400 ; 24.600 ;
+; addr_i[7]       ; ppi_cs_n_o     ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[7]       ; psg_bc1_o      ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[7]       ; ram_cs_n_o     ; 24.600 ; 14.100 ; 14.100 ; 24.600 ;
+; addr_i[7]       ; rom_addr_o[14] ; 43.700 ; 39.900 ; 39.900 ; 43.700 ;
+; addr_i[7]       ; rom_addr_o[15] ; 43.600 ; 39.800 ; 39.800 ; 43.600 ;
+; addr_i[7]       ; rom_addr_o[16] ; 46.300 ; 42.500 ; 42.500 ; 46.300 ;
+; addr_i[7]       ; rom_cs_n_o     ; 24.600 ; 24.600 ; 24.600 ; 24.600 ;
+; addr_i[7]       ; vdp_csrd_n_o   ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[7]       ; vdp_cswr_n_o   ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[8]       ; data_io[0]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[8]       ; data_io[1]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[8]       ; data_io[2]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[8]       ; data_io[3]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[8]       ; data_io[4]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[8]       ; data_io[5]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[8]       ; data_io[6]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[8]       ; data_io[7]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[8]       ; ram_cs_n_o     ;        ; 14.000 ; 14.000 ;        ;
+; addr_i[8]       ; rom_addr_o[14] ; 29.300 ; 25.500 ; 25.500 ; 29.300 ;
+; addr_i[8]       ; rom_addr_o[15] ; 29.200 ; 25.400 ; 25.400 ; 29.200 ;
+; addr_i[8]       ; rom_addr_o[16] ; 31.900 ; 28.100 ; 28.100 ; 31.900 ;
+; addr_i[9]       ; data_io[0]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[9]       ; data_io[1]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[9]       ; data_io[2]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[9]       ; data_io[3]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[9]       ; data_io[4]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[9]       ; data_io[5]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[9]       ; data_io[6]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[9]       ; data_io[7]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[9]       ; ram_cs_n_o     ;        ; 14.000 ; 14.000 ;        ;
+; addr_i[9]       ; rom_addr_o[14] ; 29.300 ; 25.500 ; 25.500 ; 29.300 ;
+; addr_i[9]       ; rom_addr_o[15] ; 29.200 ; 25.400 ; 25.400 ; 29.200 ;
+; addr_i[9]       ; rom_addr_o[16] ; 31.900 ; 28.100 ; 28.100 ; 31.900 ;
+; addr_i[10]      ; data_io[0]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[10]      ; data_io[1]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[10]      ; data_io[2]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[10]      ; data_io[3]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[10]      ; data_io[4]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[10]      ; data_io[5]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[10]      ; data_io[6]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[10]      ; data_io[7]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[10]      ; ram_cs_n_o     ;        ; 14.000 ; 14.000 ;        ;
+; addr_i[10]      ; rom_addr_o[14] ; 29.300 ; 25.500 ; 25.500 ; 29.300 ;
+; addr_i[10]      ; rom_addr_o[15] ; 29.200 ; 25.400 ; 25.400 ; 29.200 ;
+; addr_i[10]      ; rom_addr_o[16] ; 31.900 ; 28.100 ; 28.100 ; 31.900 ;
+; addr_i[11]      ; data_io[0]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[11]      ; data_io[1]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[11]      ; data_io[2]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[11]      ; data_io[3]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[11]      ; data_io[4]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[11]      ; data_io[5]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[11]      ; data_io[6]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[11]      ; data_io[7]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[11]      ; ram_cs_n_o     ;        ; 14.100 ; 14.100 ;        ;
+; addr_i[11]      ; rom_addr_o[14] ; 29.400 ; 25.600 ; 25.600 ; 29.400 ;
+; addr_i[11]      ; rom_addr_o[15] ; 29.300 ; 25.500 ; 25.500 ; 29.300 ;
+; addr_i[11]      ; rom_addr_o[16] ; 32.000 ; 28.200 ; 28.200 ; 32.000 ;
+; addr_i[12]      ; data_io[0]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[12]      ; data_io[1]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[12]      ; data_io[2]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[12]      ; data_io[3]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[12]      ; data_io[4]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[12]      ; data_io[5]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[12]      ; data_io[6]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[12]      ; data_io[7]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[12]      ; ram_cs_n_o     ;        ; 14.100 ; 14.100 ;        ;
+; addr_i[12]      ; rom_addr_o[14] ; 29.400 ; 25.600 ; 25.600 ; 29.400 ;
+; addr_i[12]      ; rom_addr_o[15] ; 29.300 ; 25.500 ; 25.500 ; 29.300 ;
+; addr_i[12]      ; rom_addr_o[16] ; 32.000 ; 28.200 ; 28.200 ; 32.000 ;
+; addr_i[13]      ; data_io[0]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[13]      ; data_io[1]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[13]      ; data_io[2]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[13]      ; data_io[3]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[13]      ; data_io[4]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[13]      ; data_io[5]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[13]      ; data_io[6]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[13]      ; data_io[7]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[13]      ; ram_cs_n_o     ;        ; 14.100 ; 14.100 ;        ;
+; addr_i[13]      ; rom_addr_o[14] ; 29.400 ; 25.600 ; 25.600 ; 29.400 ;
+; addr_i[13]      ; rom_addr_o[15] ; 29.300 ; 25.500 ; 25.500 ; 29.300 ;
+; addr_i[13]      ; rom_addr_o[16] ; 32.000 ; 28.700 ; 28.700 ; 32.000 ;
+; addr_i[14]      ; data_io[0]     ; 25.300 ; 25.300 ; 25.300 ; 25.300 ;
+; addr_i[14]      ; data_io[1]     ; 25.300 ; 25.300 ; 25.300 ; 25.300 ;
+; addr_i[14]      ; data_io[2]     ; 25.300 ; 25.300 ; 25.300 ; 25.300 ;
+; addr_i[14]      ; data_io[3]     ; 25.300 ; 25.300 ; 25.300 ; 25.300 ;
+; addr_i[14]      ; data_io[4]     ; 25.300 ; 25.300 ; 25.300 ; 25.300 ;
+; addr_i[14]      ; data_io[5]     ; 25.300 ; 25.300 ; 25.300 ; 25.300 ;
+; addr_i[14]      ; data_io[6]     ; 25.300 ; 25.300 ; 25.300 ; 25.300 ;
+; addr_i[14]      ; data_io[7]     ; 25.300 ; 25.300 ; 25.300 ; 25.300 ;
+; addr_i[14]      ; ram_cs_n_o     ; 21.500 ; 21.500 ; 21.500 ; 21.500 ;
+; addr_i[14]      ; rom_addr_o[14] ; 40.600 ; 40.600 ; 40.600 ; 40.600 ;
+; addr_i[14]      ; rom_addr_o[15] ; 40.500 ; 40.500 ; 40.500 ; 40.500 ;
+; addr_i[14]      ; rom_addr_o[16] ; 43.200 ; 43.200 ; 43.200 ; 43.200 ;
+; addr_i[14]      ; rom_cs_n_o     ; 21.500 ; 21.500 ; 21.500 ; 21.500 ;
+; addr_i[15]      ; data_io[0]     ; 25.300 ; 25.300 ; 25.300 ; 25.300 ;
+; addr_i[15]      ; data_io[1]     ; 25.300 ; 25.300 ; 25.300 ; 25.300 ;
+; addr_i[15]      ; data_io[2]     ; 25.300 ; 25.300 ; 25.300 ; 25.300 ;
+; addr_i[15]      ; data_io[3]     ; 25.300 ; 25.300 ; 25.300 ; 25.300 ;
+; addr_i[15]      ; data_io[4]     ; 25.300 ; 25.300 ; 25.300 ; 25.300 ;
+; addr_i[15]      ; data_io[5]     ; 25.300 ; 25.300 ; 25.300 ; 25.300 ;
+; addr_i[15]      ; data_io[6]     ; 25.300 ; 25.300 ; 25.300 ; 25.300 ;
+; addr_i[15]      ; data_io[7]     ; 25.300 ; 25.300 ; 25.300 ; 25.300 ;
+; addr_i[15]      ; ram_cs_n_o     ; 21.500 ; 21.500 ; 21.500 ; 21.500 ;
+; addr_i[15]      ; rom_addr_o[14] ; 40.600 ; 40.600 ; 40.600 ; 40.600 ;
+; addr_i[15]      ; rom_addr_o[15] ; 40.500 ; 40.500 ; 40.500 ; 40.500 ;
+; addr_i[15]      ; rom_addr_o[16] ; 43.200 ; 43.200 ; 43.200 ; 43.200 ;
+; addr_i[15]      ; rom_cs_n_o     ; 21.500 ; 21.500 ; 21.500 ; 21.500 ;
+; en_ascii16_n_i  ; rom_addr_o[14] ;        ; 10.100 ; 10.100 ;        ;
+; en_ascii16_n_i  ; rom_addr_o[15] ;        ; 10.100 ; 10.100 ;        ;
+; en_ascii16_n_i  ; rom_addr_o[16] ; 13.900 ; 17.700 ; 17.700 ; 13.900 ;
+; en_ascii16_n_i  ; rom_cs_n_o     ;        ; 10.100 ; 10.100 ;        ;
+; iorq_n_i        ; data_io[0]     ; 28.200 ; 24.400 ; 24.400 ; 28.200 ;
+; iorq_n_i        ; data_io[1]     ; 28.200 ; 24.400 ; 24.400 ; 28.200 ;
+; iorq_n_i        ; data_io[2]     ; 28.200 ; 24.400 ; 24.400 ; 28.200 ;
+; iorq_n_i        ; data_io[3]     ; 28.200 ; 24.400 ; 24.400 ; 28.200 ;
+; iorq_n_i        ; data_io[4]     ; 28.200 ; 24.400 ; 24.400 ; 28.200 ;
+; iorq_n_i        ; data_io[5]     ; 28.200 ; 24.400 ; 24.400 ; 28.200 ;
+; iorq_n_i        ; data_io[6]     ; 28.200 ; 24.400 ; 24.400 ; 28.200 ;
+; iorq_n_i        ; data_io[7]     ; 28.200 ; 24.400 ; 24.400 ; 28.200 ;
+; iorq_n_i        ; ppi_cs_n_o     ;        ; 10.100 ; 10.100 ;        ;
+; iorq_n_i        ; psg_bc1_o      ;        ; 10.100 ; 10.100 ;        ;
+; iorq_n_i        ; psg_bdir_o     ;        ; 10.100 ; 10.100 ;        ;
+; iorq_n_i        ; ram_cs_n_o     ;        ; 24.400 ; 24.400 ;        ;
+; iorq_n_i        ; rom_addr_o[14] ; 39.700 ; 43.500 ; 43.500 ; 39.700 ;
+; iorq_n_i        ; rom_addr_o[15] ; 39.600 ; 43.400 ; 43.400 ; 39.600 ;
+; iorq_n_i        ; rom_addr_o[16] ; 42.300 ; 46.100 ; 46.100 ; 42.300 ;
+; iorq_n_i        ; rom_cs_n_o     ; 24.400 ; 24.400 ; 24.400 ; 24.400 ;
+; iorq_n_i        ; vdp_csrd_n_o   ;        ; 10.100 ; 10.100 ;        ;
+; iorq_n_i        ; vdp_cswr_n_o   ;        ; 10.100 ; 10.100 ;        ;
+; m1_n_i          ; data_io[0]     ; 24.400 ; 28.200 ; 28.200 ; 24.400 ;
+; m1_n_i          ; data_io[1]     ; 24.400 ; 28.200 ; 28.200 ; 24.400 ;
+; m1_n_i          ; data_io[2]     ; 24.400 ; 28.200 ; 28.200 ; 24.400 ;
+; m1_n_i          ; data_io[3]     ; 24.400 ; 28.200 ; 28.200 ; 24.400 ;
+; m1_n_i          ; data_io[4]     ; 24.400 ; 28.200 ; 28.200 ; 24.400 ;
+; m1_n_i          ; data_io[5]     ; 24.400 ; 28.200 ; 28.200 ; 24.400 ;
+; m1_n_i          ; data_io[6]     ; 24.400 ; 28.200 ; 28.200 ; 24.400 ;
+; m1_n_i          ; data_io[7]     ; 24.400 ; 28.200 ; 28.200 ; 24.400 ;
+; m1_n_i          ; ppi_cs_n_o     ; 10.100 ;        ;        ; 10.100 ;
+; m1_n_i          ; psg_bc1_o      ; 10.100 ;        ;        ; 10.100 ;
+; m1_n_i          ; psg_bdir_o     ; 10.100 ;        ;        ; 10.100 ;
+; m1_n_i          ; ram_cs_n_o     ; 24.400 ;        ;        ; 24.400 ;
+; m1_n_i          ; rom_addr_o[14] ; 43.500 ; 39.700 ; 39.700 ; 43.500 ;
+; m1_n_i          ; rom_addr_o[15] ; 43.400 ; 39.600 ; 39.600 ; 43.400 ;
+; m1_n_i          ; rom_addr_o[16] ; 46.100 ; 42.300 ; 42.300 ; 46.100 ;
+; m1_n_i          ; rom_cs_n_o     ; 24.400 ; 24.400 ; 24.400 ; 24.400 ;
+; m1_n_i          ; vdp_csrd_n_o   ; 10.100 ;        ;        ; 10.100 ;
+; m1_n_i          ; vdp_cswr_n_o   ; 10.100 ;        ;        ; 10.100 ;
+; mreq_n_i        ; data_io[0]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; mreq_n_i        ; data_io[1]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; mreq_n_i        ; data_io[2]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; mreq_n_i        ; data_io[3]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; mreq_n_i        ; data_io[4]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; mreq_n_i        ; data_io[5]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; mreq_n_i        ; data_io[6]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; mreq_n_i        ; data_io[7]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; mreq_n_i        ; ram_cs_n_o     ;        ; 10.300 ; 10.300 ;        ;
+; mreq_n_i        ; rom_addr_o[14] ; 25.600 ; 29.400 ; 29.400 ; 25.600 ;
+; mreq_n_i        ; rom_addr_o[15] ; 25.500 ; 29.300 ; 29.300 ; 25.500 ;
+; mreq_n_i        ; rom_addr_o[16] ; 28.200 ; 32.000 ; 32.000 ; 28.200 ;
+; mreq_n_i        ; rom_cs_n_o     ;        ; 10.300 ; 10.300 ;        ;
+; ppi_port_a_i[0] ; data_io[0]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[0] ; data_io[1]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[0] ; data_io[2]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[0] ; data_io[3]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[0] ; data_io[4]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[0] ; data_io[5]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[0] ; data_io[6]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[0] ; data_io[7]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[0] ; ram_cs_n_o     ; 17.300 ;        ;        ; 17.300 ;
+; ppi_port_a_i[0] ; rom_addr_o[14] ; 36.400 ; 32.600 ; 32.600 ; 36.400 ;
+; ppi_port_a_i[0] ; rom_addr_o[15] ; 36.300 ; 32.500 ; 32.500 ; 36.300 ;
+; ppi_port_a_i[0] ; rom_addr_o[16] ; 39.000 ; 35.200 ; 35.200 ; 39.000 ;
+; ppi_port_a_i[0] ; rom_cs_n_o     ; 17.300 ; 17.300 ; 17.300 ; 17.300 ;
+; ppi_port_a_i[1] ; data_io[0]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[1] ; data_io[1]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[1] ; data_io[2]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[1] ; data_io[3]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[1] ; data_io[4]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[1] ; data_io[5]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[1] ; data_io[6]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[1] ; data_io[7]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[1] ; ram_cs_n_o     ; 17.300 ;        ;        ; 17.300 ;
+; ppi_port_a_i[1] ; rom_addr_o[14] ; 36.400 ; 32.600 ; 32.600 ; 36.400 ;
+; ppi_port_a_i[1] ; rom_addr_o[15] ; 36.300 ; 32.500 ; 32.500 ; 36.300 ;
+; ppi_port_a_i[1] ; rom_addr_o[16] ; 39.000 ; 35.200 ; 35.200 ; 39.000 ;
+; ppi_port_a_i[1] ; rom_cs_n_o     ; 17.300 ; 17.300 ; 17.300 ; 17.300 ;
+; ppi_port_a_i[2] ; data_io[0]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[2] ; data_io[1]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[2] ; data_io[2]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[2] ; data_io[3]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[2] ; data_io[4]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[2] ; data_io[5]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[2] ; data_io[6]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[2] ; data_io[7]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[2] ; ram_cs_n_o     ; 17.300 ;        ;        ; 17.300 ;
+; ppi_port_a_i[2] ; rom_addr_o[14] ; 36.400 ; 32.600 ; 32.600 ; 36.400 ;
+; ppi_port_a_i[2] ; rom_addr_o[15] ; 36.300 ; 32.500 ; 32.500 ; 36.300 ;
+; ppi_port_a_i[2] ; rom_addr_o[16] ; 39.000 ; 35.200 ; 35.200 ; 39.000 ;
+; ppi_port_a_i[2] ; rom_cs_n_o     ; 17.300 ; 17.300 ; 17.300 ; 17.300 ;
+; ppi_port_a_i[3] ; data_io[0]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[3] ; data_io[1]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[3] ; data_io[2]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[3] ; data_io[3]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[3] ; data_io[4]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[3] ; data_io[5]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[3] ; data_io[6]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[3] ; data_io[7]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[3] ; ram_cs_n_o     ; 17.300 ;        ;        ; 17.300 ;
+; ppi_port_a_i[3] ; rom_addr_o[14] ; 36.400 ; 32.600 ; 32.600 ; 36.400 ;
+; ppi_port_a_i[3] ; rom_addr_o[15] ; 36.300 ; 32.500 ; 32.500 ; 36.300 ;
+; ppi_port_a_i[3] ; rom_addr_o[16] ; 39.000 ; 35.200 ; 35.200 ; 39.000 ;
+; ppi_port_a_i[3] ; rom_cs_n_o     ; 17.300 ; 17.300 ; 17.300 ; 17.300 ;
+; ppi_port_a_i[4] ; data_io[0]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[4] ; data_io[1]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[4] ; data_io[2]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[4] ; data_io[3]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[4] ; data_io[4]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[4] ; data_io[5]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[4] ; data_io[6]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[4] ; data_io[7]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[4] ; ram_cs_n_o     ; 17.300 ;        ;        ; 17.300 ;
+; ppi_port_a_i[4] ; rom_addr_o[14] ; 36.400 ; 32.600 ; 32.600 ; 36.400 ;
+; ppi_port_a_i[4] ; rom_addr_o[15] ; 36.300 ; 32.500 ; 32.500 ; 36.300 ;
+; ppi_port_a_i[4] ; rom_addr_o[16] ; 39.000 ; 35.200 ; 35.200 ; 39.000 ;
+; ppi_port_a_i[4] ; rom_cs_n_o     ; 17.300 ; 17.300 ; 17.300 ; 17.300 ;
+; ppi_port_a_i[5] ; data_io[0]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[5] ; data_io[1]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[5] ; data_io[2]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[5] ; data_io[3]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[5] ; data_io[4]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[5] ; data_io[5]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[5] ; data_io[6]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[5] ; data_io[7]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[5] ; ram_cs_n_o     ; 17.300 ;        ;        ; 17.300 ;
+; ppi_port_a_i[5] ; rom_addr_o[14] ; 36.400 ; 32.600 ; 32.600 ; 36.400 ;
+; ppi_port_a_i[5] ; rom_addr_o[15] ; 36.300 ; 32.500 ; 32.500 ; 36.300 ;
+; ppi_port_a_i[5] ; rom_addr_o[16] ; 39.000 ; 35.200 ; 35.200 ; 39.000 ;
+; ppi_port_a_i[5] ; rom_cs_n_o     ; 17.300 ; 17.300 ; 17.300 ; 17.300 ;
+; ppi_port_a_i[6] ; data_io[0]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[6] ; data_io[1]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[6] ; data_io[2]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[6] ; data_io[3]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[6] ; data_io[4]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[6] ; data_io[5]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[6] ; data_io[6]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[6] ; data_io[7]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[6] ; ram_cs_n_o     ; 17.300 ;        ;        ; 17.300 ;
+; ppi_port_a_i[6] ; rom_addr_o[14] ; 36.400 ; 32.600 ; 32.600 ; 36.400 ;
+; ppi_port_a_i[6] ; rom_addr_o[15] ; 36.300 ; 32.500 ; 32.500 ; 36.300 ;
+; ppi_port_a_i[6] ; rom_addr_o[16] ; 39.000 ; 35.200 ; 35.200 ; 39.000 ;
+; ppi_port_a_i[6] ; rom_cs_n_o     ; 17.300 ; 17.300 ; 17.300 ; 17.300 ;
+; ppi_port_a_i[7] ; data_io[0]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[7] ; data_io[1]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[7] ; data_io[2]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[7] ; data_io[3]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[7] ; data_io[4]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[7] ; data_io[5]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[7] ; data_io[6]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[7] ; data_io[7]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[7] ; ram_cs_n_o     ; 17.300 ;        ;        ; 17.300 ;
+; ppi_port_a_i[7] ; rom_addr_o[14] ; 36.400 ; 32.600 ; 32.600 ; 36.400 ;
+; ppi_port_a_i[7] ; rom_addr_o[15] ; 36.300 ; 32.500 ; 32.500 ; 36.300 ;
+; ppi_port_a_i[7] ; rom_addr_o[16] ; 39.000 ; 35.200 ; 35.200 ; 39.000 ;
+; ppi_port_a_i[7] ; rom_cs_n_o     ; 17.300 ; 17.300 ; 17.300 ; 17.300 ;
+; rd_n_i          ; data_io[0]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; rd_n_i          ; data_io[1]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; rd_n_i          ; data_io[2]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; rd_n_i          ; data_io[3]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; rd_n_i          ; data_io[4]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; rd_n_i          ; data_io[5]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; rd_n_i          ; data_io[6]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; rd_n_i          ; data_io[7]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; rd_n_i          ; rom_addr_o[14] ; 25.600 ; 29.400 ; 29.400 ; 25.600 ;
+; rd_n_i          ; rom_addr_o[15] ; 25.500 ; 29.300 ; 29.300 ; 25.500 ;
+; rd_n_i          ; rom_addr_o[16] ; 28.200 ; 32.000 ; 32.000 ; 28.200 ;
+; rd_n_i          ; rom_cs_n_o     ;        ; 10.300 ; 10.300 ;        ;
+; rd_n_i          ; vdp_csrd_n_o   ;        ; 10.300 ; 10.300 ;        ;
+; reset_n_i       ; data_io[0]     ; 24.300 ; 28.100 ; 28.100 ; 24.300 ;
+; reset_n_i       ; data_io[1]     ; 24.300 ; 28.100 ; 28.100 ; 24.300 ;
+; reset_n_i       ; data_io[2]     ; 24.300 ; 28.100 ; 28.100 ; 24.300 ;
+; reset_n_i       ; data_io[3]     ; 24.300 ; 28.100 ; 28.100 ; 24.300 ;
+; reset_n_i       ; data_io[4]     ; 24.300 ; 28.100 ; 28.100 ; 24.300 ;
+; reset_n_i       ; data_io[5]     ; 24.300 ; 28.100 ; 28.100 ; 24.300 ;
+; reset_n_i       ; data_io[6]     ; 24.300 ; 28.100 ; 28.100 ; 24.300 ;
+; reset_n_i       ; data_io[7]     ; 24.300 ; 28.100 ; 28.100 ; 24.300 ;
+; reset_n_i       ; ram_cs_n_o     ; 24.300 ;        ;        ; 24.300 ;
+; reset_n_i       ; rom_addr_o[14] ; 43.400 ; 39.600 ; 39.600 ; 43.400 ;
+; reset_n_i       ; rom_addr_o[15] ; 43.300 ; 39.500 ; 39.500 ; 43.300 ;
+; reset_n_i       ; rom_addr_o[16] ; 46.000 ; 42.200 ; 42.200 ; 46.000 ;
+; reset_n_i       ; rom_cs_n_o     ; 24.300 ; 24.300 ; 24.300 ; 24.300 ;
+; rfsh_n_i        ; data_io[0]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; rfsh_n_i        ; data_io[1]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; rfsh_n_i        ; data_io[2]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; rfsh_n_i        ; data_io[3]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; rfsh_n_i        ; data_io[4]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; rfsh_n_i        ; data_io[5]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; rfsh_n_i        ; data_io[6]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; rfsh_n_i        ; data_io[7]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; rfsh_n_i        ; ram_cs_n_o     ; 10.300 ;        ;        ; 10.300 ;
+; rfsh_n_i        ; rom_addr_o[14] ; 29.400 ; 25.600 ; 25.600 ; 29.400 ;
+; rfsh_n_i        ; rom_addr_o[15] ; 29.300 ; 25.500 ; 25.500 ; 29.300 ;
+; rfsh_n_i        ; rom_addr_o[16] ; 32.000 ; 28.200 ; 28.200 ; 32.000 ;
+; rfsh_n_i        ; rom_cs_n_o     ; 10.300 ;        ;        ; 10.300 ;
+; wr_n_i          ; psg_bdir_o     ;        ; 10.300 ; 10.300 ;        ;
+; wr_n_i          ; rom_addr_o[14] ; 18.300 ; 22.100 ; 22.100 ; 18.300 ;
+; wr_n_i          ; rom_addr_o[15] ; 18.300 ; 22.100 ; 22.100 ; 18.300 ;
+; wr_n_i          ; rom_addr_o[16] ; 21.100 ; 24.900 ; 24.900 ; 21.100 ;
+; wr_n_i          ; vdp_cswr_n_o   ;        ; 10.300 ; 10.300 ;        ;
++-----------------+----------------+--------+--------+--------+--------+
+
+
++----------------------------------------------------------------------+
+; Minimum Propagation Delay                                            ;
++-----------------+----------------+--------+--------+--------+--------+
+; Input Port      ; Output Port    ; RR     ; RF     ; FR     ; FF     ;
++-----------------+----------------+--------+--------+--------+--------+
+; addr_i[1]       ; data_io[0]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[1]       ; data_io[1]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[1]       ; data_io[2]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[1]       ; data_io[3]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[1]       ; data_io[4]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[1]       ; data_io[5]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[1]       ; data_io[6]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[1]       ; data_io[7]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[1]       ; ram_cs_n_o     ;        ; 14.100 ; 14.100 ;        ;
+; addr_i[1]       ; rom_addr_o[14] ; 18.300 ; 17.400 ; 17.400 ; 18.300 ;
+; addr_i[1]       ; rom_addr_o[15] ; 17.400 ; 14.100 ; 14.100 ; 17.400 ;
+; addr_i[1]       ; rom_addr_o[16] ; 32.000 ; 28.200 ; 28.200 ; 32.000 ;
+; addr_i[2]       ; data_io[0]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[2]       ; data_io[1]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[2]       ; data_io[2]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[2]       ; data_io[3]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[2]       ; data_io[4]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[2]       ; data_io[5]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[2]       ; data_io[6]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[2]       ; data_io[7]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[2]       ; ppi_cs_n_o     ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[2]       ; psg_bc1_o      ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[2]       ; ram_cs_n_o     ;        ; 14.100 ; 14.100 ;        ;
+; addr_i[2]       ; rom_addr_o[14] ; 21.100 ; 17.400 ; 17.400 ; 21.100 ;
+; addr_i[2]       ; rom_addr_o[15] ; 21.200 ; 14.100 ; 14.100 ; 21.200 ;
+; addr_i[2]       ; rom_addr_o[16] ; 24.600 ; 24.600 ; 24.600 ; 24.600 ;
+; addr_i[2]       ; rom_cs_n_o     ; 24.600 ; 24.600 ; 24.600 ; 24.600 ;
+; addr_i[2]       ; vdp_csrd_n_o   ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[2]       ; vdp_cswr_n_o   ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[3]       ; data_io[0]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[3]       ; data_io[1]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[3]       ; data_io[2]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[3]       ; data_io[3]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[3]       ; data_io[4]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[3]       ; data_io[5]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[3]       ; data_io[6]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[3]       ; data_io[7]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[3]       ; ppi_cs_n_o     ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[3]       ; psg_bc1_o      ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[3]       ; ram_cs_n_o     ; 24.600 ; 14.100 ; 14.100 ; 24.600 ;
+; addr_i[3]       ; rom_addr_o[14] ; 21.100 ; 17.400 ; 17.400 ; 21.100 ;
+; addr_i[3]       ; rom_addr_o[15] ; 21.200 ; 14.100 ; 14.100 ; 21.200 ;
+; addr_i[3]       ; rom_addr_o[16] ; 24.600 ; 24.600 ; 24.600 ; 24.600 ;
+; addr_i[3]       ; rom_cs_n_o     ; 24.600 ; 24.600 ; 24.600 ; 24.600 ;
+; addr_i[3]       ; vdp_csrd_n_o   ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[3]       ; vdp_cswr_n_o   ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[4]       ; data_io[0]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[4]       ; data_io[1]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[4]       ; data_io[2]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[4]       ; data_io[3]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[4]       ; data_io[4]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[4]       ; data_io[5]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[4]       ; data_io[6]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[4]       ; data_io[7]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[4]       ; ppi_cs_n_o     ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[4]       ; psg_bc1_o      ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[4]       ; ram_cs_n_o     ;        ; 14.100 ; 14.100 ;        ;
+; addr_i[4]       ; rom_addr_o[14] ; 21.100 ; 17.400 ; 17.400 ; 21.100 ;
+; addr_i[4]       ; rom_addr_o[15] ; 21.200 ; 14.100 ; 14.100 ; 21.200 ;
+; addr_i[4]       ; rom_addr_o[16] ; 24.600 ; 24.600 ; 24.600 ; 24.600 ;
+; addr_i[4]       ; rom_cs_n_o     ; 24.600 ; 24.600 ; 24.600 ; 24.600 ;
+; addr_i[4]       ; vdp_csrd_n_o   ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[4]       ; vdp_cswr_n_o   ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[5]       ; data_io[0]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[5]       ; data_io[1]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[5]       ; data_io[2]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[5]       ; data_io[3]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[5]       ; data_io[4]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[5]       ; data_io[5]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[5]       ; data_io[6]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[5]       ; data_io[7]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[5]       ; ppi_cs_n_o     ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[5]       ; psg_bc1_o      ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[5]       ; ram_cs_n_o     ; 24.600 ; 14.100 ; 14.100 ; 24.600 ;
+; addr_i[5]       ; rom_addr_o[14] ; 21.100 ; 17.400 ; 17.400 ; 21.100 ;
+; addr_i[5]       ; rom_addr_o[15] ; 21.200 ; 14.100 ; 14.100 ; 21.200 ;
+; addr_i[5]       ; rom_addr_o[16] ; 24.600 ; 24.600 ; 24.600 ; 24.600 ;
+; addr_i[5]       ; rom_cs_n_o     ; 24.600 ; 24.600 ; 24.600 ; 24.600 ;
+; addr_i[5]       ; vdp_csrd_n_o   ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[5]       ; vdp_cswr_n_o   ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[6]       ; data_io[0]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[6]       ; data_io[1]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[6]       ; data_io[2]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[6]       ; data_io[3]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[6]       ; data_io[4]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[6]       ; data_io[5]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[6]       ; data_io[6]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[6]       ; data_io[7]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[6]       ; ppi_cs_n_o     ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[6]       ; psg_bc1_o      ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[6]       ; ram_cs_n_o     ;        ; 14.100 ; 14.100 ;        ;
+; addr_i[6]       ; rom_addr_o[14] ; 21.100 ; 17.400 ; 17.400 ; 21.100 ;
+; addr_i[6]       ; rom_addr_o[15] ; 21.200 ; 14.100 ; 14.100 ; 21.200 ;
+; addr_i[6]       ; rom_addr_o[16] ; 24.600 ; 24.600 ; 24.600 ; 24.600 ;
+; addr_i[6]       ; rom_cs_n_o     ; 24.600 ; 24.600 ; 24.600 ; 24.600 ;
+; addr_i[6]       ; vdp_csrd_n_o   ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[6]       ; vdp_cswr_n_o   ;        ; 10.300 ; 10.300 ;        ;
+; addr_i[7]       ; data_io[0]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[7]       ; data_io[1]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[7]       ; data_io[2]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[7]       ; data_io[3]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[7]       ; data_io[4]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[7]       ; data_io[5]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[7]       ; data_io[6]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[7]       ; data_io[7]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[7]       ; ppi_cs_n_o     ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[7]       ; psg_bc1_o      ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[7]       ; ram_cs_n_o     ; 24.600 ; 14.100 ; 14.100 ; 24.600 ;
+; addr_i[7]       ; rom_addr_o[14] ; 21.100 ; 17.400 ; 17.400 ; 21.100 ;
+; addr_i[7]       ; rom_addr_o[15] ; 21.200 ; 14.100 ; 14.100 ; 21.200 ;
+; addr_i[7]       ; rom_addr_o[16] ; 24.600 ; 24.600 ; 24.600 ; 24.600 ;
+; addr_i[7]       ; rom_cs_n_o     ; 24.600 ; 24.600 ; 24.600 ; 24.600 ;
+; addr_i[7]       ; vdp_csrd_n_o   ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[7]       ; vdp_cswr_n_o   ; 10.300 ;        ;        ; 10.300 ;
+; addr_i[8]       ; data_io[0]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[8]       ; data_io[1]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[8]       ; data_io[2]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[8]       ; data_io[3]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[8]       ; data_io[4]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[8]       ; data_io[5]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[8]       ; data_io[6]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[8]       ; data_io[7]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[8]       ; ram_cs_n_o     ;        ; 14.000 ; 14.000 ;        ;
+; addr_i[8]       ; rom_addr_o[14] ; 21.000 ; 21.000 ; 21.000 ; 21.000 ;
+; addr_i[8]       ; rom_addr_o[15] ; 28.300 ; 14.000 ; 14.000 ; 28.300 ;
+; addr_i[8]       ; rom_addr_o[16] ; 31.900 ; 28.100 ; 28.100 ; 31.900 ;
+; addr_i[9]       ; data_io[0]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[9]       ; data_io[1]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[9]       ; data_io[2]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[9]       ; data_io[3]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[9]       ; data_io[4]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[9]       ; data_io[5]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[9]       ; data_io[6]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[9]       ; data_io[7]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[9]       ; ram_cs_n_o     ;        ; 14.000 ; 14.000 ;        ;
+; addr_i[9]       ; rom_addr_o[14] ; 21.000 ; 21.000 ; 21.000 ; 21.000 ;
+; addr_i[9]       ; rom_addr_o[15] ; 28.300 ; 14.000 ; 14.000 ; 28.300 ;
+; addr_i[9]       ; rom_addr_o[16] ; 31.900 ; 28.100 ; 28.100 ; 31.900 ;
+; addr_i[10]      ; data_io[0]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[10]      ; data_io[1]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[10]      ; data_io[2]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[10]      ; data_io[3]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[10]      ; data_io[4]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[10]      ; data_io[5]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[10]      ; data_io[6]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[10]      ; data_io[7]     ; 10.200 ; 14.000 ; 14.000 ; 10.200 ;
+; addr_i[10]      ; ram_cs_n_o     ;        ; 14.000 ; 14.000 ;        ;
+; addr_i[10]      ; rom_addr_o[14] ; 21.000 ; 21.000 ; 21.000 ; 21.000 ;
+; addr_i[10]      ; rom_addr_o[15] ; 28.300 ; 14.000 ; 14.000 ; 28.300 ;
+; addr_i[10]      ; rom_addr_o[16] ; 31.900 ; 28.100 ; 28.100 ; 31.900 ;
+; addr_i[11]      ; data_io[0]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[11]      ; data_io[1]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[11]      ; data_io[2]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[11]      ; data_io[3]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[11]      ; data_io[4]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[11]      ; data_io[5]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[11]      ; data_io[6]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[11]      ; data_io[7]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[11]      ; ram_cs_n_o     ;        ; 14.100 ; 14.100 ;        ;
+; addr_i[11]      ; rom_addr_o[14] ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; addr_i[11]      ; rom_addr_o[15] ; 17.400 ; 14.100 ; 14.100 ; 17.400 ;
+; addr_i[11]      ; rom_addr_o[16] ; 21.100 ; 24.900 ; 24.900 ; 21.100 ;
+; addr_i[12]      ; data_io[0]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[12]      ; data_io[1]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[12]      ; data_io[2]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[12]      ; data_io[3]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[12]      ; data_io[4]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[12]      ; data_io[5]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[12]      ; data_io[6]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[12]      ; data_io[7]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[12]      ; ram_cs_n_o     ;        ; 14.100 ; 14.100 ;        ;
+; addr_i[12]      ; rom_addr_o[14] ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; addr_i[12]      ; rom_addr_o[15] ; 17.400 ; 14.100 ; 14.100 ; 17.400 ;
+; addr_i[12]      ; rom_addr_o[16] ; 21.100 ; 24.900 ; 24.900 ; 21.100 ;
+; addr_i[13]      ; data_io[0]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[13]      ; data_io[1]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[13]      ; data_io[2]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[13]      ; data_io[3]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[13]      ; data_io[4]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[13]      ; data_io[5]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[13]      ; data_io[6]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[13]      ; data_io[7]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; addr_i[13]      ; ram_cs_n_o     ;        ; 14.100 ; 14.100 ;        ;
+; addr_i[13]      ; rom_addr_o[14] ; 21.100 ; 17.300 ; 17.300 ; 21.100 ;
+; addr_i[13]      ; rom_addr_o[15] ; 21.200 ; 14.100 ; 14.100 ; 21.200 ;
+; addr_i[13]      ; rom_addr_o[16] ; 24.900 ; 21.100 ; 21.100 ; 24.900 ;
+; addr_i[14]      ; data_io[0]     ; 10.400 ; 14.200 ; 14.200 ; 10.400 ;
+; addr_i[14]      ; data_io[1]     ; 10.400 ; 14.200 ; 14.200 ; 10.400 ;
+; addr_i[14]      ; data_io[2]     ; 10.400 ; 14.200 ; 14.200 ; 10.400 ;
+; addr_i[14]      ; data_io[3]     ; 10.400 ; 14.200 ; 14.200 ; 10.400 ;
+; addr_i[14]      ; data_io[4]     ; 10.400 ; 14.200 ; 14.200 ; 10.400 ;
+; addr_i[14]      ; data_io[5]     ; 10.400 ; 14.200 ; 14.200 ; 10.400 ;
+; addr_i[14]      ; data_io[6]     ; 10.400 ; 14.200 ; 14.200 ; 10.400 ;
+; addr_i[14]      ; data_io[7]     ; 10.400 ; 14.200 ; 14.200 ; 10.400 ;
+; addr_i[14]      ; ram_cs_n_o     ; 10.400 ; 10.400 ; 10.400 ; 10.400 ;
+; addr_i[14]      ; rom_addr_o[14] ; 10.400 ; 10.400 ; 10.400 ; 10.400 ;
+; addr_i[14]      ; rom_addr_o[15] ; 10.400 ; 10.400 ; 10.400 ; 10.400 ;
+; addr_i[14]      ; rom_addr_o[16] ; 17.700 ; 14.200 ; 14.200 ; 17.700 ;
+; addr_i[14]      ; rom_cs_n_o     ; 17.700 ; 10.400 ; 10.400 ; 17.700 ;
+; addr_i[15]      ; data_io[0]     ; 10.400 ; 14.200 ; 14.200 ; 10.400 ;
+; addr_i[15]      ; data_io[1]     ; 10.400 ; 14.200 ; 14.200 ; 10.400 ;
+; addr_i[15]      ; data_io[2]     ; 10.400 ; 14.200 ; 14.200 ; 10.400 ;
+; addr_i[15]      ; data_io[3]     ; 10.400 ; 14.200 ; 14.200 ; 10.400 ;
+; addr_i[15]      ; data_io[4]     ; 10.400 ; 14.200 ; 14.200 ; 10.400 ;
+; addr_i[15]      ; data_io[5]     ; 10.400 ; 14.200 ; 14.200 ; 10.400 ;
+; addr_i[15]      ; data_io[6]     ; 10.400 ; 14.200 ; 14.200 ; 10.400 ;
+; addr_i[15]      ; data_io[7]     ; 10.400 ; 14.200 ; 14.200 ; 10.400 ;
+; addr_i[15]      ; ram_cs_n_o     ; 10.400 ; 10.400 ; 10.400 ; 10.400 ;
+; addr_i[15]      ; rom_addr_o[14] ; 17.400 ; 17.400 ; 17.400 ; 17.400 ;
+; addr_i[15]      ; rom_addr_o[15] ; 10.400 ; 10.400 ; 10.400 ; 10.400 ;
+; addr_i[15]      ; rom_addr_o[16] ; 17.700 ; 17.700 ; 17.700 ; 17.700 ;
+; addr_i[15]      ; rom_cs_n_o     ; 17.700 ; 10.400 ; 10.400 ; 17.700 ;
+; en_ascii16_n_i  ; rom_addr_o[14] ;        ; 10.100 ; 10.100 ;        ;
+; en_ascii16_n_i  ; rom_addr_o[15] ;        ; 10.100 ; 10.100 ;        ;
+; en_ascii16_n_i  ; rom_addr_o[16] ; 13.900 ; 10.100 ; 10.100 ; 13.900 ;
+; en_ascii16_n_i  ; rom_cs_n_o     ;        ; 10.100 ; 10.100 ;        ;
+; iorq_n_i        ; data_io[0]     ; 28.200 ; 24.400 ; 24.400 ; 28.200 ;
+; iorq_n_i        ; data_io[1]     ; 28.200 ; 24.400 ; 24.400 ; 28.200 ;
+; iorq_n_i        ; data_io[2]     ; 28.200 ; 24.400 ; 24.400 ; 28.200 ;
+; iorq_n_i        ; data_io[3]     ; 28.200 ; 24.400 ; 24.400 ; 28.200 ;
+; iorq_n_i        ; data_io[4]     ; 28.200 ; 24.400 ; 24.400 ; 28.200 ;
+; iorq_n_i        ; data_io[5]     ; 28.200 ; 24.400 ; 24.400 ; 28.200 ;
+; iorq_n_i        ; data_io[6]     ; 28.200 ; 24.400 ; 24.400 ; 28.200 ;
+; iorq_n_i        ; data_io[7]     ; 28.200 ; 24.400 ; 24.400 ; 28.200 ;
+; iorq_n_i        ; ppi_cs_n_o     ;        ; 10.100 ; 10.100 ;        ;
+; iorq_n_i        ; psg_bc1_o      ;        ; 10.100 ; 10.100 ;        ;
+; iorq_n_i        ; psg_bdir_o     ;        ; 10.100 ; 10.100 ;        ;
+; iorq_n_i        ; ram_cs_n_o     ;        ; 24.400 ; 24.400 ;        ;
+; iorq_n_i        ; rom_addr_o[14] ; 17.200 ; 21.000 ; 21.000 ; 17.200 ;
+; iorq_n_i        ; rom_addr_o[15] ; 17.200 ; 21.000 ; 21.000 ; 17.200 ;
+; iorq_n_i        ; rom_addr_o[16] ; 24.400 ; 24.400 ; 24.400 ; 24.400 ;
+; iorq_n_i        ; rom_cs_n_o     ; 24.400 ; 24.400 ; 24.400 ; 24.400 ;
+; iorq_n_i        ; vdp_csrd_n_o   ;        ; 10.100 ; 10.100 ;        ;
+; iorq_n_i        ; vdp_cswr_n_o   ;        ; 10.100 ; 10.100 ;        ;
+; m1_n_i          ; data_io[0]     ; 24.400 ; 28.200 ; 28.200 ; 24.400 ;
+; m1_n_i          ; data_io[1]     ; 24.400 ; 28.200 ; 28.200 ; 24.400 ;
+; m1_n_i          ; data_io[2]     ; 24.400 ; 28.200 ; 28.200 ; 24.400 ;
+; m1_n_i          ; data_io[3]     ; 24.400 ; 28.200 ; 28.200 ; 24.400 ;
+; m1_n_i          ; data_io[4]     ; 24.400 ; 28.200 ; 28.200 ; 24.400 ;
+; m1_n_i          ; data_io[5]     ; 24.400 ; 28.200 ; 28.200 ; 24.400 ;
+; m1_n_i          ; data_io[6]     ; 24.400 ; 28.200 ; 28.200 ; 24.400 ;
+; m1_n_i          ; data_io[7]     ; 24.400 ; 28.200 ; 28.200 ; 24.400 ;
+; m1_n_i          ; ppi_cs_n_o     ; 10.100 ;        ;        ; 10.100 ;
+; m1_n_i          ; psg_bc1_o      ; 10.100 ;        ;        ; 10.100 ;
+; m1_n_i          ; psg_bdir_o     ; 10.100 ;        ;        ; 10.100 ;
+; m1_n_i          ; ram_cs_n_o     ; 24.400 ;        ;        ; 24.400 ;
+; m1_n_i          ; rom_addr_o[14] ; 21.000 ; 17.200 ; 17.200 ; 21.000 ;
+; m1_n_i          ; rom_addr_o[15] ; 21.000 ; 17.200 ; 17.200 ; 21.000 ;
+; m1_n_i          ; rom_addr_o[16] ; 24.400 ; 24.400 ; 24.400 ; 24.400 ;
+; m1_n_i          ; rom_cs_n_o     ; 24.400 ; 24.400 ; 24.400 ; 24.400 ;
+; m1_n_i          ; vdp_csrd_n_o   ; 10.100 ;        ;        ; 10.100 ;
+; m1_n_i          ; vdp_cswr_n_o   ; 10.100 ;        ;        ; 10.100 ;
+; mreq_n_i        ; data_io[0]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; mreq_n_i        ; data_io[1]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; mreq_n_i        ; data_io[2]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; mreq_n_i        ; data_io[3]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; mreq_n_i        ; data_io[4]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; mreq_n_i        ; data_io[5]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; mreq_n_i        ; data_io[6]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; mreq_n_i        ; data_io[7]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; mreq_n_i        ; ram_cs_n_o     ;        ; 10.300 ; 10.300 ;        ;
+; mreq_n_i        ; rom_addr_o[14] ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; mreq_n_i        ; rom_addr_o[15] ; 17.400 ; 10.300 ; 10.300 ; 17.400 ;
+; mreq_n_i        ; rom_addr_o[16] ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; mreq_n_i        ; rom_cs_n_o     ;        ; 10.300 ; 10.300 ;        ;
+; ppi_port_a_i[0] ; data_io[0]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[0] ; data_io[1]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[0] ; data_io[2]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[0] ; data_io[3]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[0] ; data_io[4]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[0] ; data_io[5]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[0] ; data_io[6]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[0] ; data_io[7]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[0] ; ram_cs_n_o     ; 17.300 ;        ;        ; 17.300 ;
+; ppi_port_a_i[0] ; rom_addr_o[14] ; 17.300 ; 24.300 ; 24.300 ; 17.300 ;
+; ppi_port_a_i[0] ; rom_addr_o[15] ; 17.300 ; 18.200 ; 18.200 ; 17.300 ;
+; ppi_port_a_i[0] ; rom_addr_o[16] ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[0] ; rom_cs_n_o     ; 17.300 ; 17.300 ; 17.300 ; 17.300 ;
+; ppi_port_a_i[1] ; data_io[0]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[1] ; data_io[1]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[1] ; data_io[2]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[1] ; data_io[3]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[1] ; data_io[4]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[1] ; data_io[5]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[1] ; data_io[6]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[1] ; data_io[7]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[1] ; ram_cs_n_o     ; 17.300 ;        ;        ; 17.300 ;
+; ppi_port_a_i[1] ; rom_addr_o[14] ; 24.300 ; 17.300 ; 17.300 ; 24.300 ;
+; ppi_port_a_i[1] ; rom_addr_o[15] ; 17.300 ; 17.300 ; 17.300 ; 17.300 ;
+; ppi_port_a_i[1] ; rom_addr_o[16] ; 21.100 ; 17.300 ; 17.300 ; 21.100 ;
+; ppi_port_a_i[1] ; rom_cs_n_o     ; 17.300 ; 17.300 ; 17.300 ; 17.300 ;
+; ppi_port_a_i[2] ; data_io[0]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[2] ; data_io[1]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[2] ; data_io[2]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[2] ; data_io[3]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[2] ; data_io[4]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[2] ; data_io[5]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[2] ; data_io[6]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[2] ; data_io[7]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[2] ; ram_cs_n_o     ; 17.300 ;        ;        ; 17.300 ;
+; ppi_port_a_i[2] ; rom_addr_o[14] ; 17.300 ; 24.300 ; 24.300 ; 17.300 ;
+; ppi_port_a_i[2] ; rom_addr_o[15] ; 17.300 ; 18.200 ; 18.200 ; 17.300 ;
+; ppi_port_a_i[2] ; rom_addr_o[16] ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[2] ; rom_cs_n_o     ; 17.300 ; 17.300 ; 17.300 ; 17.300 ;
+; ppi_port_a_i[3] ; data_io[0]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[3] ; data_io[1]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[3] ; data_io[2]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[3] ; data_io[3]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[3] ; data_io[4]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[3] ; data_io[5]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[3] ; data_io[6]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[3] ; data_io[7]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[3] ; ram_cs_n_o     ; 17.300 ;        ;        ; 17.300 ;
+; ppi_port_a_i[3] ; rom_addr_o[14] ; 24.300 ; 17.300 ; 17.300 ; 24.300 ;
+; ppi_port_a_i[3] ; rom_addr_o[15] ; 17.300 ; 17.300 ; 17.300 ; 17.300 ;
+; ppi_port_a_i[3] ; rom_addr_o[16] ; 21.100 ; 17.300 ; 17.300 ; 21.100 ;
+; ppi_port_a_i[3] ; rom_cs_n_o     ; 17.300 ; 17.300 ; 17.300 ; 17.300 ;
+; ppi_port_a_i[4] ; data_io[0]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[4] ; data_io[1]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[4] ; data_io[2]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[4] ; data_io[3]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[4] ; data_io[4]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[4] ; data_io[5]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[4] ; data_io[6]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[4] ; data_io[7]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[4] ; ram_cs_n_o     ; 17.300 ;        ;        ; 17.300 ;
+; ppi_port_a_i[4] ; rom_addr_o[14] ; 17.300 ; 24.300 ; 24.300 ; 17.300 ;
+; ppi_port_a_i[4] ; rom_addr_o[15] ; 17.300 ; 18.200 ; 18.200 ; 17.300 ;
+; ppi_port_a_i[4] ; rom_addr_o[16] ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[4] ; rom_cs_n_o     ; 17.300 ; 17.300 ; 17.300 ; 17.300 ;
+; ppi_port_a_i[5] ; data_io[0]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[5] ; data_io[1]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[5] ; data_io[2]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[5] ; data_io[3]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[5] ; data_io[4]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[5] ; data_io[5]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[5] ; data_io[6]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[5] ; data_io[7]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[5] ; ram_cs_n_o     ; 17.300 ;        ;        ; 17.300 ;
+; ppi_port_a_i[5] ; rom_addr_o[14] ; 24.300 ; 17.300 ; 17.300 ; 24.300 ;
+; ppi_port_a_i[5] ; rom_addr_o[15] ; 17.300 ; 17.300 ; 17.300 ; 17.300 ;
+; ppi_port_a_i[5] ; rom_addr_o[16] ; 21.100 ; 17.300 ; 17.300 ; 21.100 ;
+; ppi_port_a_i[5] ; rom_cs_n_o     ; 17.300 ; 17.300 ; 17.300 ; 17.300 ;
+; ppi_port_a_i[6] ; data_io[0]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[6] ; data_io[1]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[6] ; data_io[2]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[6] ; data_io[3]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[6] ; data_io[4]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[6] ; data_io[5]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[6] ; data_io[6]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[6] ; data_io[7]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[6] ; ram_cs_n_o     ; 17.300 ;        ;        ; 17.300 ;
+; ppi_port_a_i[6] ; rom_addr_o[14] ; 17.300 ; 24.300 ; 24.300 ; 17.300 ;
+; ppi_port_a_i[6] ; rom_addr_o[15] ; 17.300 ; 18.200 ; 18.200 ; 17.300 ;
+; ppi_port_a_i[6] ; rom_addr_o[16] ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[6] ; rom_cs_n_o     ; 17.300 ; 17.300 ; 17.300 ; 17.300 ;
+; ppi_port_a_i[7] ; data_io[0]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[7] ; data_io[1]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[7] ; data_io[2]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[7] ; data_io[3]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[7] ; data_io[4]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[7] ; data_io[5]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[7] ; data_io[6]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[7] ; data_io[7]     ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; ppi_port_a_i[7] ; ram_cs_n_o     ; 17.300 ;        ;        ; 17.300 ;
+; ppi_port_a_i[7] ; rom_addr_o[14] ; 24.300 ; 17.300 ; 17.300 ; 24.300 ;
+; ppi_port_a_i[7] ; rom_addr_o[15] ; 17.300 ; 17.300 ; 17.300 ; 17.300 ;
+; ppi_port_a_i[7] ; rom_addr_o[16] ; 21.100 ; 17.300 ; 17.300 ; 21.100 ;
+; ppi_port_a_i[7] ; rom_cs_n_o     ; 17.300 ; 17.300 ; 17.300 ; 17.300 ;
+; rd_n_i          ; data_io[0]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; rd_n_i          ; data_io[1]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; rd_n_i          ; data_io[2]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; rd_n_i          ; data_io[3]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; rd_n_i          ; data_io[4]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; rd_n_i          ; data_io[5]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; rd_n_i          ; data_io[6]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; rd_n_i          ; data_io[7]     ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; rd_n_i          ; rom_addr_o[14] ; 24.600 ; 10.300 ; 10.300 ; 24.600 ;
+; rd_n_i          ; rom_addr_o[15] ; 24.600 ; 10.300 ; 10.300 ; 24.600 ;
+; rd_n_i          ; rom_addr_o[16] ; 14.100 ; 10.300 ; 10.300 ; 14.100 ;
+; rd_n_i          ; rom_cs_n_o     ;        ; 10.300 ; 10.300 ;        ;
+; rd_n_i          ; vdp_csrd_n_o   ;        ; 10.300 ; 10.300 ;        ;
+; reset_n_i       ; data_io[0]     ; 24.300 ; 28.100 ; 28.100 ; 24.300 ;
+; reset_n_i       ; data_io[1]     ; 24.300 ; 28.100 ; 28.100 ; 24.300 ;
+; reset_n_i       ; data_io[2]     ; 24.300 ; 28.100 ; 28.100 ; 24.300 ;
+; reset_n_i       ; data_io[3]     ; 24.300 ; 28.100 ; 28.100 ; 24.300 ;
+; reset_n_i       ; data_io[4]     ; 24.300 ; 28.100 ; 28.100 ; 24.300 ;
+; reset_n_i       ; data_io[5]     ; 24.300 ; 28.100 ; 28.100 ; 24.300 ;
+; reset_n_i       ; data_io[6]     ; 24.300 ; 28.100 ; 28.100 ; 24.300 ;
+; reset_n_i       ; data_io[7]     ; 24.300 ; 28.100 ; 28.100 ; 24.300 ;
+; reset_n_i       ; ram_cs_n_o     ; 24.300 ;        ;        ; 24.300 ;
+; reset_n_i       ; rom_addr_o[14] ; 17.100 ; 17.100 ; 17.100 ; 17.100 ;
+; reset_n_i       ; rom_addr_o[15] ; 17.100 ; 17.100 ; 17.100 ; 17.100 ;
+; reset_n_i       ; rom_addr_o[16] ; 24.300 ; 24.300 ; 24.300 ; 24.300 ;
+; reset_n_i       ; rom_cs_n_o     ; 24.300 ; 24.300 ; 24.300 ; 24.300 ;
+; rfsh_n_i        ; data_io[0]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; rfsh_n_i        ; data_io[1]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; rfsh_n_i        ; data_io[2]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; rfsh_n_i        ; data_io[3]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; rfsh_n_i        ; data_io[4]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; rfsh_n_i        ; data_io[5]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; rfsh_n_i        ; data_io[6]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; rfsh_n_i        ; data_io[7]     ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; rfsh_n_i        ; ram_cs_n_o     ; 10.300 ;        ;        ; 10.300 ;
+; rfsh_n_i        ; rom_addr_o[14] ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; rfsh_n_i        ; rom_addr_o[15] ; 10.300 ; 17.400 ; 17.400 ; 10.300 ;
+; rfsh_n_i        ; rom_addr_o[16] ; 10.300 ; 14.100 ; 14.100 ; 10.300 ;
+; rfsh_n_i        ; rom_cs_n_o     ; 10.300 ;        ;        ; 10.300 ;
+; wr_n_i          ; psg_bdir_o     ;        ; 10.300 ; 10.300 ;        ;
+; wr_n_i          ; rom_addr_o[14] ; 17.300 ; 21.100 ; 21.100 ; 17.300 ;
+; wr_n_i          ; rom_addr_o[15] ; 17.400 ; 21.200 ; 21.200 ; 17.400 ;
+; wr_n_i          ; rom_addr_o[16] ; 21.100 ; 24.900 ; 24.900 ; 21.100 ;
+; wr_n_i          ; vdp_cswr_n_o   ;        ; 10.300 ; 10.300 ;        ;
++-----------------+----------------+--------+--------+--------+--------+
+
+
++--------------------------------------------------------------------+
+; Setup Transfers                                                    ;
++------------+-----------+----------+----------+----------+----------+
+; From Clock ; To Clock  ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+-----------+----------+----------+----------+----------+
+; addr_i[0]  ; addr_i[0] ; 0        ; 0        ; 48       ; 80       ;
++------------+-----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++--------------------------------------------------------------------+
+; Hold Transfers                                                     ;
++------------+-----------+----------+----------+----------+----------+
+; From Clock ; To Clock  ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+-----------+----------+----------+----------+----------+
+; addr_i[0]  ; addr_i[0] ; 0        ; 0        ; 48       ; 80       ;
++------------+-----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths                            ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 32    ; 32   ;
+; Unconstrained Input Port Paths  ; 666   ; 666  ;
+; Unconstrained Output Ports      ; 18    ; 18   ;
+; Unconstrained Output Port Paths ; 461   ; 461  ;
++---------------------------------+-------+------+
+
+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Sat May 06 19:43:57 2023
+Info: Command: quartus_sta msx_eng -c msx_eng
+Info: qsta_default_script.tcl version: #1
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (306004): Started post-fitting delay annotation
+Info (306005): Delay annotation completed successfully
+Warning (335095): TimeQuest Timing Analyzer does not support the analysis of latches as synchronous elements for the currently selected device family.
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'msx_eng.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name addr_i[0] addr_i[0]
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "rom_addr_o[16]_632~6|[0]"
+    Warning (332126): Node "rom_addr_o[16]_632~6|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "imap_bank3_s[1]~24|[2]"
+    Warning (332126): Node "imap_bank3_s[1]~24|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "imap_bank2_s[1]~26|[2]"
+    Warning (332126): Node "imap_bank2_s[1]~26|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "imap_bank1_s[1]~24|[1]"
+    Warning (332126): Node "imap_bank1_s[1]~24|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "imap_bank0_s[1]~25|[1]"
+    Warning (332126): Node "imap_bank0_s[1]~25|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "imap_bank3_s[0]~20|[2]"
+    Warning (332126): Node "imap_bank3_s[0]~20|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "imap_bank2_s[0]~21|[1]"
+    Warning (332126): Node "imap_bank2_s[0]~21|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "imap_bank1_s[0]~20|[2]"
+    Warning (332126): Node "imap_bank1_s[0]~20|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "imap_bank0_s[0]~20|[1]"
+    Warning (332126): Node "imap_bank0_s[0]~20|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "iascii_mapper_reg1[2]~27|[1]"
+    Warning (332126): Node "iascii_mapper_reg1[2]~27|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "iascii_mapper_reg0[2]~26|[1]"
+    Warning (332126): Node "iascii_mapper_reg0[2]~26|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "iascii_mapper_reg1[1]~23|[1]"
+    Warning (332126): Node "iascii_mapper_reg1[1]~23|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "iascii_mapper_reg0[1]~22|[1]"
+    Warning (332126): Node "iascii_mapper_reg0[1]~22|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "iascii_mapper_reg1[0]~19|[1]"
+    Warning (332126): Node "iascii_mapper_reg1[0]~19|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "iascii_mapper_reg0[0]~18|[1]"
+    Warning (332126): Node "iascii_mapper_reg0[0]~18|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "idata_exp3_i[7]~49|dataout"
+    Warning (332126): Node "idata_exp3_i[7]~49|[1]"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "data_io[7]$latch~6|[1]"
+    Warning (332126): Node "data_io[7]$latch~6|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "idata_exp3_i[6]~65|dataout"
+    Warning (332126): Node "idata_exp3_i[6]~65|[1]"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "data_io[6]$latch~6|[1]"
+    Warning (332126): Node "data_io[6]$latch~6|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "idata_exp3_i[5]~45|dataout"
+    Warning (332126): Node "idata_exp3_i[5]~45|[1]"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "data_io[5]$latch~6|[1]"
+    Warning (332126): Node "data_io[5]$latch~6|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "idata_exp3_i[4]~61|dataout"
+    Warning (332126): Node "idata_exp3_i[4]~61|[1]"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "data_io[4]$latch~6|[1]"
+    Warning (332126): Node "data_io[4]$latch~6|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "idata_exp3_i[3]~53|dataout"
+    Warning (332126): Node "idata_exp3_i[3]~53|[1]"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "data_io[3]$latch~6|[1]"
+    Warning (332126): Node "data_io[3]$latch~6|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "idata_exp3_i[2]~69|dataout"
+    Warning (332126): Node "idata_exp3_i[2]~69|[1]"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "data_io[2]$latch~6|[1]"
+    Warning (332126): Node "data_io[2]$latch~6|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "idata_exp3_i[1]~41|dataout"
+    Warning (332126): Node "idata_exp3_i[1]~41|[1]"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "data_io[1]$latch~6|[1]"
+    Warning (332126): Node "data_io[1]$latch~6|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "idata_exp3_i[0]~57|dataout"
+    Warning (332126): Node "idata_exp3_i[0]~57|[1]"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "data_io[0]$latch~6|[1]"
+    Warning (332126): Node "data_io[0]$latch~6|dataout"
+Warning (332125): Found combinational loop of 2 nodes
+    Warning (332126): Node "islot_en~9|[1]"
+    Warning (332126): Node "islot_en~9|dataout"
+Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -23.600
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):   -23.600      -187.000 addr_i[0] 
+Info (332146): Worst-case hold slack is 6.600
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     6.600         0.000 addr_i[0] 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -3.500
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -3.500       -56.000 addr_i[0] 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 100 warnings
+    Info: Peak virtual memory: 358 megabytes
+    Info: Processing ended: Sat May 06 19:43:58 2023
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+
+
