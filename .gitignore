@@ -49,3 +49,14 @@ db/msx_eng.tis_db_list.ddb
 incremental_db/README
 incremental_db/compiled_partitions/msx_eng.db_info
 incremental_db/compiled_partitions/msx_eng.root_partition.map.kpt
+db/msx_eng.ace_cmp.cdb
+db/msx_eng.ace_cmp.hdb
+db/msx_eng.atom.rvd
+db/msx_eng.eco.cdb
+db/msx_eng.pplq.rdb
+db/msx_eng.rpp.qmsg
+db/msx_eng.sgate_sm.rvd
+db/msx_eng.sgate.rvd
+db/msx_eng.sta_cmp.15_slow.tdb
+db/msx_eng.tmw_info
+db/prev_cmp_msx_eng.qmsg

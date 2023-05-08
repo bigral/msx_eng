@@ -1,8 +1,8 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="70421902a97e5607c9f3"/>
+    <hash md5_digest_80b="4abb8711dad0f3b266a1"/>
   </project>
   <file_info>
-    <file device="EPM3128ATC100-10" path="msx_eng.sof" usercode="0x00000000"/>
+    <file device="EPM7128STC100-15" path="msx_eng.sof" usercode="0x00000000"/>
   </file_info>
 </sld_project_info>

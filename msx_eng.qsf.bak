@@ -36,8 +36,8 @@
 # -------------------------------------------------------------------------- #
 
 
-set_global_assignment -name FAMILY MAX7000S
-set_global_assignment -name DEVICE "EPM7128STC100-15"
+set_global_assignment -name FAMILY MAX3000A
+set_global_assignment -name DEVICE "EPM3064ATC100-10"
 set_global_assignment -name TOP_LEVEL_ENTITY msx_eng
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "11:03:24  вересня 30, 2019"
@@ -54,4 +54,3 @@ set_global_assignment -name VHDL_FILE sn74ls153.vhd
 set_global_assignment -name VHDL_FILE sn74ls139.vhd
 set_global_assignment -name VHDL_FILE msx_eng.vhd
 set_global_assignment -name VHDL_FILE exp_slot.vhd
-set_global_assignment -name DEVICE_FILTER_PIN_COUNT 100

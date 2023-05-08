@@ -4,8 +4,8 @@ use ieee.std_logic_unsigned.all;
 
 entity sn74ls153 is
 	port(
-		a_i: in std_logic; -- select input a (bit 0)
-		b_i: in std_logic; -- select input b (bit 1)
+		a_i: in std_logic; -- select input a
+		b_i: in std_logic; -- select input b
 		c_i: in std_logic_vector(3 downto 0); -- data inputs c0,c1,c2,c3
 		g_n_i: in std_logic; -- strobe input g
 		
@@ -23,10 +23,10 @@ begin
 		elsif g_n_i= '0' and a_i = '0' and b_i = '0' then
 			y_o <= c_i(0);
 
-		elsif g_n_i= '0' and a_i = '1' and b_i = '0' then
+		elsif g_n_i= '0' and a_i = '0' and b_i = '1' then
 			y_o <= c_i(1);
 
-		elsif g_n_i= '0' and a_i = '0' and b_i = '1' then
+		elsif g_n_i= '0' and a_i = '1' and b_i = '0' then
 			y_o <= c_i(2);
 
 		elsif g_n_i= '0' and a_i = '1' and b_i = '1' then
