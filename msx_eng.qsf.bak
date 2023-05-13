@@ -36,21 +36,119 @@
 # -------------------------------------------------------------------------- #
 
 
-set_global_assignment -name FAMILY MAX3000A
-set_global_assignment -name DEVICE "EPM3064ATC100-10"
+set_global_assignment -name FAMILY MAX7000S
+set_global_assignment -name DEVICE AUTO
 set_global_assignment -name TOP_LEVEL_ENTITY msx_eng
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "11:03:24  вересня 30, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
-set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR "-1"
-set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
-set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
 set_global_assignment -name MAX7000_DEVICE_IO_STANDARD "3.3-V LVTTL"
-set_global_assignment -name OPTIMIZE_HOLD_TIMING OFF
-set_global_assignment -name OPTIMIZE_MULTI_CORNER_TIMING OFF
-set_global_assignment -name FITTER_EFFORT "STANDARD FIT"
 set_global_assignment -name VHDL_FILE sn74ls153.vhd
 set_global_assignment -name VHDL_FILE sn74ls139.vhd
 set_global_assignment -name VHDL_FILE msx_eng.vhd
 set_global_assignment -name VHDL_FILE exp_slot.vhd
+set_location_assignment PIN_87 -to clk_i
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to clk_i
+set_location_assignment PIN_6 -to rom_addr_o[16]
+set_instance_assignment -name RESERVE_PIN "AS OUTPUT DRIVING AN UNSPECIFIED SIGNAL" -to rom_addr_o[16]
+set_location_assignment PIN_8 -to rom_addr_o[14]
+set_instance_assignment -name RESERVE_PIN "AS OUTPUT DRIVING AN UNSPECIFIED SIGNAL" -to rom_addr_o[14]
+set_location_assignment PIN_35 -to ppi_cs_n_o
+set_location_assignment PIN_9 -to ppi_port_a_i[0]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to ppi_port_a_i[0]
+set_location_assignment PIN_10 -to ppi_port_a_i[1]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to ppi_port_a_i[1]
+set_location_assignment PIN_12 -to rom_cs_n_o
+set_instance_assignment -name RESERVE_PIN "AS OUTPUT DRIVING AN UNSPECIFIED SIGNAL" -to rom_cs_n_o
+set_location_assignment PIN_13 -to ram_cs_n_o
+set_instance_assignment -name RESERVE_PIN "AS OUTPUT DRIVING AN UNSPECIFIED SIGNAL" -to ram_cs_n_o
+set_location_assignment PIN_14 -to rom_addr_o[17]
+set_instance_assignment -name RESERVE_PIN "AS OUTPUT DRIVING AN UNSPECIFIED SIGNAL" -to rom_addr_o[17]
+set_location_assignment PIN_16 -to addr_i[11]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to addr_i[11]
+set_location_assignment PIN_17 -to ppi_port_a_i[3]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to ppi_port_a_i[3]
+set_location_assignment PIN_19 -to iorq_n_i
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to iorq_n_i
+set_location_assignment PIN_20 -to m1_n_i
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to m1_n_i
+set_location_assignment PIN_21 -to data_io[6]
+set_instance_assignment -name RESERVE_PIN "AS BIDIRECTIONAL" -to data_io[6]
+set_location_assignment PIN_23 -to rom_addr_o[15]
+set_instance_assignment -name RESERVE_PIN "AS OUTPUT DRIVING AN UNSPECIFIED SIGNAL" -to rom_addr_o[15]
+set_location_assignment PIN_29 -to mreq_n_i
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to mreq_n_i
+set_location_assignment PIN_30 -to rd_n_i
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to rd_n_i
+set_location_assignment PIN_31 -to psg_bdir_o
+set_instance_assignment -name RESERVE_PIN "AS OUTPUT DRIVING AN UNSPECIFIED SIGNAL" -to psg_bdir_o
+set_location_assignment PIN_32 -to psg_bc1_o
+set_instance_assignment -name RESERVE_PIN "AS OUTPUT DRIVING AN UNSPECIFIED SIGNAL" -to psg_bc1_o
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to ppi_cs_n_o
+set_location_assignment PIN_36 -to vdp_cswr_n_o
+set_instance_assignment -name RESERVE_PIN "AS OUTPUT DRIVING AN UNSPECIFIED SIGNAL" -to vdp_cswr_n_o
+set_location_assignment PIN_37 -to vdp_csrd_n_o
+set_instance_assignment -name RESERVE_PIN "AS OUTPUT DRIVING AN UNSPECIFIED SIGNAL" -to vdp_csrd_n_o
+set_location_assignment PIN_45 -to addr_i[14]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to addr_i[14]
+set_location_assignment PIN_46 -to addr_i[15]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to addr_i[15]
+set_location_assignment PIN_47 -to ppi_port_a_i[7]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to ppi_port_a_i[7]
+set_location_assignment PIN_48 -to ppi_port_a_i[6]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to ppi_port_a_i[6]
+set_location_assignment PIN_56 -to addr_i[0]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to addr_i[0]
+set_location_assignment PIN_57 -to data_io[7]
+set_instance_assignment -name RESERVE_PIN "AS BIDIRECTIONAL" -to data_io[7]
+set_location_assignment PIN_58 -to ppi_port_a_i[4]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to ppi_port_a_i[4]
+set_location_assignment PIN_60 -to addr_i[13]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to addr_i[13]
+set_location_assignment PIN_61 -to addr_i[7]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to addr_i[7]
+set_location_assignment PIN_68 -to data_io[0]
+set_instance_assignment -name RESERVE_PIN "AS BIDIRECTIONAL" -to data_io[0]
+set_instance_assignment -name RESERVE_PIN "AS BIDIRECTIONAL" -to data_io[1]
+set_instance_assignment -name RESERVE_PIN "AS BIDIRECTIONAL" -to data_io[5]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to reset_n_i
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to rfsh_n_i
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to wr_n_i
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to en_ascii16_n_i
+set_location_assignment PIN_69 -to addr_i[5]
+set_location_assignment PIN_71 -to rfsh_n_i
+set_location_assignment PIN_79 -to data_io[5]
+set_location_assignment PIN_80 -to data_io[3]
+set_location_assignment PIN_81 -to addr_i[2]
+set_location_assignment PIN_83 -to addr_i[3]
+set_location_assignment PIN_85 -to data_io[1]
+set_location_assignment PIN_90 -to reset_n_i
+set_location_assignment PIN_27 -to wr_n_i
+set_location_assignment PIN_93 -to addr_i[6]
+set_location_assignment PIN_94 -to data_io[2]
+set_location_assignment PIN_96 -to addr_i[12]
+set_location_assignment PIN_97 -to ppi_port_a_i[5]
+set_location_assignment PIN_98 -to data_io[4]
+set_location_assignment PIN_99 -to addr_i[4]
+set_location_assignment PIN_84 -to ppi_port_a_i[2]
+set_location_assignment PIN_92 -to en_ascii16_n_i
+set_location_assignment PIN_42 -to addr_i[1]
+set_location_assignment PIN_44 -to addr_i[8]
+set_location_assignment PIN_63 -to addr_i[9]
+set_location_assignment PIN_64 -to addr_i[10]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to addr_i[1]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to addr_i[2]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to addr_i[3]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to addr_i[4]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to addr_i[5]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to addr_i[6]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to addr_i[8]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to addr_i[9]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to addr_i[10]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to addr_i[12]
+set_instance_assignment -name RESERVE_PIN "AS BIDIRECTIONAL" -to data_io[2]
+set_instance_assignment -name RESERVE_PIN "AS BIDIRECTIONAL" -to data_io[3]
+set_instance_assignment -name RESERVE_PIN "AS BIDIRECTIONAL" -to data_io[4]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to ppi_port_a_i[2]
+set_instance_assignment -name RESERVE_PIN "AS INPUT TRI-STATED" -to ppi_port_a_i[5]

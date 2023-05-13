@@ -61,103 +61,103 @@ CHIP  "msx_eng"  ASSIGNED TO AN: EPM7128STC100-15
 
 Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
 -------------------------------------------------------------------------------------------------------------
-rom_addr_o[15]               : 1         : output : 3.3-V LVTTL       :         :           : N              
-rom_cs_n_o                   : 2         : output : 3.3-V LVTTL       :         :           : N              
-VCCIO                        : 3         : power  :                   : 3.3V    :           :                
-TDI                          : 4         : input  : 3.3-V LVTTL       :         :           : N              
-addr_i[5]                    : 5         : input  : 3.3-V LVTTL       :         :           : N              
-RESERVED                     : 6         :        :                   :         :           :                
-addr_i[1]                    : 7         : input  : 3.3-V LVTTL       :         :           : N              
-data_io[7]                   : 8         : bidir  : 3.3-V LVTTL       :         :           : N              
-data_io[6]                   : 9         : bidir  : 3.3-V LVTTL       :         :           : N              
-ppi_port_a_i[0]              : 10        : input  : 3.3-V LVTTL       :         :           : N              
+RESERVED                     : 1         :        :                   :         :           :                
+RESERVED                     : 2         :        :                   :         :           :                
+VCCIO                        : 3         : power  :                   : 5.0V    :           :                
+TDI                          : 4         : input  : TTL               :         :           : N              
+RESERVED                     : 5         :        :                   :         :           :                
+rom_addr_o[16]               : 6         : output : TTL               :         :           : Y              
+RESERVED                     : 7         :        :                   :         :           :                
+rom_addr_o[14]               : 8         : output : TTL               :         :           : Y              
+ppi_port_a_i[0]              : 9         : input  : TTL               :         :           : Y              
+ppi_port_a_i[1]              : 10        : input  : TTL               :         :           : Y              
 GND                          : 11        : gnd    :                   :         :           :                
-RESERVED                     : 12        :        :                   :         :           :                
-data_io[5]                   : 13        : bidir  : 3.3-V LVTTL       :         :           : N              
-data_io[1]                   : 14        : bidir  : 3.3-V LVTTL       :         :           : N              
-TMS                          : 15        : input  : 3.3-V LVTTL       :         :           : N              
-addr_i[6]                    : 16        : input  : 3.3-V LVTTL       :         :           : N              
-RESERVED                     : 17        :        :                   :         :           :                
-VCCIO                        : 18        : power  :                   : 3.3V    :           :                
-RESERVED                     : 19        :        :                   :         :           :                
-RESERVED                     : 20        :        :                   :         :           :                
-addr_i[0]                    : 21        : input  : 3.3-V LVTTL       :         :           : N              
+rom_cs_n_o                   : 12        : output : TTL               :         :           : Y              
+ram_cs_n_o                   : 13        : output : TTL               :         :           : Y              
+rom_addr_o[17]               : 14        : output : TTL               :         :           : Y              
+TMS                          : 15        : input  : TTL               :         :           : N              
+addr_i[11]                   : 16        : input  : TTL               :         :           : Y              
+ppi_port_a_i[3]              : 17        : input  : TTL               :         :           : Y              
+VCCIO                        : 18        : power  :                   : 5.0V    :           :                
+iorq_n_i                     : 19        : input  : TTL               :         :           : Y              
+m1_n_i                       : 20        : input  : TTL               :         :           : Y              
+data_io[6]                   : 21        : bidir  : TTL               :         :           : Y              
 RESERVED                     : 22        :        :                   :         :           :                
-m1_n_i                       : 23        : input  : 3.3-V LVTTL       :         :           : N              
-rom_addr_o[14]               : 24        : output : 3.3-V LVTTL       :         :           : N              
-rom_addr_o[16]               : 25        : output : 3.3-V LVTTL       :         :           : N              
+rom_addr_o[15]               : 23        : output : TTL               :         :           : Y              
+RESERVED                     : 24        :        :                   :         :           :                
+RESERVED                     : 25        :        :                   :         :           :                
 GND                          : 26        : gnd    :                   :         :           :                
-addr_i[15]                   : 27        : input  : 3.3-V LVTTL       :         :           : N              
-psg_bc1_o                    : 28        : output : 3.3-V LVTTL       :         :           : N              
-data_io[3]                   : 29        : bidir  : 3.3-V LVTTL       :         :           : N              
-ppi_cs_n_o                   : 30        : output : 3.3-V LVTTL       :         :           : N              
-data_io[4]                   : 31        : bidir  : 3.3-V LVTTL       :         :           : N              
-vdp_csrd_n_o                 : 32        : output : 3.3-V LVTTL       :         :           : N              
-vdp_cswr_n_o                 : 33        : output : 3.3-V LVTTL       :         :           : N              
-VCCIO                        : 34        : power  :                   : 3.3V    :           :                
-psg_bdir_o                   : 35        : output : 3.3-V LVTTL       :         :           : N              
-data_io[2]                   : 36        : bidir  : 3.3-V LVTTL       :         :           : N              
-data_io[0]                   : 37        : bidir  : 3.3-V LVTTL       :         :           : N              
+wr_n_i                       : 27        : input  : TTL               :         :           : Y              
+RESERVED                     : 28        :        :                   :         :           :                
+mreq_n_i                     : 29        : input  : TTL               :         :           : Y              
+rd_n_i                       : 30        : input  : TTL               :         :           : Y              
+psg_bdir_o                   : 31        : output : TTL               :         :           : Y              
+psg_bc1_o                    : 32        : output : TTL               :         :           : Y              
+RESERVED                     : 33        :        :                   :         :           :                
+VCCIO                        : 34        : power  :                   : 5.0V    :           :                
+ppi_cs_n_o                   : 35        : output : TTL               :         :           : Y              
+vdp_cswr_n_o                 : 36        : output : TTL               :         :           : Y              
+vdp_csrd_n_o                 : 37        : output : TTL               :         :           : Y              
 GND                          : 38        : gnd    :                   :         :           :                
 VCCINT                       : 39        : power  :                   : 5.0V    :           :                
 RESERVED                     : 40        :        :                   :         :           :                
 RESERVED                     : 41        :        :                   :         :           :                
-ppi_port_a_i[6]              : 42        : input  : 3.3-V LVTTL       :         :           : N              
+addr_i[1]                    : 42        : input  : TTL               :         :           : Y              
 GND                          : 43        : gnd    :                   :         :           :                
-ppi_port_a_i[2]              : 44        : input  : 3.3-V LVTTL       :         :           : N              
-addr_i[10]                   : 45        : input  : 3.3-V LVTTL       :         :           : N              
-RESERVED                     : 46        :        :                   :         :           :                
-RESERVED                     : 47        :        :                   :         :           :                
-wr_n_i                       : 48        : input  : 3.3-V LVTTL       :         :           : N              
-mreq_n_i                     : 49        : input  : 3.3-V LVTTL       :         :           : N              
+addr_i[8]                    : 44        : input  : TTL               :         :           : Y              
+addr_i[14]                   : 45        : input  : TTL               :         :           : Y              
+addr_i[15]                   : 46        : input  : TTL               :         :           : Y              
+ppi_port_a_i[7]              : 47        : input  : TTL               :         :           : Y              
+ppi_port_a_i[6]              : 48        : input  : TTL               :         :           : Y              
+RESERVED                     : 49        :        :                   :         :           :                
 RESERVED                     : 50        :        :                   :         :           :                
-VCCIO                        : 51        : power  :                   : 3.3V    :           :                
+VCCIO                        : 51        : power  :                   : 5.0V    :           :                
 RESERVED                     : 52        :        :                   :         :           :                
-addr_i[14]                   : 53        : input  : 3.3-V LVTTL       :         :           : N              
-ppi_port_a_i[5]              : 54        : input  : 3.3-V LVTTL       :         :           : N              
+RESERVED                     : 53        :        :                   :         :           :                
+RESERVED                     : 54        :        :                   :         :           :                
 RESERVED                     : 55        :        :                   :         :           :                
-rfsh_n_i                     : 56        : input  : 3.3-V LVTTL       :         :           : N              
-RESERVED                     : 57        :        :                   :         :           :                
-RESERVED                     : 58        :        :                   :         :           :                
+addr_i[0]                    : 56        : input  : TTL               :         :           : Y              
+data_io[7]                   : 57        : bidir  : TTL               :         :           : Y              
+ppi_port_a_i[4]              : 58        : input  : TTL               :         :           : Y              
 GND                          : 59        : gnd    :                   :         :           :                
-RESERVED                     : 60        :        :                   :         :           :                
-iorq_n_i                     : 61        : input  : 3.3-V LVTTL       :         :           : N              
-TCK                          : 62        : input  : 3.3-V LVTTL       :         :           : N              
-RESERVED                     : 63        :        :                   :         :           :                
-RESERVED                     : 64        :        :                   :         :           :                
+addr_i[13]                   : 60        : input  : TTL               :         :           : Y              
+addr_i[7]                    : 61        : input  : TTL               :         :           : Y              
+TCK                          : 62        : input  : TTL               :         :           : N              
+addr_i[9]                    : 63        : input  : TTL               :         :           : Y              
+addr_i[10]                   : 64        : input  : TTL               :         :           : Y              
 RESERVED                     : 65        :        :                   :         :           :                
-VCCIO                        : 66        : power  :                   : 3.3V    :           :                
-addr_i[9]                    : 67        : input  : 3.3-V LVTTL       :         :           : N              
-addr_i[2]                    : 68        : input  : 3.3-V LVTTL       :         :           : N              
-RESERVED                     : 69        :        :                   :         :           :                
+VCCIO                        : 66        : power  :                   : 5.0V    :           :                
+RESERVED                     : 67        :        :                   :         :           :                
+data_io[0]                   : 68        : bidir  : TTL               :         :           : Y              
+addr_i[5]                    : 69        : input  : TTL               :         :           : Y              
 RESERVED                     : 70        :        :                   :         :           :                
-ppi_port_a_i[4]              : 71        : input  : 3.3-V LVTTL       :         :           : N              
+rfsh_n_i                     : 71        : input  : TTL               :         :           : Y              
 RESERVED                     : 72        :        :                   :         :           :                
-TDO                          : 73        : output : 3.3-V LVTTL       :         :           : N              
+TDO                          : 73        : output : TTL               :         :           : N              
 GND                          : 74        : gnd    :                   :         :           :                
 RESERVED                     : 75        :        :                   :         :           :                
 RESERVED                     : 76        :        :                   :         :           :                
-ppi_port_a_i[3]              : 77        : input  : 3.3-V LVTTL       :         :           : N              
-ppi_port_a_i[1]              : 78        : input  : 3.3-V LVTTL       :         :           : N              
-addr_i[13]                   : 79        : input  : 3.3-V LVTTL       :         :           : N              
-RESERVED                     : 80        :        :                   :         :           :                
-RESERVED                     : 81        :        :                   :         :           :                
-VCCIO                        : 82        : power  :                   : 3.3V    :           :                
-RESERVED                     : 83        :        :                   :         :           :                
-addr_i[7]                    : 84        : input  : 3.3-V LVTTL       :         :           : N              
-addr_i[3]                    : 85        : input  : 3.3-V LVTTL       :         :           : N              
+RESERVED                     : 77        :        :                   :         :           :                
+RESERVED                     : 78        :        :                   :         :           :                
+data_io[5]                   : 79        : bidir  : TTL               :         :           : Y              
+data_io[3]                   : 80        : bidir  : TTL               :         :           : Y              
+addr_i[2]                    : 81        : input  : TTL               :         :           : Y              
+VCCIO                        : 82        : power  :                   : 5.0V    :           :                
+addr_i[3]                    : 83        : input  : TTL               :         :           : Y              
+ppi_port_a_i[2]              : 84        : input  : TTL               :         :           : Y              
+data_io[1]                   : 85        : bidir  : TTL               :         :           : Y              
 GND                          : 86        : gnd    :                   :         :           :                
-addr_i[8]                    : 87        : input  : 3.3-V LVTTL       :         :           : N              
-ppi_port_a_i[7]              : 88        : input  : 3.3-V LVTTL       :         :           : N              
-reset_n_i                    : 89        : input  : 3.3-V LVTTL       :         :           : N              
-en_ascii16_n_i               : 90        : input  : 3.3-V LVTTL       :         :           : N              
+clk_i                        : 87        : input  : TTL               :         :           : Y              
+GND+                         : 88        :        :                   :         :           :                
+GND+                         : 89        :        :                   :         :           :                
+reset_n_i                    : 90        : input  : TTL               :         :           : Y              
 VCCINT                       : 91        : power  :                   : 5.0V    :           :                
-rd_n_i                       : 92        : input  : 3.3-V LVTTL       :         :           : N              
-addr_i[11]                   : 93        : input  : 3.3-V LVTTL       :         :           : N              
-RESERVED                     : 94        :        :                   :         :           :                
+en_ascii16_n_i               : 92        : input  : TTL               :         :           : Y              
+addr_i[6]                    : 93        : input  : TTL               :         :           : Y              
+data_io[2]                   : 94        : bidir  : TTL               :         :           : Y              
 GND                          : 95        : gnd    :                   :         :           :                
-addr_i[4]                    : 96        : input  : 3.3-V LVTTL       :         :           : N              
-RESERVED                     : 97        :        :                   :         :           :                
-addr_i[12]                   : 98        : input  : 3.3-V LVTTL       :         :           : N              
-rom_addr_o[17]               : 99        : output : 3.3-V LVTTL       :         :           : N              
-ram_cs_n_o                   : 100       : output : 3.3-V LVTTL       :         :           : N              
+addr_i[12]                   : 96        : input  : TTL               :         :           : Y              
+ppi_port_a_i[5]              : 97        : input  : TTL               :         :           : Y              
+data_io[4]                   : 98        : bidir  : TTL               :         :           : Y              
+addr_i[4]                    : 99        : input  : TTL               :         :           : Y              
+RESERVED                     : 100       :        :                   :         :           :                

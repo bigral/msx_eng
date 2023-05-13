@@ -1,5 +1,5 @@
 Analysis & Synthesis report for msx_eng
-Mon May 08 04:19:48 2023
+Sun May 14 02:05:44 2023
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -42,13 +42,13 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +-----------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Mon May 08 04:19:48 2023           ;
+; Analysis & Synthesis Status ; Successful - Sun May 14 02:05:44 2023           ;
 ; Quartus II 64-Bit Version   ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name               ; msx_eng                                         ;
 ; Top-level Entity Name       ; msx_eng                                         ;
 ; Family                      ; MAX7000S                                        ;
-; Total macrocells            ; 59                                              ;
-; Total pins                  ; 51                                              ;
+; Total macrocells            ; 61                                              ;
+; Total pins                  ; 52                                              ;
 +-----------------------------+-------------------------------------------------+
 
 
@@ -144,14 +144,14 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------+----------------------+
 ; Resource             ; Usage                ;
 +----------------------+----------------------+
-; Logic cells          ; 59                   ;
+; Logic cells          ; 61                   ;
 ; Total registers      ; 8                    ;
-; I/O pins             ; 51                   ;
-; Shareable expanders  ; 28                   ;
+; I/O pins             ; 52                   ;
+; Shareable expanders  ; 25                   ;
 ; Parallel expanders   ; 2                    ;
 ; Maximum fan-out node ; addr_i[14]           ;
 ; Maximum fan-out      ; 45                   ;
-; Total fan-out        ; 925                  ;
+; Total fan-out        ; 924                  ;
 ; Average fan-out      ; 6.70                 ;
 +----------------------+----------------------+
 
@@ -161,7 +161,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +-----------------------------+------------+------+---------------------------------+--------------+
 ; Compilation Hierarchy Node  ; Macrocells ; Pins ; Full Hierarchy Name             ; Library Name ;
 +-----------------------------+------------+------+---------------------------------+--------------+
-; |msx_eng                    ; 59         ; 51   ; |msx_eng                        ; work         ;
+; |msx_eng                    ; 61         ; 52   ; |msx_eng                        ; work         ;
 ;    |exp_slot:slot3_exp|     ; 8          ; 0    ; |msx_eng|exp_slot:slot3_exp     ; work         ;
 ;    |sn74ls153:hibyte_ppi_a| ; 1          ; 0    ; |msx_eng|sn74ls153:hibyte_ppi_a ; work         ;
 ;    |sn74ls153:lobyte_ppi_a| ; 1          ; 0    ; |msx_eng|sn74ls153:lobyte_ppi_a ; work         ;
@@ -183,16 +183,16 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; imap_bank0_s[0]                                     ; imap_bank0_s[1]             ; yes                    ;
 ; imap_bank1_s[0]                                     ; imap_bank1_s[0]             ; yes                    ;
 ; imap_bank2_s[0]                                     ; imap_bank2_s[1]             ; yes                    ;
-; imap_bank3_s[0]                                     ; imap_bank3_s[0]             ; yes                    ;
+; imap_bank3_s[0]                                     ; imap_bank3_s[1]             ; yes                    ;
 ; iascii_mapper_reg1[0]                               ; iascii_mapper_reg1[2]       ; yes                    ;
-; iascii_mapper_reg0[0]                               ; iascii_mapper_reg0[1]       ; yes                    ;
+; iascii_mapper_reg0[0]                               ; iascii_mapper_reg0[2]       ; yes                    ;
 ; imap_bank0_s[1]                                     ; imap_bank0_s[1]             ; yes                    ;
 ; imap_bank1_s[1]                                     ; imap_bank1_s[0]             ; yes                    ;
 ; imap_bank2_s[1]                                     ; imap_bank2_s[1]             ; yes                    ;
-; imap_bank3_s[1]                                     ; imap_bank3_s[0]             ; yes                    ;
+; imap_bank3_s[1]                                     ; imap_bank3_s[1]             ; yes                    ;
 ; iascii_mapper_reg1[1]                               ; iascii_mapper_reg1[2]       ; yes                    ;
-; iascii_mapper_reg0[1]                               ; iascii_mapper_reg0[1]       ; yes                    ;
-; rom_addr_o[16]_632                                  ; rom_addr_o[17]              ; yes                    ;
+; iascii_mapper_reg0[1]                               ; iascii_mapper_reg0[2]       ; yes                    ;
+; rom_addr_o[16]_633                                  ; rom_addr_o[17]              ; yes                    ;
 ; idata_exp3_i[7]                                     ; idata_exp3_i[0]             ; yes                    ;
 ; idata_exp3_i[5]                                     ; idata_exp3_i[0]             ; yes                    ;
 ; idata_exp3_i[3]                                     ; idata_exp3_i[0]             ; yes                    ;
@@ -204,7 +204,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; sn74ls153:lobyte_ppi_a|y_o                          ; sn74ls153:lobyte_ppi_a|y_o  ; yes                    ;
 ; sn74ls153:hibyte_ppi_a|y_o                          ; sn74ls153:lobyte_ppi_a|y_o  ; yes                    ;
 ; iascii_mapper_reg1[2]                               ; iascii_mapper_reg1[2]       ; yes                    ;
-; iascii_mapper_reg0[2]                               ; iascii_mapper_reg0[1]       ; yes                    ;
+; iascii_mapper_reg0[2]                               ; iascii_mapper_reg0[2]       ; yes                    ;
 ; data_io[0]$latch                                    ; exp_slot:slot3_exp|exp_rd_s ; yes                    ;
 ; data_io[1]$latch                                    ; exp_slot:slot3_exp|exp_rd_s ; yes                    ;
 ; data_io[2]$latch                                    ; exp_slot:slot3_exp|exp_rd_s ; yes                    ;
@@ -245,7 +245,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Mon May 08 04:19:46 2023
+    Info: Processing started: Sun May 14 02:05:42 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off msx_eng -c msx_eng
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file sn74ls153.vhd
@@ -261,81 +261,81 @@ Info (12021): Found 2 design units, including 1 entities, in source file exp_slo
     Info (12022): Found design unit 1: exp_slot-rtl
     Info (12023): Found entity 1: exp_slot
 Info (12127): Elaborating entity "msx_eng" for the top level hierarchy
-Warning (10631): VHDL Process Statement warning at msx_eng.vhd(137): inferring latch(es) for signal or variable "islot_en", which holds its previous value in one or more paths through the process
-Warning (10812): VHDL warning at msx_eng.vhd(178): sensitivity list already contains addr_i
-Warning (10631): VHDL Process Statement warning at msx_eng.vhd(178): inferring latch(es) for signal or variable "imem_page_s", which holds its previous value in one or more paths through the process
-Warning (10492): VHDL Process Statement warning at msx_eng.vhd(220): signal "wr_n_i" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at msx_eng.vhd(221): signal "data_io" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at msx_eng.vhd(215): inferring latch(es) for signal or variable "data_io", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at msx_eng.vhd(215): inferring latch(es) for signal or variable "idata_exp3_i", which holds its previous value in one or more paths through the process
-Warning (10492): VHDL Process Statement warning at msx_eng.vhd(237): signal "addr_i" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at msx_eng.vhd(238): signal "data_io" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at msx_eng.vhd(138): inferring latch(es) for signal or variable "islot_en", which holds its previous value in one or more paths through the process
+Warning (10812): VHDL warning at msx_eng.vhd(179): sensitivity list already contains addr_i
+Warning (10631): VHDL Process Statement warning at msx_eng.vhd(179): inferring latch(es) for signal or variable "imem_page_s", which holds its previous value in one or more paths through the process
+Warning (10492): VHDL Process Statement warning at msx_eng.vhd(221): signal "wr_n_i" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at msx_eng.vhd(222): signal "data_io" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at msx_eng.vhd(216): inferring latch(es) for signal or variable "data_io", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at msx_eng.vhd(216): inferring latch(es) for signal or variable "idata_exp3_i", which holds its previous value in one or more paths through the process
+Warning (10492): VHDL Process Statement warning at msx_eng.vhd(238): signal "addr_i" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at msx_eng.vhd(239): signal "data_io" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at msx_eng.vhd(240): signal "data_io" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at msx_eng.vhd(241): signal "data_io" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at msx_eng.vhd(229): inferring latch(es) for signal or variable "imap_bank0_s", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at msx_eng.vhd(229): inferring latch(es) for signal or variable "imap_bank1_s", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at msx_eng.vhd(229): inferring latch(es) for signal or variable "imap_bank2_s", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at msx_eng.vhd(229): inferring latch(es) for signal or variable "imap_bank3_s", which holds its previous value in one or more paths through the process
-Warning (10492): VHDL Process Statement warning at msx_eng.vhd(252): signal "data_io" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at msx_eng.vhd(256): signal "data_io" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at msx_eng.vhd(247): inferring latch(es) for signal or variable "iascii_mapper_reg0", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at msx_eng.vhd(247): inferring latch(es) for signal or variable "iascii_mapper_reg1", which holds its previous value in one or more paths through the process
-Warning (10812): VHDL warning at msx_eng.vhd(280): sensitivity list already contains addr_i
-Warning (10492): VHDL Process Statement warning at msx_eng.vhd(297): signal "imap_bank0_s" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at msx_eng.vhd(242): signal "data_io" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at msx_eng.vhd(230): inferring latch(es) for signal or variable "imap_bank0_s", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at msx_eng.vhd(230): inferring latch(es) for signal or variable "imap_bank1_s", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at msx_eng.vhd(230): inferring latch(es) for signal or variable "imap_bank2_s", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at msx_eng.vhd(230): inferring latch(es) for signal or variable "imap_bank3_s", which holds its previous value in one or more paths through the process
+Warning (10492): VHDL Process Statement warning at msx_eng.vhd(253): signal "data_io" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at msx_eng.vhd(257): signal "data_io" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at msx_eng.vhd(248): inferring latch(es) for signal or variable "iascii_mapper_reg0", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at msx_eng.vhd(248): inferring latch(es) for signal or variable "iascii_mapper_reg1", which holds its previous value in one or more paths through the process
+Warning (10812): VHDL warning at msx_eng.vhd(281): sensitivity list already contains addr_i
 Warning (10492): VHDL Process Statement warning at msx_eng.vhd(298): signal "imap_bank0_s" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at msx_eng.vhd(302): signal "imap_bank1_s" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at msx_eng.vhd(299): signal "imap_bank0_s" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at msx_eng.vhd(303): signal "imap_bank1_s" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at msx_eng.vhd(307): signal "imap_bank2_s" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at msx_eng.vhd(304): signal "imap_bank1_s" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at msx_eng.vhd(308): signal "imap_bank2_s" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at msx_eng.vhd(312): signal "imap_bank3_s" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at msx_eng.vhd(309): signal "imap_bank2_s" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at msx_eng.vhd(313): signal "imap_bank3_s" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at msx_eng.vhd(318): signal "en_ascii16_n_i" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at msx_eng.vhd(322): signal "iascii_mapper_reg0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at msx_eng.vhd(314): signal "imap_bank3_s" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at msx_eng.vhd(319): signal "en_ascii16_n_i" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at msx_eng.vhd(323): signal "iascii_mapper_reg0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at msx_eng.vhd(324): signal "iascii_mapper_reg0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at msx_eng.vhd(328): signal "en_ascii16_n_i" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at msx_eng.vhd(332): signal "iascii_mapper_reg1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at msx_eng.vhd(325): signal "iascii_mapper_reg0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at msx_eng.vhd(329): signal "en_ascii16_n_i" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at msx_eng.vhd(333): signal "iascii_mapper_reg1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at msx_eng.vhd(334): signal "iascii_mapper_reg1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at msx_eng.vhd(280): inferring latch(es) for signal or variable "rom_addr_o", which holds its previous value in one or more paths through the process
-Info (10041): Inferred latch for "rom_addr_o[16]" at msx_eng.vhd(280)
-Info (10041): Inferred latch for "rom_addr_o[17]" at msx_eng.vhd(280)
-Info (10041): Inferred latch for "iascii_mapper_reg1[0]" at msx_eng.vhd(247)
-Info (10041): Inferred latch for "iascii_mapper_reg1[1]" at msx_eng.vhd(247)
-Info (10041): Inferred latch for "iascii_mapper_reg1[2]" at msx_eng.vhd(247)
-Info (10041): Inferred latch for "iascii_mapper_reg0[0]" at msx_eng.vhd(247)
-Info (10041): Inferred latch for "iascii_mapper_reg0[1]" at msx_eng.vhd(247)
-Info (10041): Inferred latch for "iascii_mapper_reg0[2]" at msx_eng.vhd(247)
-Info (10041): Inferred latch for "imap_bank3_s[0]" at msx_eng.vhd(229)
-Info (10041): Inferred latch for "imap_bank3_s[1]" at msx_eng.vhd(229)
-Info (10041): Inferred latch for "imap_bank2_s[0]" at msx_eng.vhd(229)
-Info (10041): Inferred latch for "imap_bank2_s[1]" at msx_eng.vhd(229)
-Info (10041): Inferred latch for "imap_bank1_s[0]" at msx_eng.vhd(229)
-Info (10041): Inferred latch for "imap_bank1_s[1]" at msx_eng.vhd(229)
-Info (10041): Inferred latch for "imap_bank0_s[0]" at msx_eng.vhd(229)
-Info (10041): Inferred latch for "imap_bank0_s[1]" at msx_eng.vhd(229)
-Info (10041): Inferred latch for "idata_exp3_i[0]" at msx_eng.vhd(215)
-Info (10041): Inferred latch for "idata_exp3_i[1]" at msx_eng.vhd(215)
-Info (10041): Inferred latch for "idata_exp3_i[2]" at msx_eng.vhd(215)
-Info (10041): Inferred latch for "idata_exp3_i[3]" at msx_eng.vhd(215)
-Info (10041): Inferred latch for "idata_exp3_i[4]" at msx_eng.vhd(215)
-Info (10041): Inferred latch for "idata_exp3_i[5]" at msx_eng.vhd(215)
-Info (10041): Inferred latch for "idata_exp3_i[6]" at msx_eng.vhd(215)
-Info (10041): Inferred latch for "idata_exp3_i[7]" at msx_eng.vhd(215)
-Info (10041): Inferred latch for "data_io[0]" at msx_eng.vhd(215)
-Info (10041): Inferred latch for "data_io[1]" at msx_eng.vhd(215)
-Info (10041): Inferred latch for "data_io[2]" at msx_eng.vhd(215)
-Info (10041): Inferred latch for "data_io[3]" at msx_eng.vhd(215)
-Info (10041): Inferred latch for "data_io[4]" at msx_eng.vhd(215)
-Info (10041): Inferred latch for "data_io[5]" at msx_eng.vhd(215)
-Info (10041): Inferred latch for "data_io[6]" at msx_eng.vhd(215)
-Info (10041): Inferred latch for "data_io[7]" at msx_eng.vhd(215)
-Info (10041): Inferred latch for "imem_page_s[0]" at msx_eng.vhd(178)
-Info (10041): Inferred latch for "imem_page_s[1]" at msx_eng.vhd(178)
-Info (10041): Inferred latch for "imem_page_s[2]" at msx_eng.vhd(178)
-Info (10041): Inferred latch for "imem_page_s[3]" at msx_eng.vhd(178)
-Info (10041): Inferred latch for "islot_en" at msx_eng.vhd(137)
+Warning (10492): VHDL Process Statement warning at msx_eng.vhd(335): signal "iascii_mapper_reg1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at msx_eng.vhd(281): inferring latch(es) for signal or variable "rom_addr_o", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "rom_addr_o[16]" at msx_eng.vhd(281)
+Info (10041): Inferred latch for "rom_addr_o[17]" at msx_eng.vhd(281)
+Info (10041): Inferred latch for "iascii_mapper_reg1[0]" at msx_eng.vhd(248)
+Info (10041): Inferred latch for "iascii_mapper_reg1[1]" at msx_eng.vhd(248)
+Info (10041): Inferred latch for "iascii_mapper_reg1[2]" at msx_eng.vhd(248)
+Info (10041): Inferred latch for "iascii_mapper_reg0[0]" at msx_eng.vhd(248)
+Info (10041): Inferred latch for "iascii_mapper_reg0[1]" at msx_eng.vhd(248)
+Info (10041): Inferred latch for "iascii_mapper_reg0[2]" at msx_eng.vhd(248)
+Info (10041): Inferred latch for "imap_bank3_s[0]" at msx_eng.vhd(230)
+Info (10041): Inferred latch for "imap_bank3_s[1]" at msx_eng.vhd(230)
+Info (10041): Inferred latch for "imap_bank2_s[0]" at msx_eng.vhd(230)
+Info (10041): Inferred latch for "imap_bank2_s[1]" at msx_eng.vhd(230)
+Info (10041): Inferred latch for "imap_bank1_s[0]" at msx_eng.vhd(230)
+Info (10041): Inferred latch for "imap_bank1_s[1]" at msx_eng.vhd(230)
+Info (10041): Inferred latch for "imap_bank0_s[0]" at msx_eng.vhd(230)
+Info (10041): Inferred latch for "imap_bank0_s[1]" at msx_eng.vhd(230)
+Info (10041): Inferred latch for "idata_exp3_i[0]" at msx_eng.vhd(216)
+Info (10041): Inferred latch for "idata_exp3_i[1]" at msx_eng.vhd(216)
+Info (10041): Inferred latch for "idata_exp3_i[2]" at msx_eng.vhd(216)
+Info (10041): Inferred latch for "idata_exp3_i[3]" at msx_eng.vhd(216)
+Info (10041): Inferred latch for "idata_exp3_i[4]" at msx_eng.vhd(216)
+Info (10041): Inferred latch for "idata_exp3_i[5]" at msx_eng.vhd(216)
+Info (10041): Inferred latch for "idata_exp3_i[6]" at msx_eng.vhd(216)
+Info (10041): Inferred latch for "idata_exp3_i[7]" at msx_eng.vhd(216)
+Info (10041): Inferred latch for "data_io[0]" at msx_eng.vhd(216)
+Info (10041): Inferred latch for "data_io[1]" at msx_eng.vhd(216)
+Info (10041): Inferred latch for "data_io[2]" at msx_eng.vhd(216)
+Info (10041): Inferred latch for "data_io[3]" at msx_eng.vhd(216)
+Info (10041): Inferred latch for "data_io[4]" at msx_eng.vhd(216)
+Info (10041): Inferred latch for "data_io[5]" at msx_eng.vhd(216)
+Info (10041): Inferred latch for "data_io[6]" at msx_eng.vhd(216)
+Info (10041): Inferred latch for "data_io[7]" at msx_eng.vhd(216)
+Info (10041): Inferred latch for "imem_page_s[0]" at msx_eng.vhd(179)
+Info (10041): Inferred latch for "imem_page_s[1]" at msx_eng.vhd(179)
+Info (10041): Inferred latch for "imem_page_s[2]" at msx_eng.vhd(179)
+Info (10041): Inferred latch for "imem_page_s[3]" at msx_eng.vhd(179)
+Info (10041): Inferred latch for "islot_en" at msx_eng.vhd(138)
 Info (12128): Elaborating entity "sn74ls153" for hierarchy "sn74ls153:lobyte_ppi_a"
 Warning (10631): VHDL Process Statement warning at sn74ls153.vhd(18): inferring latch(es) for signal or variable "y_o", which holds its previous value in one or more paths through the process
 Info (10041): Inferred latch for "y_o" at sn74ls153.vhd(18)
@@ -373,17 +373,17 @@ Warning (13009): TRI or OPNDRN buffers permanently enabled
     Warning (13010): Node "data_io[5]~synth"
     Warning (13010): Node "data_io[6]~synth"
     Warning (13010): Node "data_io[7]~synth"
-Info (280013): Promoted pin-driven signal(s) to global signal
-    Info (280015): Promoted clear signal driven by pin "reset_n_i" to global clear signal
+Warning (21074): Design contains 1 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "clk_i"
 Info (21057): Implemented 138 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 32 input pins
+    Info (21058): Implemented 33 input pins
     Info (21059): Implemented 11 output pins
     Info (21060): Implemented 8 bidirectional pins
-    Info (21063): Implemented 59 macrocells
-    Info (21073): Implemented 28 shareable expanders
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 59 warnings
-    Info: Peak virtual memory: 451 megabytes
-    Info: Processing ended: Mon May 08 04:19:48 2023
+    Info (21063): Implemented 61 macrocells
+    Info (21073): Implemented 25 shareable expanders
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 61 warnings
+    Info: Peak virtual memory: 450 megabytes
+    Info: Processing ended: Sun May 14 02:05:44 2023
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 

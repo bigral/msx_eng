@@ -8,6 +8,7 @@ use work.sn74ls153;
 
 entity msx_eng is
 	port(
+		clk_i:			in std_logic;
 		reset_n_i:		in std_logic;
 		addr_i:			in std_logic_vector(15 downto 0);
 		ppi_port_a_i:	in std_logic_vector(7 downto 0);

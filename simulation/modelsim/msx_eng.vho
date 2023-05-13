@@ -16,7 +16,7 @@
 -- PROGRAM "Quartus II 64-Bit"
 -- VERSION "Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition"
 
--- DATE "05/08/2023 04:19:54"
+-- DATE "05/14/2023 00:24:24"
 
 -- 
 -- Device: Altera EPM7128STC100-15 Package TQFP100
@@ -33,6 +33,7 @@ USE MAX.MAX_COMPONENTS.ALL;
 
 ENTITY 	msx_eng IS
     PORT (
+	clk_i : IN std_logic;
 	reset_n_i : IN std_logic;
 	addr_i : IN std_logic_vector(15 DOWNTO 0);
 	ppi_port_a_i : IN std_logic_vector(7 DOWNTO 0);
@@ -56,52 +57,53 @@ ENTITY 	msx_eng IS
 END msx_eng;
 
 -- Design Ports Information
+-- clk_i	=>  Location: PIN_85
 -- reset_n_i	=>  Location: PIN_89
--- addr_i[0]	=>  Location: PIN_21
--- addr_i[1]	=>  Location: PIN_7
--- addr_i[2]	=>  Location: PIN_68
--- addr_i[3]	=>  Location: PIN_85
--- addr_i[4]	=>  Location: PIN_96
--- addr_i[5]	=>  Location: PIN_5
--- addr_i[6]	=>  Location: PIN_16
--- addr_i[7]	=>  Location: PIN_84
--- addr_i[8]	=>  Location: PIN_87
--- addr_i[9]	=>  Location: PIN_67
--- addr_i[10]	=>  Location: PIN_45
--- addr_i[11]	=>  Location: PIN_93
--- addr_i[12]	=>  Location: PIN_98
--- addr_i[13]	=>  Location: PIN_79
--- addr_i[14]	=>  Location: PIN_53
--- addr_i[15]	=>  Location: PIN_27
--- ppi_port_a_i[0]	=>  Location: PIN_10
--- ppi_port_a_i[1]	=>  Location: PIN_78
--- ppi_port_a_i[2]	=>  Location: PIN_44
--- ppi_port_a_i[3]	=>  Location: PIN_77
--- ppi_port_a_i[4]	=>  Location: PIN_71
--- ppi_port_a_i[5]	=>  Location: PIN_54
--- ppi_port_a_i[6]	=>  Location: PIN_42
--- ppi_port_a_i[7]	=>  Location: PIN_88
--- iorq_n_i	=>  Location: PIN_61
--- m1_n_i	=>  Location: PIN_23
--- mreq_n_i	=>  Location: PIN_49
--- rfsh_n_i	=>  Location: PIN_56
--- rd_n_i	=>  Location: PIN_92
--- wr_n_i	=>  Location: PIN_48
--- en_ascii16_n_i	=>  Location: PIN_90
+-- addr_i[0]	=>  Location: PIN_84
+-- addr_i[1]	=>  Location: PIN_42
+-- addr_i[2]	=>  Location: PIN_55
+-- addr_i[3]	=>  Location: PIN_94
+-- addr_i[4]	=>  Location: PIN_21
+-- addr_i[5]	=>  Location: PIN_96
+-- addr_i[6]	=>  Location: PIN_50
+-- addr_i[7]	=>  Location: PIN_92
+-- addr_i[8]	=>  Location: PIN_44
+-- addr_i[9]	=>  Location: PIN_45
+-- addr_i[10]	=>  Location: PIN_67
+-- addr_i[11]	=>  Location: PIN_81
+-- addr_i[12]	=>  Location: PIN_5
+-- addr_i[13]	=>  Location: PIN_68
+-- addr_i[14]	=>  Location: PIN_70
+-- addr_i[15]	=>  Location: PIN_88
+-- ppi_port_a_i[0]	=>  Location: PIN_83
+-- ppi_port_a_i[1]	=>  Location: PIN_71
+-- ppi_port_a_i[2]	=>  Location: PIN_56
+-- ppi_port_a_i[3]	=>  Location: PIN_98
+-- ppi_port_a_i[4]	=>  Location: PIN_48
+-- ppi_port_a_i[5]	=>  Location: PIN_78
+-- ppi_port_a_i[6]	=>  Location: PIN_77
+-- ppi_port_a_i[7]	=>  Location: PIN_41
+-- iorq_n_i	=>  Location: PIN_23
+-- m1_n_i	=>  Location: PIN_54
+-- mreq_n_i	=>  Location: PIN_93
+-- rfsh_n_i	=>  Location: PIN_79
+-- rd_n_i	=>  Location: PIN_17
+-- wr_n_i	=>  Location: PIN_27
+-- en_ascii16_n_i	=>  Location: PIN_72
 -- rom_addr_o[17]	=>  Location: PIN_99
 -- psg_bdir_o	=>  Location: PIN_35
 -- vdp_cswr_n_o	=>  Location: PIN_33
 -- vdp_csrd_n_o	=>  Location: PIN_32
--- psg_bc1_o	=>  Location: PIN_28
+-- psg_bc1_o	=>  Location: PIN_31
 -- ppi_cs_n_o	=>  Location: PIN_30
 -- data_io[0]	=>  Location: PIN_37
--- data_io[1]	=>  Location: PIN_14
+-- data_io[1]	=>  Location: PIN_9
 -- data_io[2]	=>  Location: PIN_36
 -- data_io[3]	=>  Location: PIN_29
--- data_io[4]	=>  Location: PIN_31
+-- data_io[4]	=>  Location: PIN_28
 -- data_io[5]	=>  Location: PIN_13
--- data_io[6]	=>  Location: PIN_9
--- data_io[7]	=>  Location: PIN_8
+-- data_io[6]	=>  Location: PIN_12
+-- data_io[7]	=>  Location: PIN_10
 -- ram_cs_n_o	=>  Location: PIN_100
 -- rom_cs_n_o	=>  Location: PIN_2
 -- rom_addr_o[16]	=>  Location: PIN_25
@@ -113,6 +115,7 @@ ARCHITECTURE structure OF msx_eng IS
 SIGNAL gnd : std_logic := '0';
 SIGNAL vcc : std_logic := '1';
 SIGNAL unknown : std_logic := 'X';
+SIGNAL ww_clk_i : std_logic;
 SIGNAL ww_reset_n_i : std_logic;
 SIGNAL ww_addr_i : std_logic_vector(15 DOWNTO 0);
 SIGNAL ww_ppi_port_a_i : std_logic_vector(7 DOWNTO 0);
@@ -659,17 +662,17 @@ SIGNAL \rom_cs_n_o~7_pclk_bus\ : std_logic_vector(51 DOWNTO 0);
 SIGNAL \rom_cs_n_o~7_pena_bus\ : std_logic_vector(51 DOWNTO 0);
 SIGNAL \rom_cs_n_o~7_paclr_bus\ : std_logic_vector(51 DOWNTO 0);
 SIGNAL \rom_cs_n_o~7_papre_bus\ : std_logic_vector(51 DOWNTO 0);
-SIGNAL \rom_addr_o[16]_632~6_pterm0_bus\ : std_logic_vector(51 DOWNTO 0);
-SIGNAL \rom_addr_o[16]_632~6_pterm1_bus\ : std_logic_vector(51 DOWNTO 0);
-SIGNAL \rom_addr_o[16]_632~6_pterm2_bus\ : std_logic_vector(51 DOWNTO 0);
-SIGNAL \rom_addr_o[16]_632~6_pterm3_bus\ : std_logic_vector(51 DOWNTO 0);
-SIGNAL \rom_addr_o[16]_632~6_pterm4_bus\ : std_logic_vector(51 DOWNTO 0);
-SIGNAL \rom_addr_o[16]_632~6_pterm5_bus\ : std_logic_vector(51 DOWNTO 0);
-SIGNAL \rom_addr_o[16]_632~6_pxor_bus\ : std_logic_vector(51 DOWNTO 0);
-SIGNAL \rom_addr_o[16]_632~6_pclk_bus\ : std_logic_vector(51 DOWNTO 0);
-SIGNAL \rom_addr_o[16]_632~6_pena_bus\ : std_logic_vector(51 DOWNTO 0);
-SIGNAL \rom_addr_o[16]_632~6_paclr_bus\ : std_logic_vector(51 DOWNTO 0);
-SIGNAL \rom_addr_o[16]_632~6_papre_bus\ : std_logic_vector(51 DOWNTO 0);
+SIGNAL \rom_addr_o[16]_633~6_pterm0_bus\ : std_logic_vector(51 DOWNTO 0);
+SIGNAL \rom_addr_o[16]_633~6_pterm1_bus\ : std_logic_vector(51 DOWNTO 0);
+SIGNAL \rom_addr_o[16]_633~6_pterm2_bus\ : std_logic_vector(51 DOWNTO 0);
+SIGNAL \rom_addr_o[16]_633~6_pterm3_bus\ : std_logic_vector(51 DOWNTO 0);
+SIGNAL \rom_addr_o[16]_633~6_pterm4_bus\ : std_logic_vector(51 DOWNTO 0);
+SIGNAL \rom_addr_o[16]_633~6_pterm5_bus\ : std_logic_vector(51 DOWNTO 0);
+SIGNAL \rom_addr_o[16]_633~6_pxor_bus\ : std_logic_vector(51 DOWNTO 0);
+SIGNAL \rom_addr_o[16]_633~6_pclk_bus\ : std_logic_vector(51 DOWNTO 0);
+SIGNAL \rom_addr_o[16]_633~6_pena_bus\ : std_logic_vector(51 DOWNTO 0);
+SIGNAL \rom_addr_o[16]_633~6_paclr_bus\ : std_logic_vector(51 DOWNTO 0);
+SIGNAL \rom_addr_o[16]_633~6_papre_bus\ : std_logic_vector(51 DOWNTO 0);
 SIGNAL \process_5~16_pterm0_bus\ : std_logic_vector(51 DOWNTO 0);
 SIGNAL \process_5~16_pterm1_bus\ : std_logic_vector(51 DOWNTO 0);
 SIGNAL \process_5~16_pterm2_bus\ : std_logic_vector(51 DOWNTO 0);
@@ -783,7 +786,7 @@ SIGNAL \~VCC~0_papre_bus\ : std_logic_vector(51 DOWNTO 0);
 SIGNAL \slot3_exp|exp_wr_s~8_datain_bus\ : std_logic_vector(51 DOWNTO 0);
 SIGNAL \ram_cs_n_o~2_datain_bus\ : std_logic_vector(51 DOWNTO 0);
 SIGNAL \imap_bank1_s[0]~6sexpand0_datain_bus\ : std_logic_vector(51 DOWNTO 0);
-SIGNAL \imap_bank3_s[0]~6sexpand0_datain_bus\ : std_logic_vector(51 DOWNTO 0);
+SIGNAL \imap_bank3_s[1]~6sexpand0_datain_bus\ : std_logic_vector(51 DOWNTO 0);
 SIGNAL \imap_bank0_s[1]~6sexpand0_datain_bus\ : std_logic_vector(51 DOWNTO 0);
 SIGNAL \imap_bank2_s[1]~7sexpand0_datain_bus\ : std_logic_vector(51 DOWNTO 0);
 SIGNAL \process_1~6sexpand0_datain_bus\ : std_logic_vector(51 DOWNTO 0);
@@ -791,7 +794,7 @@ SIGNAL \lobyte_ppi_a|process_0~5sexpand0_datain_bus\ : std_logic_vector(51 DOWNT
 SIGNAL \process_1~8sexpand0_datain_bus\ : std_logic_vector(51 DOWNTO 0);
 SIGNAL \slot3_exp|exp_rd_s~1sexpand1_datain_bus\ : std_logic_vector(51 DOWNTO 0);
 SIGNAL \Equal4~3sexpand0_datain_bus\ : std_logic_vector(51 DOWNTO 0);
-SIGNAL \iascii_mapper_reg0[1]~4sexpand1_datain_bus\ : std_logic_vector(51 DOWNTO 0);
+SIGNAL \iascii_mapper_reg0[2]~4sexpand1_datain_bus\ : std_logic_vector(51 DOWNTO 0);
 SIGNAL \iascii_mapper_reg1[2]~5sexpand1_datain_bus\ : std_logic_vector(51 DOWNTO 0);
 SIGNAL \idata_exp3_i[0]~10sexpand1_datain_bus\ : std_logic_vector(51 DOWNTO 0);
 SIGNAL \process_5~12sexpand0_datain_bus\ : std_logic_vector(51 DOWNTO 0);
@@ -824,15 +827,15 @@ SIGNAL \vdp_csrd_n_o~4_dataout\ : std_logic;
 SIGNAL \psg_bc1_o~3_dataout\ : std_logic;
 SIGNAL \ippi_s~4_dataout\ : std_logic;
 SIGNAL \reset_n_i~dataout\ : std_logic;
+SIGNAL \mreq_n_i~dataout\ : std_logic;
 SIGNAL \islot_en~9_dataout\ : std_logic;
-SIGNAL \process_1~6sexpand0_dataout\ : std_logic;
 SIGNAL \process_1~8sexpand0_dataout\ : std_logic;
 SIGNAL \lobyte_ppi_a|process_0~5sexpand0_dataout\ : std_logic;
-SIGNAL \lobyte_ppi_a|y_o~24_dataout\ : std_logic;
+SIGNAL \process_1~6sexpand0_dataout\ : std_logic;
 SIGNAL \hibyte_ppi_a|y_o~24_dataout\ : std_logic;
-SIGNAL \mreq_n_i~dataout\ : std_logic;
-SIGNAL \slot3_exp|exp_rd_s~4_dataout\ : std_logic;
 SIGNAL \rfsh_n_i~dataout\ : std_logic;
+SIGNAL \lobyte_ppi_a|y_o~24_dataout\ : std_logic;
+SIGNAL \slot3_exp|exp_rd_s~4_dataout\ : std_logic;
 SIGNAL \idata_exp3_i[0]~10sexpand1_dataout\ : std_logic;
 SIGNAL \idata_exp3_i[0]~57_dataout\ : std_logic;
 SIGNAL \slot3_exp|exp_wr_s~8_dataout\ : std_logic;
@@ -862,7 +865,7 @@ SIGNAL \rom_addr_o[16]~47sexpand0_dataout\ : std_logic;
 SIGNAL \process_5~14sexp_dataout\ : std_logic;
 SIGNAL \rom_addr_o[16]~47sexpand1_dataout\ : std_logic;
 SIGNAL \rom_addr_o[17]~48sexpand1_dataout\ : std_logic;
-SIGNAL \rom_addr_o[16]_632~6_dataout\ : std_logic;
+SIGNAL \rom_addr_o[16]_633~6_dataout\ : std_logic;
 SIGNAL \imap_bank0_s[1]~6sexpand0_dataout\ : std_logic;
 SIGNAL \imap_bank0_s[0]~20_dataout\ : std_logic;
 SIGNAL \slot3_exp|WideAnd0~5sexp_dataout\ : std_logic;
@@ -883,10 +886,10 @@ SIGNAL \rom_addr_o[14]~74_pexpout\ : std_logic;
 SIGNAL \imap_bank2_s[1]~7sexpand0_dataout\ : std_logic;
 SIGNAL \imap_bank2_s[0]~21_dataout\ : std_logic;
 SIGNAL \process_5~20_dataout\ : std_logic;
-SIGNAL \imap_bank3_s[0]~6sexpand0_dataout\ : std_logic;
+SIGNAL \imap_bank3_s[1]~6sexpand0_dataout\ : std_logic;
 SIGNAL \imap_bank3_s[0]~20_dataout\ : std_logic;
 SIGNAL \process_5~22_dataout\ : std_logic;
-SIGNAL \iascii_mapper_reg0[1]~4sexpand1_dataout\ : std_logic;
+SIGNAL \iascii_mapper_reg0[2]~4sexpand1_dataout\ : std_logic;
 SIGNAL \iascii_mapper_reg0[0]~18_dataout\ : std_logic;
 SIGNAL \Equal4~3sexpand0_dataout\ : std_logic;
 SIGNAL \iascii_mapper_reg1[2]~5sexpand1_dataout\ : std_logic;
@@ -916,7 +919,7 @@ SIGNAL \ALT_INV_process_5~20_dataout\ : std_logic;
 SIGNAL \ALT_INV_process_5~18_dataout\ : std_logic;
 SIGNAL \ALT_INV_rom_addr_o[14]~56_dataout\ : std_logic;
 SIGNAL \ALT_INV_process_5~16_dataout\ : std_logic;
-SIGNAL \ALT_INV_rom_addr_o[16]_632~6_dataout\ : std_logic;
+SIGNAL \ALT_INV_rom_addr_o[16]_633~6_dataout\ : std_logic;
 SIGNAL \ALT_INV_imap_bank3_s[1]~24_dataout\ : std_logic;
 SIGNAL \ALT_INV_imap_bank2_s[1]~26_dataout\ : std_logic;
 SIGNAL \ALT_INV_imap_bank1_s[1]~24_dataout\ : std_logic;
@@ -935,6 +938,7 @@ SIGNAL \hibyte_ppi_a|ALT_INV_y_o~24_dataout\ : std_logic;
 
 BEGIN
 
+ww_clk_i <= clk_i;
 ww_reset_n_i <= reset_n_i;
 ww_addr_i <= addr_i;
 ww_ppi_port_a_i <= ppi_port_a_i;
@@ -1159,16 +1163,16 @@ gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gn
 gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
 
 \hibyte_ppi_a|y_o~24_pterm1_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
-vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \lobyte_ppi_a|process_0~5sexpand0_dataout\ & \process_1~8sexpand0_dataout\ & \ppi_port_a_i~dataout\(7) & \process_1~6sexpand0_dataout\ & \islot_en~9_dataout\);
+vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \ppi_port_a_i~dataout\(7) & \process_1~6sexpand0_dataout\ & \lobyte_ppi_a|process_0~5sexpand0_dataout\ & \process_1~8sexpand0_dataout\ & \islot_en~9_dataout\);
 
 \hibyte_ppi_a|y_o~24_pterm2_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
-vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \ppi_port_a_i~dataout\(1) & NOT \addr_i~dataout\(15) & NOT \addr_i~dataout\(14) & \islot_en~9_dataout\);
+vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \ppi_port_a_i~dataout\(1) & NOT \addr_i~dataout\(14) & NOT \addr_i~dataout\(15) & \islot_en~9_dataout\);
 
 \hibyte_ppi_a|y_o~24_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
-vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \ppi_port_a_i~dataout\(3) & NOT \addr_i~dataout\(15) & \addr_i~dataout\(14) & \process_1~6sexpand0_dataout\ & \islot_en~9_dataout\);
+vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \ppi_port_a_i~dataout\(3) & \addr_i~dataout\(14) & NOT \addr_i~dataout\(15) & \process_1~6sexpand0_dataout\ & \islot_en~9_dataout\);
 
 \hibyte_ppi_a|y_o~24_pterm4_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
-vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \ppi_port_a_i~dataout\(5) & \addr_i~dataout\(15) & NOT \addr_i~dataout\(14) & \lobyte_ppi_a|process_0~5sexpand0_dataout\ & \process_1~6sexpand0_dataout\ & \islot_en~9_dataout\);
+vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \ppi_port_a_i~dataout\(5) & NOT \addr_i~dataout\(14) & \addr_i~dataout\(15) & \process_1~6sexpand0_dataout\ & \lobyte_ppi_a|process_0~5sexpand0_dataout\ & \islot_en~9_dataout\);
 
 \hibyte_ppi_a|y_o~24_pterm5_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & 
 gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -1192,16 +1196,16 @@ gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gn
 gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
 
 \lobyte_ppi_a|y_o~24_pterm1_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
-vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \ppi_port_a_i~dataout\(6) & \lobyte_ppi_a|process_0~5sexpand0_dataout\ & \process_1~8sexpand0_dataout\ & \process_1~6sexpand0_dataout\ & \islot_en~9_dataout\);
+vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \process_1~6sexpand0_dataout\ & \lobyte_ppi_a|process_0~5sexpand0_dataout\ & \ppi_port_a_i~dataout\(6) & \process_1~8sexpand0_dataout\ & \islot_en~9_dataout\);
 
 \lobyte_ppi_a|y_o~24_pterm2_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
-vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & NOT \addr_i~dataout\(15) & \ppi_port_a_i~dataout\(0) & NOT \addr_i~dataout\(14) & \islot_en~9_dataout\);
+vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \ppi_port_a_i~dataout\(0) & NOT \addr_i~dataout\(14) & NOT \addr_i~dataout\(15) & \islot_en~9_dataout\);
 
 \lobyte_ppi_a|y_o~24_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
-vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \ppi_port_a_i~dataout\(2) & NOT \addr_i~dataout\(15) & \addr_i~dataout\(14) & \process_1~6sexpand0_dataout\ & \islot_en~9_dataout\);
+vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \ppi_port_a_i~dataout\(2) & \addr_i~dataout\(14) & NOT \addr_i~dataout\(15) & \process_1~6sexpand0_dataout\ & \islot_en~9_dataout\);
 
 \lobyte_ppi_a|y_o~24_pterm4_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
-vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \ppi_port_a_i~dataout\(4) & \addr_i~dataout\(15) & NOT \addr_i~dataout\(14) & \lobyte_ppi_a|process_0~5sexpand0_dataout\ & \process_1~6sexpand0_dataout\ & \islot_en~9_dataout\);
+vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \ppi_port_a_i~dataout\(4) & NOT \addr_i~dataout\(14) & \addr_i~dataout\(15) & \process_1~6sexpand0_dataout\ & \lobyte_ppi_a|process_0~5sexpand0_dataout\ & \islot_en~9_dataout\);
 
 \lobyte_ppi_a|y_o~24_pterm5_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & 
 gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -1232,7 +1236,7 @@ gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gn
 
 \data_io[0]$latch~6_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \addr_i~dataout\(15) & 
 \addr_i~dataout\(14) & \addr_i~dataout\(1) & \addr_i~dataout\(0) & \addr_i~dataout\(4) & \addr_i~dataout\(3) & \addr_i~dataout\(7) & \addr_i~dataout\(6) & \addr_i~dataout\(5) & \addr_i~dataout\(2) & \addr_i~dataout\(13) & 
-\addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8) & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & 
+\addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8) & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & 
 NOT \slot3_exp|exp_reg_s\(0));
 
 \data_io[0]$latch~6_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
@@ -1267,7 +1271,7 @@ NOT \slot3_exp|exp_reg_s\(0));
 
 \data_io[1]$latch~6_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \addr_i~dataout\(15) & 
 \addr_i~dataout\(14) & \addr_i~dataout\(1) & \addr_i~dataout\(0) & \addr_i~dataout\(4) & \addr_i~dataout\(3) & \addr_i~dataout\(7) & \addr_i~dataout\(6) & \addr_i~dataout\(5) & \addr_i~dataout\(2) & \addr_i~dataout\(13) & 
-\addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8) & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & 
+\addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8) & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & 
 NOT \slot3_exp|exp_reg_s\(1));
 
 \data_io[1]$latch~6_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
@@ -1302,7 +1306,7 @@ NOT \slot3_exp|exp_reg_s\(1));
 
 \data_io[2]$latch~6_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \addr_i~dataout\(15) & 
 \addr_i~dataout\(14) & \addr_i~dataout\(1) & \addr_i~dataout\(0) & \addr_i~dataout\(4) & \addr_i~dataout\(3) & \addr_i~dataout\(7) & \addr_i~dataout\(6) & \addr_i~dataout\(5) & \addr_i~dataout\(2) & \addr_i~dataout\(13) & 
-\addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8) & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & 
+\addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8) & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & 
 NOT \slot3_exp|exp_reg_s\(2));
 
 \data_io[2]$latch~6_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
@@ -1337,7 +1341,7 @@ NOT \slot3_exp|exp_reg_s\(2));
 
 \data_io[3]$latch~6_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \addr_i~dataout\(15) & 
 \addr_i~dataout\(14) & \addr_i~dataout\(1) & \addr_i~dataout\(0) & \addr_i~dataout\(4) & \addr_i~dataout\(3) & \addr_i~dataout\(7) & \addr_i~dataout\(6) & \addr_i~dataout\(5) & \addr_i~dataout\(2) & \addr_i~dataout\(13) & 
-\addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8) & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & 
+\addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8) & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & 
 NOT \slot3_exp|exp_reg_s\(3));
 
 \data_io[3]$latch~6_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
@@ -1372,7 +1376,7 @@ NOT \slot3_exp|exp_reg_s\(3));
 
 \data_io[4]$latch~6_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \addr_i~dataout\(15) & 
 \addr_i~dataout\(14) & \addr_i~dataout\(1) & \addr_i~dataout\(0) & \addr_i~dataout\(4) & \addr_i~dataout\(3) & \addr_i~dataout\(7) & \addr_i~dataout\(6) & \addr_i~dataout\(5) & \addr_i~dataout\(2) & \addr_i~dataout\(13) & 
-\addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8) & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & 
+\addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8) & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & 
 NOT \slot3_exp|exp_reg_s\(4));
 
 \data_io[4]$latch~6_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
@@ -1407,7 +1411,7 @@ NOT \slot3_exp|exp_reg_s\(4));
 
 \data_io[5]$latch~6_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \addr_i~dataout\(15) & 
 \addr_i~dataout\(14) & \addr_i~dataout\(1) & \addr_i~dataout\(0) & \addr_i~dataout\(4) & \addr_i~dataout\(3) & \addr_i~dataout\(7) & \addr_i~dataout\(6) & \addr_i~dataout\(5) & \addr_i~dataout\(2) & \addr_i~dataout\(13) & 
-\addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8) & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & 
+\addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8) & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & 
 NOT \slot3_exp|exp_reg_s\(5));
 
 \data_io[5]$latch~6_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
@@ -1442,7 +1446,7 @@ NOT \slot3_exp|exp_reg_s\(5));
 
 \data_io[6]$latch~6_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \addr_i~dataout\(15) & 
 \addr_i~dataout\(14) & \addr_i~dataout\(1) & \addr_i~dataout\(0) & \addr_i~dataout\(4) & \addr_i~dataout\(3) & \addr_i~dataout\(7) & \addr_i~dataout\(6) & \addr_i~dataout\(5) & \addr_i~dataout\(2) & \addr_i~dataout\(13) & 
-\addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8) & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & 
+\addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8) & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & 
 NOT \slot3_exp|exp_reg_s\(6));
 
 \data_io[6]$latch~6_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
@@ -1477,7 +1481,7 @@ NOT \slot3_exp|exp_reg_s\(6));
 
 \data_io[7]$latch~6_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \addr_i~dataout\(15) & 
 \addr_i~dataout\(14) & \addr_i~dataout\(1) & \addr_i~dataout\(0) & \addr_i~dataout\(4) & \addr_i~dataout\(3) & \addr_i~dataout\(7) & \addr_i~dataout\(6) & \addr_i~dataout\(5) & \addr_i~dataout\(2) & \addr_i~dataout\(13) & 
-\addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8) & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & 
+\addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8) & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & 
 NOT \slot3_exp|exp_reg_s\(7));
 
 \data_io[7]$latch~6_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
@@ -1505,14 +1509,14 @@ NOT \slot3_exp|exp_reg_s\(7));
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
 
 \iascii_mapper_reg0[0]~18_pterm1_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \iascii_mapper_reg0[1]~4sexpand1_dataout\ & \iascii_mapper_reg0[0]~18_dataout\);
+& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \iascii_mapper_reg0[2]~4sexpand1_dataout\ & \iascii_mapper_reg0[0]~18_dataout\);
 
 \iascii_mapper_reg0[0]~18_pterm2_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \iascii_mapper_reg0[0]~18_dataout\ & \data_io[0]$latch~6_dataout\);
 
 \iascii_mapper_reg0[0]~18_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & NOT \wr_n_i~dataout\ & NOT \addr_i~dataout\(15) & \addr_i~dataout\(13) & NOT \mreq_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \addr_i~dataout\(14) & NOT \addr_i~dataout\(12) & 
-\rfsh_n_i~dataout\ & NOT \addr_i~dataout\(11) & \data_io[0]$latch~6_dataout\);
+& vcc & vcc & vcc & vcc & vcc & \lobyte_ppi_a|y_o~24_dataout\ & \addr_i~dataout\(14) & NOT \wr_n_i~dataout\ & \rfsh_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & NOT \addr_i~dataout\(15) & \addr_i~dataout\(13) & NOT \addr_i~dataout\(11) & NOT 
+\mreq_n_i~dataout\ & NOT \addr_i~dataout\(12) & \data_io[0]$latch~6_dataout\);
 
 \iascii_mapper_reg0[0]~18_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -1545,8 +1549,8 @@ NOT \slot3_exp|exp_reg_s\(7));
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \iascii_mapper_reg1[0]~19_dataout\ & \data_io[0]$latch~6_dataout\);
 
 \iascii_mapper_reg1[0]~19_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & NOT \wr_n_i~dataout\ & NOT \addr_i~dataout\(15) & \addr_i~dataout\(13) & NOT \mreq_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \addr_i~dataout\(14) & \Equal4~3sexpand0_dataout\ & 
-\rfsh_n_i~dataout\ & NOT \addr_i~dataout\(11) & \data_io[0]$latch~6_dataout\);
+& vcc & vcc & vcc & vcc & vcc & \Equal4~3sexpand0_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \addr_i~dataout\(14) & NOT \wr_n_i~dataout\ & \rfsh_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & NOT \addr_i~dataout\(15) & \addr_i~dataout\(13) & NOT 
+\addr_i~dataout\(11) & NOT \mreq_n_i~dataout\ & \data_io[0]$latch~6_dataout\);
 
 \iascii_mapper_reg1[0]~19_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -1573,14 +1577,14 @@ NOT \slot3_exp|exp_reg_s\(7));
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
 
 \iascii_mapper_reg0[1]~22_pterm1_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \iascii_mapper_reg0[1]~4sexpand1_dataout\ & \iascii_mapper_reg0[1]~22_dataout\);
+& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \iascii_mapper_reg0[2]~4sexpand1_dataout\ & \iascii_mapper_reg0[1]~22_dataout\);
 
 \iascii_mapper_reg0[1]~22_pterm2_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \iascii_mapper_reg0[1]~22_dataout\ & \data_io[1]$latch~6_dataout\);
 
 \iascii_mapper_reg0[1]~22_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & NOT \wr_n_i~dataout\ & NOT \addr_i~dataout\(15) & \addr_i~dataout\(13) & NOT \mreq_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \addr_i~dataout\(14) & NOT \addr_i~dataout\(12) & 
-\rfsh_n_i~dataout\ & NOT \addr_i~dataout\(11) & \data_io[1]$latch~6_dataout\);
+& vcc & vcc & vcc & vcc & vcc & \lobyte_ppi_a|y_o~24_dataout\ & \addr_i~dataout\(14) & NOT \wr_n_i~dataout\ & \rfsh_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & NOT \addr_i~dataout\(15) & \addr_i~dataout\(13) & NOT \addr_i~dataout\(11) & NOT 
+\mreq_n_i~dataout\ & NOT \addr_i~dataout\(12) & \data_io[1]$latch~6_dataout\);
 
 \iascii_mapper_reg0[1]~22_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -1613,8 +1617,8 @@ NOT \slot3_exp|exp_reg_s\(7));
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \iascii_mapper_reg1[1]~23_dataout\ & \data_io[1]$latch~6_dataout\);
 
 \iascii_mapper_reg1[1]~23_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & NOT \wr_n_i~dataout\ & NOT \addr_i~dataout\(15) & \addr_i~dataout\(13) & NOT \mreq_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \addr_i~dataout\(14) & \Equal4~3sexpand0_dataout\ & 
-\rfsh_n_i~dataout\ & NOT \addr_i~dataout\(11) & \data_io[1]$latch~6_dataout\);
+& vcc & vcc & vcc & vcc & vcc & \Equal4~3sexpand0_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \addr_i~dataout\(14) & NOT \wr_n_i~dataout\ & \rfsh_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & NOT \addr_i~dataout\(15) & \addr_i~dataout\(13) & NOT 
+\addr_i~dataout\(11) & NOT \mreq_n_i~dataout\ & \data_io[1]$latch~6_dataout\);
 
 \iascii_mapper_reg1[1]~23_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -1647,7 +1651,7 @@ NOT \slot3_exp|exp_reg_s\(7));
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \idata_exp3_i[1]~41_dataout\ & \data_io[1]$latch~6_dataout\);
 
 \idata_exp3_i[1]~41_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & NOT \wr_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \slot3_exp|exp_rd_s~4_dataout\ & \data_io[1]$latch~6_dataout\);
+& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \lobyte_ppi_a|y_o~24_dataout\ & NOT \wr_n_i~dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \slot3_exp|exp_rd_s~4_dataout\ & NOT \mreq_n_i~dataout\ & \data_io[1]$latch~6_dataout\);
 
 \idata_exp3_i[1]~41_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -1680,7 +1684,7 @@ NOT \slot3_exp|exp_reg_s\(7));
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \idata_exp3_i[5]~45_dataout\ & \data_io[5]$latch~6_dataout\);
 
 \idata_exp3_i[5]~45_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & NOT \wr_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \slot3_exp|exp_rd_s~4_dataout\ & \data_io[5]$latch~6_dataout\);
+& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \lobyte_ppi_a|y_o~24_dataout\ & NOT \wr_n_i~dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \slot3_exp|exp_rd_s~4_dataout\ & NOT \mreq_n_i~dataout\ & \data_io[5]$latch~6_dataout\);
 
 \idata_exp3_i[5]~45_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -1713,7 +1717,7 @@ NOT \slot3_exp|exp_reg_s\(7));
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \idata_exp3_i[7]~49_dataout\ & \data_io[7]$latch~6_dataout\);
 
 \idata_exp3_i[7]~49_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & NOT \wr_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \slot3_exp|exp_rd_s~4_dataout\ & \data_io[7]$latch~6_dataout\);
+& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \lobyte_ppi_a|y_o~24_dataout\ & NOT \wr_n_i~dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \slot3_exp|exp_rd_s~4_dataout\ & NOT \mreq_n_i~dataout\ & \data_io[7]$latch~6_dataout\);
 
 \idata_exp3_i[7]~49_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -1746,7 +1750,7 @@ NOT \slot3_exp|exp_reg_s\(7));
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \idata_exp3_i[3]~53_dataout\ & \data_io[3]$latch~6_dataout\);
 
 \idata_exp3_i[3]~53_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & NOT \wr_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \slot3_exp|exp_rd_s~1sexpand1_dataout\ & \data_io[3]$latch~6_dataout\);
+& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \lobyte_ppi_a|y_o~24_dataout\ & NOT \wr_n_i~dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \slot3_exp|exp_rd_s~1sexpand1_dataout\ & NOT \mreq_n_i~dataout\ & \data_io[3]$latch~6_dataout\);
 
 \idata_exp3_i[3]~53_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -1779,7 +1783,7 @@ NOT \slot3_exp|exp_reg_s\(7));
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \idata_exp3_i[0]~57_dataout\ & \data_io[0]$latch~6_dataout\);
 
 \idata_exp3_i[0]~57_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & NOT \wr_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \slot3_exp|exp_rd_s~4_dataout\ & \data_io[0]$latch~6_dataout\);
+& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \lobyte_ppi_a|y_o~24_dataout\ & NOT \wr_n_i~dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \slot3_exp|exp_rd_s~4_dataout\ & NOT \mreq_n_i~dataout\ & \data_io[0]$latch~6_dataout\);
 
 \idata_exp3_i[0]~57_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -1812,7 +1816,7 @@ NOT \slot3_exp|exp_reg_s\(7));
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \idata_exp3_i[4]~61_dataout\ & \data_io[4]$latch~6_dataout\);
 
 \idata_exp3_i[4]~61_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & NOT \wr_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \slot3_exp|exp_rd_s~1sexpand1_dataout\ & \data_io[4]$latch~6_dataout\);
+& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \lobyte_ppi_a|y_o~24_dataout\ & NOT \wr_n_i~dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \slot3_exp|exp_rd_s~1sexpand1_dataout\ & NOT \mreq_n_i~dataout\ & \data_io[4]$latch~6_dataout\);
 
 \idata_exp3_i[4]~61_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -1845,7 +1849,7 @@ NOT \slot3_exp|exp_reg_s\(7));
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \idata_exp3_i[6]~65_dataout\ & \data_io[6]$latch~6_dataout\);
 
 \idata_exp3_i[6]~65_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & NOT \wr_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \slot3_exp|exp_rd_s~4_dataout\ & \data_io[6]$latch~6_dataout\);
+& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \lobyte_ppi_a|y_o~24_dataout\ & NOT \wr_n_i~dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \slot3_exp|exp_rd_s~4_dataout\ & NOT \mreq_n_i~dataout\ & \data_io[6]$latch~6_dataout\);
 
 \idata_exp3_i[6]~65_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -1878,7 +1882,7 @@ NOT \slot3_exp|exp_reg_s\(7));
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \idata_exp3_i[2]~69_dataout\ & \data_io[2]$latch~6_dataout\);
 
 \idata_exp3_i[2]~69_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & NOT \wr_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \slot3_exp|exp_rd_s~1sexpand1_dataout\ & \data_io[2]$latch~6_dataout\);
+& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \lobyte_ppi_a|y_o~24_dataout\ & NOT \wr_n_i~dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \slot3_exp|exp_rd_s~1sexpand1_dataout\ & NOT \mreq_n_i~dataout\ & \data_io[2]$latch~6_dataout\);
 
 \idata_exp3_i[2]~69_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -1905,14 +1909,14 @@ NOT \slot3_exp|exp_reg_s\(7));
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
 
 \iascii_mapper_reg0[2]~26_pterm1_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \iascii_mapper_reg0[1]~4sexpand1_dataout\ & \iascii_mapper_reg0[2]~26_dataout\);
+& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \iascii_mapper_reg0[2]~4sexpand1_dataout\ & \iascii_mapper_reg0[2]~26_dataout\);
 
 \iascii_mapper_reg0[2]~26_pterm2_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \iascii_mapper_reg0[2]~26_dataout\ & \data_io[2]$latch~6_dataout\);
 
 \iascii_mapper_reg0[2]~26_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & NOT \wr_n_i~dataout\ & NOT \addr_i~dataout\(15) & \addr_i~dataout\(13) & NOT \mreq_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \addr_i~dataout\(14) & NOT \addr_i~dataout\(12) & 
-\rfsh_n_i~dataout\ & NOT \addr_i~dataout\(11) & \data_io[2]$latch~6_dataout\);
+& vcc & vcc & vcc & vcc & vcc & \lobyte_ppi_a|y_o~24_dataout\ & \addr_i~dataout\(14) & NOT \wr_n_i~dataout\ & \rfsh_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & NOT \addr_i~dataout\(15) & \addr_i~dataout\(13) & NOT \addr_i~dataout\(11) & NOT 
+\mreq_n_i~dataout\ & NOT \addr_i~dataout\(12) & \data_io[2]$latch~6_dataout\);
 
 \iascii_mapper_reg0[2]~26_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -1945,8 +1949,8 @@ NOT \slot3_exp|exp_reg_s\(7));
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \iascii_mapper_reg1[2]~27_dataout\ & \data_io[2]$latch~6_dataout\);
 
 \iascii_mapper_reg1[2]~27_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & NOT \wr_n_i~dataout\ & NOT \addr_i~dataout\(15) & \addr_i~dataout\(13) & NOT \mreq_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \addr_i~dataout\(14) & \Equal4~3sexpand0_dataout\ & 
-\rfsh_n_i~dataout\ & NOT \addr_i~dataout\(11) & \data_io[2]$latch~6_dataout\);
+& vcc & vcc & vcc & vcc & vcc & \Equal4~3sexpand0_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \addr_i~dataout\(14) & NOT \wr_n_i~dataout\ & \rfsh_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & NOT \addr_i~dataout\(15) & \addr_i~dataout\(13) & NOT 
+\addr_i~dataout\(11) & NOT \mreq_n_i~dataout\ & \data_io[2]$latch~6_dataout\);
 
 \iascii_mapper_reg1[2]~27_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -2246,8 +2250,8 @@ gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gn
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \imap_bank0_s[0]~20_dataout\ & \data_io[0]$latch~6_dataout\);
 
 \imap_bank0_s[0]~20_pterm4_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & NOT \iorq_n_i~dataout\ & \addr_i~dataout\(7) & \addr_i~dataout\(5) & NOT \wr_n_i~dataout\ & \addr_i~dataout\(6) & \addr_i~dataout\(4) & \addr_i~dataout\(2) & \addr_i~dataout\(3) & NOT \addr_i~dataout\(1) & 
-\m1_n_i~dataout\ & NOT \addr_i~dataout\(0) & \data_io[0]$latch~6_dataout\);
+& vcc & vcc & vcc & \addr_i~dataout\(6) & \addr_i~dataout\(7) & \addr_i~dataout\(5) & \addr_i~dataout\(3) & NOT \addr_i~dataout\(1) & NOT \wr_n_i~dataout\ & \m1_n_i~dataout\ & \addr_i~dataout\(4) & \addr_i~dataout\(2) & NOT 
+\addr_i~dataout\(0) & NOT \iorq_n_i~dataout\ & \data_io[0]$latch~6_dataout\);
 
 \imap_bank0_s[0]~20_pterm5_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -2277,8 +2281,8 @@ gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gn
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \imap_bank1_s[0]~20_dataout\ & \reset_n_i~dataout\ & \data_io[0]$latch~6_dataout\);
 
 \imap_bank1_s[0]~20_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & NOT \iorq_n_i~dataout\ & \addr_i~dataout\(7) & \addr_i~dataout\(5) & NOT \wr_n_i~dataout\ & \addr_i~dataout\(6) & \addr_i~dataout\(4) & \addr_i~dataout\(2) & \addr_i~dataout\(3) & NOT \addr_i~dataout\(1) & \m1_n_i~dataout\ & 
-\addr_i~dataout\(0) & \reset_n_i~dataout\ & \data_io[0]$latch~6_dataout\);
+& vcc & vcc & \addr_i~dataout\(6) & \addr_i~dataout\(7) & \addr_i~dataout\(5) & \addr_i~dataout\(3) & NOT \addr_i~dataout\(1) & NOT \wr_n_i~dataout\ & \m1_n_i~dataout\ & \addr_i~dataout\(4) & \addr_i~dataout\(2) & \addr_i~dataout\(0) & 
+NOT \iorq_n_i~dataout\ & \reset_n_i~dataout\ & \data_io[0]$latch~6_dataout\);
 
 \imap_bank1_s[0]~20_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -2314,8 +2318,8 @@ gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gn
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \imap_bank2_s[0]~21_dataout\ & \data_io[0]$latch~6_dataout\);
 
 \imap_bank2_s[0]~21_pterm4_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & NOT \iorq_n_i~dataout\ & \addr_i~dataout\(7) & \addr_i~dataout\(5) & NOT \wr_n_i~dataout\ & \addr_i~dataout\(6) & \addr_i~dataout\(4) & \addr_i~dataout\(2) & \addr_i~dataout\(3) & \addr_i~dataout\(1) & \m1_n_i~dataout\ & 
-NOT \addr_i~dataout\(0) & \data_io[0]$latch~6_dataout\);
+& vcc & vcc & vcc & \addr_i~dataout\(6) & \addr_i~dataout\(7) & \addr_i~dataout\(5) & \addr_i~dataout\(3) & \addr_i~dataout\(1) & NOT \wr_n_i~dataout\ & \m1_n_i~dataout\ & \addr_i~dataout\(4) & \addr_i~dataout\(2) & NOT \addr_i~dataout\(0)
+& NOT \iorq_n_i~dataout\ & \data_io[0]$latch~6_dataout\);
 
 \imap_bank2_s[0]~21_pterm5_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -2339,14 +2343,14 @@ NOT \addr_i~dataout\(0) & \data_io[0]$latch~6_dataout\);
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
 
 \imap_bank3_s[0]~20_pterm1_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \imap_bank3_s[0]~6sexpand0_dataout\ & \imap_bank3_s[0]~20_dataout\ & \reset_n_i~dataout\);
+& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \imap_bank3_s[1]~6sexpand0_dataout\ & \imap_bank3_s[0]~20_dataout\ & \reset_n_i~dataout\);
 
 \imap_bank3_s[0]~20_pterm2_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \imap_bank3_s[0]~20_dataout\ & \reset_n_i~dataout\ & \data_io[0]$latch~6_dataout\);
 
 \imap_bank3_s[0]~20_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & NOT \iorq_n_i~dataout\ & \addr_i~dataout\(7) & \addr_i~dataout\(5) & NOT \wr_n_i~dataout\ & \addr_i~dataout\(6) & \addr_i~dataout\(4) & \addr_i~dataout\(2) & \addr_i~dataout\(3) & \addr_i~dataout\(1) & \m1_n_i~dataout\ & 
-\addr_i~dataout\(0) & \reset_n_i~dataout\ & \data_io[0]$latch~6_dataout\);
+& vcc & vcc & \addr_i~dataout\(6) & \addr_i~dataout\(7) & \addr_i~dataout\(5) & \addr_i~dataout\(3) & \addr_i~dataout\(1) & NOT \wr_n_i~dataout\ & \m1_n_i~dataout\ & \addr_i~dataout\(4) & \addr_i~dataout\(2) & \addr_i~dataout\(0) & NOT 
+\iorq_n_i~dataout\ & \reset_n_i~dataout\ & \data_io[0]$latch~6_dataout\);
 
 \imap_bank3_s[0]~20_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -2382,8 +2386,8 @@ NOT \addr_i~dataout\(0) & \data_io[0]$latch~6_dataout\);
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \imap_bank0_s[1]~25_dataout\ & \data_io[1]$latch~6_dataout\);
 
 \imap_bank0_s[1]~25_pterm4_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & NOT \iorq_n_i~dataout\ & \addr_i~dataout\(7) & \addr_i~dataout\(5) & NOT \wr_n_i~dataout\ & \addr_i~dataout\(6) & \addr_i~dataout\(4) & \addr_i~dataout\(2) & \addr_i~dataout\(3) & NOT \addr_i~dataout\(1) & 
-\m1_n_i~dataout\ & NOT \addr_i~dataout\(0) & \data_io[1]$latch~6_dataout\);
+& vcc & vcc & vcc & \addr_i~dataout\(6) & \addr_i~dataout\(7) & \addr_i~dataout\(5) & \addr_i~dataout\(3) & NOT \addr_i~dataout\(1) & NOT \wr_n_i~dataout\ & \m1_n_i~dataout\ & \addr_i~dataout\(4) & \addr_i~dataout\(2) & NOT 
+\addr_i~dataout\(0) & NOT \iorq_n_i~dataout\ & \data_io[1]$latch~6_dataout\);
 
 \imap_bank0_s[1]~25_pterm5_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -2416,8 +2420,8 @@ NOT \addr_i~dataout\(0) & \data_io[0]$latch~6_dataout\);
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \imap_bank1_s[1]~24_dataout\ & \data_io[1]$latch~6_dataout\);
 
 \imap_bank1_s[1]~24_pterm4_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & NOT \iorq_n_i~dataout\ & \addr_i~dataout\(7) & \addr_i~dataout\(5) & NOT \wr_n_i~dataout\ & \addr_i~dataout\(6) & \addr_i~dataout\(4) & \addr_i~dataout\(2) & \addr_i~dataout\(3) & NOT \addr_i~dataout\(1) & 
-\m1_n_i~dataout\ & \addr_i~dataout\(0) & \data_io[1]$latch~6_dataout\);
+& vcc & vcc & vcc & \addr_i~dataout\(6) & \addr_i~dataout\(7) & \addr_i~dataout\(5) & \addr_i~dataout\(3) & NOT \addr_i~dataout\(1) & NOT \wr_n_i~dataout\ & \m1_n_i~dataout\ & \addr_i~dataout\(4) & \addr_i~dataout\(2) & \addr_i~dataout\(0)
+& NOT \iorq_n_i~dataout\ & \data_io[1]$latch~6_dataout\);
 
 \imap_bank1_s[1]~24_pterm5_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -2447,8 +2451,8 @@ NOT \addr_i~dataout\(0) & \data_io[0]$latch~6_dataout\);
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \imap_bank2_s[1]~26_dataout\ & \reset_n_i~dataout\ & \data_io[1]$latch~6_dataout\);
 
 \imap_bank2_s[1]~26_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & NOT \iorq_n_i~dataout\ & \addr_i~dataout\(7) & \addr_i~dataout\(5) & NOT \wr_n_i~dataout\ & \addr_i~dataout\(6) & \addr_i~dataout\(4) & \addr_i~dataout\(2) & \addr_i~dataout\(3) & \addr_i~dataout\(1) & \m1_n_i~dataout\ & NOT 
-\addr_i~dataout\(0) & \reset_n_i~dataout\ & \data_io[1]$latch~6_dataout\);
+& vcc & vcc & \addr_i~dataout\(6) & \addr_i~dataout\(7) & \addr_i~dataout\(5) & \addr_i~dataout\(3) & \addr_i~dataout\(1) & NOT \wr_n_i~dataout\ & \m1_n_i~dataout\ & \addr_i~dataout\(4) & \addr_i~dataout\(2) & NOT \addr_i~dataout\(0) & 
+NOT \iorq_n_i~dataout\ & \reset_n_i~dataout\ & \data_io[1]$latch~6_dataout\);
 
 \imap_bank2_s[1]~26_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -2475,14 +2479,14 @@ NOT \addr_i~dataout\(0) & \data_io[0]$latch~6_dataout\);
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
 
 \imap_bank3_s[1]~24_pterm1_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \imap_bank3_s[0]~6sexpand0_dataout\ & \imap_bank3_s[1]~24_dataout\ & \reset_n_i~dataout\);
+& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \imap_bank3_s[1]~6sexpand0_dataout\ & \imap_bank3_s[1]~24_dataout\ & \reset_n_i~dataout\);
 
 \imap_bank3_s[1]~24_pterm2_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \imap_bank3_s[1]~24_dataout\ & \reset_n_i~dataout\ & \data_io[1]$latch~6_dataout\);
 
 \imap_bank3_s[1]~24_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & NOT \iorq_n_i~dataout\ & \addr_i~dataout\(7) & \addr_i~dataout\(5) & NOT \wr_n_i~dataout\ & \addr_i~dataout\(6) & \addr_i~dataout\(4) & \addr_i~dataout\(2) & \addr_i~dataout\(3) & \addr_i~dataout\(1) & \m1_n_i~dataout\ & 
-\addr_i~dataout\(0) & \reset_n_i~dataout\ & \data_io[1]$latch~6_dataout\);
+& vcc & vcc & \addr_i~dataout\(6) & \addr_i~dataout\(7) & \addr_i~dataout\(5) & \addr_i~dataout\(3) & \addr_i~dataout\(1) & NOT \wr_n_i~dataout\ & \m1_n_i~dataout\ & \addr_i~dataout\(4) & \addr_i~dataout\(2) & \addr_i~dataout\(0) & NOT 
+\iorq_n_i~dataout\ & \reset_n_i~dataout\ & \data_io[1]$latch~6_dataout\);
 
 \imap_bank3_s[1]~24_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -2576,46 +2580,46 @@ NOT \addr_i~dataout\(0) & \data_io[0]$latch~6_dataout\);
 \rom_cs_n_o~7_papre_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
 
-\rom_addr_o[16]_632~6_pterm0_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & 
+\rom_addr_o[16]_633~6_pterm0_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & 
 gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
 
-\rom_addr_o[16]_632~6_pterm1_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
-vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \rom_addr_o[17]~48sexpand1_dataout\ & NOT \rom_addr_o[16]_632~6_dataout\);
+\rom_addr_o[16]_633~6_pterm1_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
+vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \rom_addr_o[17]~48sexpand1_dataout\ & NOT \rom_addr_o[16]_633~6_dataout\);
 
-\rom_addr_o[16]_632~6_pterm2_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
-vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \rom_addr_o[16]~47sexpand1_dataout\ & \rom_addr_o[16]~47sexpand0_dataout\ & NOT \rom_addr_o[16]_632~6_dataout\);
+\rom_addr_o[16]_633~6_pterm2_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
+vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \rom_addr_o[16]~47sexpand1_dataout\ & \rom_addr_o[16]~47sexpand0_dataout\ & NOT \rom_addr_o[16]_633~6_dataout\);
 
-\rom_addr_o[16]_632~6_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
-vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & NOT \en_ascii16_n_i~dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \rom_addr_o[16]~47sexpand1_dataout\ & 
+\rom_addr_o[16]_633~6_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
+vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \lobyte_ppi_a|y_o~24_dataout\ & NOT \en_ascii16_n_i~dataout\ & \rfsh_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \rom_addr_o[16]~47sexpand1_dataout\ & 
 \rom_addr_o[16]~47sexpand0_dataout\);
 
-\rom_addr_o[16]_632~6_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & 
+\rom_addr_o[16]_633~6_pterm4_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & 
 gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
 
-\rom_addr_o[16]_632~6_pterm5_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & 
+\rom_addr_o[16]_633~6_pterm5_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & 
 gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
 
-\rom_addr_o[16]_632~6_pxor_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
+\rom_addr_o[16]_633~6_pxor_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
 
-\rom_addr_o[16]_632~6_pclk_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
+\rom_addr_o[16]_633~6_pclk_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
 
-\rom_addr_o[16]_632~6_pena_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
+\rom_addr_o[16]_633~6_pena_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc);
 
-\rom_addr_o[16]_632~6_paclr_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & 
+\rom_addr_o[16]_633~6_paclr_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & 
 gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
 
-\rom_addr_o[16]_632~6_papre_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & 
+\rom_addr_o[16]_633~6_papre_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & 
 gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
 
 \process_5~16_pterm0_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
 
 \process_5~16_pterm1_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & \slot3_exp|Mux1~13sexp2_dataout\ & \slot3_exp|Mux1~13sexp1_dataout\ & \slot3_exp|Mux1~10sexp2_dataout\ & \slot3_exp|Mux1~10sexp1_dataout\ & \slot3_exp|WideAnd0~5sexp_dataout\ & \slot3_exp|exp_reg_s\(1) & NOT \addr_i~dataout\(15) & NOT 
-\addr_i~dataout\(14) & NOT \mreq_n_i~dataout\ & \rfsh_n_i~dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \hibyte_ppi_a|y_o~24_dataout\);
+& vcc & vcc & \slot3_exp|Mux1~13sexp2_dataout\ & \slot3_exp|Mux1~13sexp1_dataout\ & \slot3_exp|Mux1~10sexp2_dataout\ & \slot3_exp|Mux1~10sexp1_dataout\ & \slot3_exp|WideAnd0~5sexp_dataout\ & \slot3_exp|exp_reg_s\(1) & NOT \addr_i~dataout\(14) & NOT 
+\addr_i~dataout\(15) & \rfsh_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \hibyte_ppi_a|y_o~24_dataout\);
 
 \process_5~16_pterm2_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -2649,10 +2653,10 @@ gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gn
 
 \rom_addr_o[14]~56_pterm1_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
 & \slot3_exp|Mux1~13sexp2_dataout\ & \slot3_exp|Mux1~13sexp1_dataout\ & \slot3_exp|Mux1~10sexp2_dataout\ & \slot3_exp|Mux1~10sexp1_dataout\ & \slot3_exp|WideAnd0~5sexp_dataout\ & \slot3_exp|Mux0~13sexpand3_dataout\ & \slot3_exp|Mux0~13sexpand2_dataout\ & 
-\slot3_exp|Mux0~13sexpand1_dataout\ & \slot3_exp|Mux0~13sexpand0_dataout\ & NOT \addr_i~dataout\(15) & NOT \addr_i~dataout\(14) & NOT \mreq_n_i~dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\);
+\slot3_exp|Mux0~13sexpand1_dataout\ & \slot3_exp|Mux0~13sexpand0_dataout\ & NOT \addr_i~dataout\(14) & NOT \addr_i~dataout\(15) & \rfsh_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\);
 
 \rom_addr_o[14]~56_pterm2_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & NOT \addr_i~dataout\(15) & NOT \mreq_n_i~dataout\ & \rfsh_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & NOT \lobyte_ppi_a|y_o~24_dataout\);
+& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & NOT \addr_i~dataout\(15) & \rfsh_n_i~dataout\ & NOT \mreq_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & NOT \lobyte_ppi_a|y_o~24_dataout\);
 
 \rom_addr_o[14]~56_pterm3_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -2682,8 +2686,8 @@ vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vc
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
 
 \process_5~18_pterm1_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & \slot3_exp|Mux1~13sexp2_dataout\ & \slot3_exp|Mux1~13sexp1_dataout\ & \slot3_exp|Mux1~10sexp2_dataout\ & \slot3_exp|Mux1~10sexp1_dataout\ & \slot3_exp|WideAnd0~5sexp_dataout\ & \slot3_exp|exp_reg_s\(3) & NOT \addr_i~dataout\(15) & 
-\addr_i~dataout\(14) & NOT \mreq_n_i~dataout\ & \rfsh_n_i~dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \hibyte_ppi_a|y_o~24_dataout\);
+& vcc & vcc & \slot3_exp|Mux1~13sexp2_dataout\ & \slot3_exp|Mux1~13sexp1_dataout\ & \slot3_exp|Mux1~10sexp2_dataout\ & \slot3_exp|Mux1~10sexp1_dataout\ & \slot3_exp|WideAnd0~5sexp_dataout\ & \slot3_exp|exp_reg_s\(3) & \addr_i~dataout\(14) & NOT 
+\addr_i~dataout\(15) & \rfsh_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \hibyte_ppi_a|y_o~24_dataout\);
 
 \process_5~18_pterm2_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -2716,8 +2720,8 @@ vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vc
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
 
 \process_5~20_pterm1_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & \slot3_exp|Mux1~13sexp2_dataout\ & \slot3_exp|Mux1~13sexp1_dataout\ & \slot3_exp|Mux1~10sexp2_dataout\ & \slot3_exp|Mux1~10sexp1_dataout\ & \slot3_exp|WideAnd0~5sexp_dataout\ & \slot3_exp|exp_reg_s\(5) & \addr_i~dataout\(15) & NOT 
-\addr_i~dataout\(14) & NOT \mreq_n_i~dataout\ & \rfsh_n_i~dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \hibyte_ppi_a|y_o~24_dataout\);
+& vcc & vcc & \slot3_exp|Mux1~13sexp2_dataout\ & \slot3_exp|Mux1~13sexp1_dataout\ & \slot3_exp|Mux1~10sexp2_dataout\ & \slot3_exp|Mux1~10sexp1_dataout\ & \slot3_exp|WideAnd0~5sexp_dataout\ & \slot3_exp|exp_reg_s\(5) & NOT \addr_i~dataout\(14) & 
+\addr_i~dataout\(15) & \rfsh_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \hibyte_ppi_a|y_o~24_dataout\);
 
 \process_5~20_pterm2_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -2750,8 +2754,8 @@ vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vc
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
 
 \process_5~22_pterm1_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & \slot3_exp|Mux1~13sexp2_dataout\ & \slot3_exp|Mux1~13sexp1_dataout\ & \slot3_exp|Mux1~10sexp2_dataout\ & \slot3_exp|Mux1~10sexp1_dataout\ & \slot3_exp|WideAnd0~5sexp_dataout\ & \slot3_exp|exp_reg_s\(7) & \addr_i~dataout\(15) & 
-\addr_i~dataout\(14) & NOT \mreq_n_i~dataout\ & \rfsh_n_i~dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \hibyte_ppi_a|y_o~24_dataout\);
+& vcc & vcc & \slot3_exp|Mux1~13sexp2_dataout\ & \slot3_exp|Mux1~13sexp1_dataout\ & \slot3_exp|Mux1~10sexp2_dataout\ & \slot3_exp|Mux1~10sexp1_dataout\ & \slot3_exp|WideAnd0~5sexp_dataout\ & \slot3_exp|exp_reg_s\(7) & \addr_i~dataout\(14) & 
+\addr_i~dataout\(15) & \rfsh_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \hibyte_ppi_a|y_o~24_dataout\);
 
 \process_5~22_pterm2_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
@@ -2790,11 +2794,11 @@ vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vc
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \process_5~22_dataout\ & NOT \imap_bank3_s[0]~20_dataout\ & NOT \rom_addr_o[14]~56_dataout\ & NOT \process_5~20_dataout\ & NOT \process_5~18_dataout\ & NOT \process_5~16_dataout\);
 
 \rom_addr_o[14]~64_pterm3_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & NOT \en_ascii16_n_i~dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \addr_i~dataout\(14) & NOT \iascii_mapper_reg0[0]~18_dataout\ & NOT 
+& vcc & vcc & \lobyte_ppi_a|y_o~24_dataout\ & NOT \en_ascii16_n_i~dataout\ & \rfsh_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \addr_i~dataout\(14) & NOT \iascii_mapper_reg0[0]~18_dataout\ & NOT 
 \process_5~22_dataout\ & NOT \rom_addr_o[14]~56_dataout\ & NOT \process_5~20_dataout\ & NOT \process_5~18_dataout\ & NOT \process_5~16_dataout\);
 
 \rom_addr_o[14]~64_pterm4_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & \process_5~12sexpand0_dataout\ & NOT \en_ascii16_n_i~dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & NOT \addr_i~dataout\(14) & NOT 
+& vcc & vcc & \process_5~12sexpand0_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & NOT \en_ascii16_n_i~dataout\ & \rfsh_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & NOT \addr_i~dataout\(14) & NOT 
 \iascii_mapper_reg1[0]~19_dataout\ & NOT \process_5~22_dataout\ & NOT \process_5~20_dataout\ & NOT \process_5~18_dataout\ & NOT \process_5~16_dataout\);
 
 \rom_addr_o[14]~64_pterm5_bus\ <= (gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd
@@ -2816,7 +2820,7 @@ vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vc
 & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd & gnd);
 
 \rom_addr_o[15]~72_pterm0_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & NOT \imap_bank3_s[1]~24_dataout\ & NOT \slot3_exp|exp_reg_s\(6) & \slot3_exp|exp_reg_s\(7) & \ram_cs_n_o~2_dataout\ & \addr_i~dataout\(14) & \rfsh_n_i~dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & 
+& vcc & vcc & vcc & vcc & vcc & NOT \slot3_exp|exp_reg_s\(6) & \slot3_exp|exp_reg_s\(7) & NOT \imap_bank3_s[1]~24_dataout\ & \ram_cs_n_o~2_dataout\ & \addr_i~dataout\(14) & \rfsh_n_i~dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & 
 \hibyte_ppi_a|y_o~24_dataout\ & NOT \mreq_n_i~dataout\ & \addr_i~dataout\(15));
 
 \rom_addr_o[15]~72_pterm1_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
@@ -2965,7 +2969,7 @@ vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vc
 vcc & vcc & vcc & vcc & vcc & vcc & \addr_i~dataout\(4) & \addr_i~dataout\(3) & \addr_i~dataout\(7) & \addr_i~dataout\(6) & \addr_i~dataout\(5) & \addr_i~dataout\(2) & \m1_n_i~dataout\ & NOT \iorq_n_i~dataout\ & NOT \wr_n_i~dataout\ & NOT 
 \addr_i~dataout\(1) & \addr_i~dataout\(0));
 
-\imap_bank3_s[0]~6sexpand0_datain_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
+\imap_bank3_s[1]~6sexpand0_datain_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
 vcc & vcc & vcc & vcc & vcc & vcc & \addr_i~dataout\(1) & \addr_i~dataout\(0) & \addr_i~dataout\(4) & \addr_i~dataout\(3) & \addr_i~dataout\(7) & \addr_i~dataout\(6) & \addr_i~dataout\(5) & \addr_i~dataout\(2) & \m1_n_i~dataout\ & NOT 
 \iorq_n_i~dataout\ & NOT \wr_n_i~dataout\);
 
@@ -2988,34 +2992,34 @@ vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vc
 
 \slot3_exp|exp_rd_s~1sexpand1_datain_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \addr_i~dataout\(15)
 & \addr_i~dataout\(14) & \addr_i~dataout\(1) & \addr_i~dataout\(0) & \addr_i~dataout\(4) & \addr_i~dataout\(3) & \addr_i~dataout\(7) & \addr_i~dataout\(6) & \addr_i~dataout\(5) & \addr_i~dataout\(2) & \addr_i~dataout\(13) & 
-\addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8) & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\);
+\addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8) & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\);
 
 \Equal4~3sexpand0_datain_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \addr_i~dataout\(13) & NOT \addr_i~dataout\(11) & NOT \addr_i~dataout\(12));
 
-\iascii_mapper_reg0[1]~4sexpand1_datain_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
-vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & NOT \wr_n_i~dataout\ & NOT \addr_i~dataout\(15) & \addr_i~dataout\(13) & NOT \mreq_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \addr_i~dataout\(14) & NOT 
-\addr_i~dataout\(12) & \rfsh_n_i~dataout\ & NOT \addr_i~dataout\(11));
+\iascii_mapper_reg0[2]~4sexpand1_datain_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
+vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \lobyte_ppi_a|y_o~24_dataout\ & \addr_i~dataout\(14) & NOT \wr_n_i~dataout\ & \rfsh_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & NOT \addr_i~dataout\(15) & \addr_i~dataout\(13) & NOT 
+\addr_i~dataout\(11) & NOT \mreq_n_i~dataout\ & NOT \addr_i~dataout\(12));
 
 \iascii_mapper_reg1[2]~5sexpand1_datain_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
-vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & NOT \wr_n_i~dataout\ & NOT \addr_i~dataout\(15) & \addr_i~dataout\(13) & NOT \mreq_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \addr_i~dataout\(14) & 
-\Equal4~3sexpand0_dataout\ & \rfsh_n_i~dataout\ & NOT \addr_i~dataout\(11));
+vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \Equal4~3sexpand0_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \addr_i~dataout\(14) & NOT \wr_n_i~dataout\ & \rfsh_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & NOT \addr_i~dataout\(15) & 
+\addr_i~dataout\(13) & NOT \addr_i~dataout\(11) & NOT \mreq_n_i~dataout\);
 
 \idata_exp3_i[0]~10sexpand1_datain_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
-vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & NOT \wr_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \slot3_exp|exp_rd_s~4_dataout\);
+vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \lobyte_ppi_a|y_o~24_dataout\ & NOT \wr_n_i~dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \slot3_exp|exp_rd_s~4_dataout\ & NOT \mreq_n_i~dataout\);
 
 \process_5~12sexpand0_datain_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
 vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \addr_i~dataout\(14) & \rfsh_n_i~dataout\ & NOT \mreq_n_i~dataout\);
 
 \rom_addr_o[16]~47sexpand0_datain_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
-vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & NOT \en_ascii16_n_i~dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \addr_i~dataout\(14) & \rfsh_n_i~dataout\ & 
+vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \lobyte_ppi_a|y_o~24_dataout\ & NOT \en_ascii16_n_i~dataout\ & \addr_i~dataout\(14) & \rfsh_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & 
 \iascii_mapper_reg0[2]~26_dataout\);
 
 \rom_addr_o[16]~47sexpand1_datain_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
 vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \process_5~14sexp_dataout\ & \iascii_mapper_reg1[2]~27_dataout\);
 
 \rom_addr_o[17]~48sexpand1_datain_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
-vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & NOT \en_ascii16_n_i~dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\);
+vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \lobyte_ppi_a|y_o~24_dataout\ & NOT \en_ascii16_n_i~dataout\ & \rfsh_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\);
 
 \slot3_exp|Mux0~13sexpand0_datain_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & 
 vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & NOT \addr_i~dataout\(15) & NOT \addr_i~dataout\(14) & \slot3_exp|exp_reg_s\(1));
@@ -3034,7 +3038,7 @@ vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vc
 \addr_i~dataout\(13) & \addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8));
 
 \process_5~14sexp_datain_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & NOT \en_ascii16_n_i~dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \addr_i~dataout\(14) & \rfsh_n_i~dataout\);
+& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \lobyte_ppi_a|y_o~24_dataout\ & NOT \en_ascii16_n_i~dataout\ & \addr_i~dataout\(14) & \rfsh_n_i~dataout\ & NOT \hibyte_ppi_a|y_o~24_dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\);
 
 \slot3_exp|Mux1~10sexp1_datain_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
 & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \slot3_exp|exp_reg_s\(0) & NOT \addr_i~dataout\(15) & NOT \addr_i~dataout\(14));
@@ -3050,10 +3054,10 @@ vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vc
 
 \slot3_exp|exp_rd_s~4_datain_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \addr_i~dataout\(15) & 
 \addr_i~dataout\(14) & \addr_i~dataout\(1) & \addr_i~dataout\(0) & \addr_i~dataout\(4) & \addr_i~dataout\(3) & \addr_i~dataout\(7) & \addr_i~dataout\(6) & \addr_i~dataout\(5) & \addr_i~dataout\(2) & \addr_i~dataout\(13) & 
-\addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8) & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\);
+\addr_i~dataout\(12) & \addr_i~dataout\(11) & \addr_i~dataout\(10) & \addr_i~dataout\(9) & \addr_i~dataout\(8) & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & NOT \rd_n_i~dataout\ & NOT \mreq_n_i~dataout\);
 
 \idata_exp3_i[0]~95_datain_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc
-& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & NOT \wr_n_i~dataout\ & NOT \mreq_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \rfsh_n_i~dataout\ & \slot3_exp|exp_rd_s~1sexpand1_dataout\);
+& vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \lobyte_ppi_a|y_o~24_dataout\ & NOT \wr_n_i~dataout\ & \rfsh_n_i~dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & \slot3_exp|exp_rd_s~1sexpand1_dataout\ & NOT \mreq_n_i~dataout\);
 
 \slot3_exp|exp_wr_s~16_datain_bus\ <= (vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & \rfsh_n_i~dataout\ & NOT 
 \mreq_n_i~dataout\ & \lobyte_ppi_a|y_o~24_dataout\ & \hibyte_ppi_a|y_o~24_dataout\ & NOT \wr_n_i~dataout\ & \addr_i~dataout\(15) & \addr_i~dataout\(14) & \addr_i~dataout\(1) & \addr_i~dataout\(0) & \addr_i~dataout\(4) & \addr_i~dataout\(3) & 
@@ -3080,7 +3084,7 @@ vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vc
 \ALT_INV_process_5~18_dataout\ <= NOT \process_5~18_dataout\;
 \ALT_INV_rom_addr_o[14]~56_dataout\ <= NOT \rom_addr_o[14]~56_dataout\;
 \ALT_INV_process_5~16_dataout\ <= NOT \process_5~16_dataout\;
-\ALT_INV_rom_addr_o[16]_632~6_dataout\ <= NOT \rom_addr_o[16]_632~6_dataout\;
+\ALT_INV_rom_addr_o[16]_633~6_dataout\ <= NOT \rom_addr_o[16]_633~6_dataout\;
 \ALT_INV_imap_bank3_s[1]~24_dataout\ <= NOT \imap_bank3_s[1]~24_dataout\;
 \ALT_INV_imap_bank2_s[1]~26_dataout\ <= NOT \imap_bank2_s[1]~26_dataout\;
 \ALT_INV_imap_bank1_s[1]~24_dataout\ <= NOT \imap_bank1_s[1]~24_dataout\;
@@ -3104,7 +3108,7 @@ vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vcc & vc
 \lobyte_ppi_a|ALT_INV_y_o~24_dataout\ <= NOT \lobyte_ppi_a|y_o~24_dataout\;
 \hibyte_ppi_a|ALT_INV_y_o~24_dataout\ <= NOT \hibyte_ppi_a|y_o~24_dataout\;
 
--- Location: LC37
+-- Location: LC39
 \iascii_mapper_reg0[2]~26\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -3126,7 +3130,7 @@ PORT MAP (
 	pena => \iascii_mapper_reg0[2]~26_pena_bus\,
 	dataout => \iascii_mapper_reg0[2]~26_dataout\);
 
--- Location: LC38
+-- Location: LC41
 \iascii_mapper_reg1[2]~27\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -3170,7 +3174,7 @@ PORT MAP (
 	pena => \~VCC~0_pena_bus\,
 	dataout => \~VCC~0~dataout\);
 
--- Location: PIN_48
+-- Location: PIN_27
 \wr_n_i~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -3184,7 +3188,7 @@ PORT MAP (
 	padio => ww_wr_n_i,
 	dataout => \wr_n_i~dataout\);
 
--- Location: PIN_61
+-- Location: PIN_23
 \iorq_n_i~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -3198,7 +3202,7 @@ PORT MAP (
 	padio => ww_iorq_n_i,
 	dataout => \iorq_n_i~dataout\);
 
--- Location: PIN_23
+-- Location: PIN_54
 \m1_n_i~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -3234,7 +3238,7 @@ PORT MAP (
 	pena => \iio_wr~3_pena_bus\,
 	dataout => \iio_wr~3_dataout\);
 
--- Location: PIN_5
+-- Location: PIN_96
 \addr_i[5]~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -3248,7 +3252,7 @@ PORT MAP (
 	padio => ww_addr_i(5),
 	dataout => \addr_i~dataout\(5));
 
--- Location: PIN_85
+-- Location: PIN_94
 \addr_i[3]~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -3262,7 +3266,7 @@ PORT MAP (
 	padio => ww_addr_i(3),
 	dataout => \addr_i~dataout\(3));
 
--- Location: PIN_96
+-- Location: PIN_21
 \addr_i[4]~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -3276,7 +3280,7 @@ PORT MAP (
 	padio => ww_addr_i(4),
 	dataout => \addr_i~dataout\(4));
 
--- Location: PIN_68
+-- Location: PIN_55
 \addr_i[2]~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -3290,7 +3294,7 @@ PORT MAP (
 	padio => ww_addr_i(2),
 	dataout => \addr_i~dataout\(2));
 
--- Location: PIN_16
+-- Location: PIN_50
 \addr_i[6]~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -3304,7 +3308,7 @@ PORT MAP (
 	padio => ww_addr_i(6),
 	dataout => \addr_i~dataout\(6));
 
--- Location: PIN_84
+-- Location: PIN_92
 \addr_i[7]~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -3340,7 +3344,7 @@ PORT MAP (
 	pena => \vdp_cswr_n_o~4_pena_bus\,
 	dataout => \vdp_cswr_n_o~4_dataout\);
 
--- Location: PIN_92
+-- Location: PIN_17
 \rd_n_i~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -3376,7 +3380,7 @@ PORT MAP (
 	pena => \vdp_csrd_n_o~4_pena_bus\,
 	dataout => \vdp_csrd_n_o~4_dataout\);
 
--- Location: PIN_21
+-- Location: PIN_84
 \addr_i[0]~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -3390,7 +3394,7 @@ PORT MAP (
 	padio => ww_addr_i(0),
 	dataout => \addr_i~dataout\(0));
 
--- Location: LC62
+-- Location: LC57
 \psg_bc1_o~3\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -3448,7 +3452,21 @@ PORT MAP (
 	padio => ww_reset_n_i,
 	dataout => \reset_n_i~dataout\);
 
--- Location: LC76
+-- Location: PIN_93
+\mreq_n_i~I\ : max_io
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false",
+	operation_mode => "input",
+	weak_pull_up => "false")
+-- pragma translate_on
+PORT MAP (
+	oe => GND,
+	padio => ww_mreq_n_i,
+	dataout => \mreq_n_i~dataout\);
+
+-- Location: LC75
 \islot_en~9\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -3470,7 +3488,7 @@ PORT MAP (
 	pena => \islot_en~9_pena_bus\,
 	dataout => \islot_en~9_dataout\);
 
--- Location: PIN_27
+-- Location: PIN_88
 \addr_i[15]~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -3484,12 +3502,6 @@ PORT MAP (
 	padio => ww_addr_i(15),
 	dataout => \addr_i~dataout\(15));
 
--- Location: SEXP69
-\process_1~6sexpand0\ : max_sexp
-PORT MAP (
-	datain => \process_1~6sexpand0_datain_bus\,
-	dataout => \process_1~6sexpand0_dataout\);
-
 -- Location: SEXP65
 \process_1~8sexpand0\ : max_sexp
 PORT MAP (
@@ -3502,99 +3514,13 @@ PORT MAP (
 	datain => \lobyte_ppi_a|process_0~5sexpand0_datain_bus\,
 	dataout => \lobyte_ppi_a|process_0~5sexpand0_dataout\);
 
--- Location: PIN_42
-\ppi_port_a_i[6]~I\ : max_io
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	open_drain_output => "false",
-	operation_mode => "input",
-	weak_pull_up => "false")
--- pragma translate_on
+-- Location: SEXP68
+\process_1~6sexpand0\ : max_sexp
 PORT MAP (
-	oe => GND,
-	padio => ww_ppi_port_a_i(6),
-	dataout => \ppi_port_a_i~dataout\(6));
+	datain => \process_1~6sexpand0_datain_bus\,
+	dataout => \process_1~6sexpand0_dataout\);
 
--- Location: PIN_53
-\addr_i[14]~I\ : max_io
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	open_drain_output => "false",
-	operation_mode => "input",
-	weak_pull_up => "false")
--- pragma translate_on
-PORT MAP (
-	oe => GND,
-	padio => ww_addr_i(14),
-	dataout => \addr_i~dataout\(14));
-
--- Location: PIN_10
-\ppi_port_a_i[0]~I\ : max_io
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	open_drain_output => "false",
-	operation_mode => "input",
-	weak_pull_up => "false")
--- pragma translate_on
-PORT MAP (
-	oe => GND,
-	padio => ww_ppi_port_a_i(0),
-	dataout => \ppi_port_a_i~dataout\(0));
-
--- Location: PIN_44
-\ppi_port_a_i[2]~I\ : max_io
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	open_drain_output => "false",
-	operation_mode => "input",
-	weak_pull_up => "false")
--- pragma translate_on
-PORT MAP (
-	oe => GND,
-	padio => ww_ppi_port_a_i(2),
-	dataout => \ppi_port_a_i~dataout\(2));
-
--- Location: PIN_71
-\ppi_port_a_i[4]~I\ : max_io
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	open_drain_output => "false",
-	operation_mode => "input",
-	weak_pull_up => "false")
--- pragma translate_on
-PORT MAP (
-	oe => GND,
-	padio => ww_ppi_port_a_i(4),
-	dataout => \ppi_port_a_i~dataout\(4));
-
--- Location: LC80
-\lobyte_ppi_a|y_o~24\ : max_mcell
--- pragma translate_off
-GENERIC MAP (
-	operation_mode => "normal",
-	output_mode => "comb",
-	pexp_mode => "off")
--- pragma translate_on
-PORT MAP (
-	pterm0 => \lobyte_ppi_a|y_o~24_pterm0_bus\,
-	pterm1 => \lobyte_ppi_a|y_o~24_pterm1_bus\,
-	pterm2 => \lobyte_ppi_a|y_o~24_pterm2_bus\,
-	pterm3 => \lobyte_ppi_a|y_o~24_pterm3_bus\,
-	pterm4 => \lobyte_ppi_a|y_o~24_pterm4_bus\,
-	pterm5 => \lobyte_ppi_a|y_o~24_pterm5_bus\,
-	pxor => \lobyte_ppi_a|y_o~24_pxor_bus\,
-	pclk => \lobyte_ppi_a|y_o~24_pclk_bus\,
-	papre => \lobyte_ppi_a|y_o~24_papre_bus\,
-	paclr => \lobyte_ppi_a|y_o~24_paclr_bus\,
-	pena => \lobyte_ppi_a|y_o~24_pena_bus\,
-	dataout => \lobyte_ppi_a|y_o~24_dataout\);
-
--- Location: PIN_88
+-- Location: PIN_41
 \ppi_port_a_i[7]~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -3608,7 +3534,21 @@ PORT MAP (
 	padio => ww_ppi_port_a_i(7),
 	dataout => \ppi_port_a_i~dataout\(7));
 
--- Location: PIN_78
+-- Location: PIN_70
+\addr_i[14]~I\ : max_io
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false",
+	operation_mode => "input",
+	weak_pull_up => "false")
+-- pragma translate_on
+PORT MAP (
+	oe => GND,
+	padio => ww_addr_i(14),
+	dataout => \addr_i~dataout\(14));
+
+-- Location: PIN_71
 \ppi_port_a_i[1]~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -3622,7 +3562,7 @@ PORT MAP (
 	padio => ww_ppi_port_a_i(1),
 	dataout => \ppi_port_a_i~dataout\(1));
 
--- Location: PIN_77
+-- Location: PIN_98
 \ppi_port_a_i[3]~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -3636,7 +3576,7 @@ PORT MAP (
 	padio => ww_ppi_port_a_i(3),
 	dataout => \ppi_port_a_i~dataout\(3));
 
--- Location: PIN_54
+-- Location: PIN_78
 \ppi_port_a_i[5]~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -3672,125 +3612,7 @@ PORT MAP (
 	pena => \hibyte_ppi_a|y_o~24_pena_bus\,
 	dataout => \hibyte_ppi_a|y_o~24_dataout\);
 
--- Location: PIN_49
-\mreq_n_i~I\ : max_io
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	open_drain_output => "false",
-	operation_mode => "input",
-	weak_pull_up => "false")
--- pragma translate_on
-PORT MAP (
-	oe => GND,
-	padio => ww_mreq_n_i,
-	dataout => \mreq_n_i~dataout\);
-
--- Location: PIN_87
-\addr_i[8]~I\ : max_io
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	open_drain_output => "false",
-	operation_mode => "input",
-	weak_pull_up => "false")
--- pragma translate_on
-PORT MAP (
-	oe => GND,
-	padio => ww_addr_i(8),
-	dataout => \addr_i~dataout\(8));
-
--- Location: PIN_67
-\addr_i[9]~I\ : max_io
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	open_drain_output => "false",
-	operation_mode => "input",
-	weak_pull_up => "false")
--- pragma translate_on
-PORT MAP (
-	oe => GND,
-	padio => ww_addr_i(9),
-	dataout => \addr_i~dataout\(9));
-
--- Location: PIN_45
-\addr_i[10]~I\ : max_io
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	open_drain_output => "false",
-	operation_mode => "input",
-	weak_pull_up => "false")
--- pragma translate_on
-PORT MAP (
-	oe => GND,
-	padio => ww_addr_i(10),
-	dataout => \addr_i~dataout\(10));
-
--- Location: PIN_93
-\addr_i[11]~I\ : max_io
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	open_drain_output => "false",
-	operation_mode => "input",
-	weak_pull_up => "false")
--- pragma translate_on
-PORT MAP (
-	oe => GND,
-	padio => ww_addr_i(11),
-	dataout => \addr_i~dataout\(11));
-
--- Location: PIN_98
-\addr_i[12]~I\ : max_io
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	open_drain_output => "false",
-	operation_mode => "input",
-	weak_pull_up => "false")
--- pragma translate_on
-PORT MAP (
-	oe => GND,
-	padio => ww_addr_i(12),
-	dataout => \addr_i~dataout\(12));
-
 -- Location: PIN_79
-\addr_i[13]~I\ : max_io
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	open_drain_output => "false",
-	operation_mode => "input",
-	weak_pull_up => "false")
--- pragma translate_on
-PORT MAP (
-	oe => GND,
-	padio => ww_addr_i(13),
-	dataout => \addr_i~dataout\(13));
-
--- Location: PIN_7
-\addr_i[1]~I\ : max_io
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	open_drain_output => "false",
-	operation_mode => "input",
-	weak_pull_up => "false")
--- pragma translate_on
-PORT MAP (
-	oe => GND,
-	padio => ww_addr_i(1),
-	dataout => \addr_i~dataout\(1));
-
--- Location: SEXP20
-\slot3_exp|exp_rd_s~4\ : max_sexp
-PORT MAP (
-	datain => \slot3_exp|exp_rd_s~4_datain_bus\,
-	dataout => \slot3_exp|exp_rd_s~4_dataout\);
-
--- Location: PIN_56
 \rfsh_n_i~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -3804,13 +3626,195 @@ PORT MAP (
 	padio => ww_rfsh_n_i,
 	dataout => \rfsh_n_i~dataout\);
 
--- Location: SEXP17
+-- Location: PIN_77
+\ppi_port_a_i[6]~I\ : max_io
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false",
+	operation_mode => "input",
+	weak_pull_up => "false")
+-- pragma translate_on
+PORT MAP (
+	oe => GND,
+	padio => ww_ppi_port_a_i(6),
+	dataout => \ppi_port_a_i~dataout\(6));
+
+-- Location: PIN_83
+\ppi_port_a_i[0]~I\ : max_io
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false",
+	operation_mode => "input",
+	weak_pull_up => "false")
+-- pragma translate_on
+PORT MAP (
+	oe => GND,
+	padio => ww_ppi_port_a_i(0),
+	dataout => \ppi_port_a_i~dataout\(0));
+
+-- Location: PIN_56
+\ppi_port_a_i[2]~I\ : max_io
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false",
+	operation_mode => "input",
+	weak_pull_up => "false")
+-- pragma translate_on
+PORT MAP (
+	oe => GND,
+	padio => ww_ppi_port_a_i(2),
+	dataout => \ppi_port_a_i~dataout\(2));
+
+-- Location: PIN_48
+\ppi_port_a_i[4]~I\ : max_io
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false",
+	operation_mode => "input",
+	weak_pull_up => "false")
+-- pragma translate_on
+PORT MAP (
+	oe => GND,
+	padio => ww_ppi_port_a_i(4),
+	dataout => \ppi_port_a_i~dataout\(4));
+
+-- Location: LC78
+\lobyte_ppi_a|y_o~24\ : max_mcell
+-- pragma translate_off
+GENERIC MAP (
+	operation_mode => "normal",
+	output_mode => "comb",
+	pexp_mode => "off")
+-- pragma translate_on
+PORT MAP (
+	pterm0 => \lobyte_ppi_a|y_o~24_pterm0_bus\,
+	pterm1 => \lobyte_ppi_a|y_o~24_pterm1_bus\,
+	pterm2 => \lobyte_ppi_a|y_o~24_pterm2_bus\,
+	pterm3 => \lobyte_ppi_a|y_o~24_pterm3_bus\,
+	pterm4 => \lobyte_ppi_a|y_o~24_pterm4_bus\,
+	pterm5 => \lobyte_ppi_a|y_o~24_pterm5_bus\,
+	pxor => \lobyte_ppi_a|y_o~24_pxor_bus\,
+	pclk => \lobyte_ppi_a|y_o~24_pclk_bus\,
+	papre => \lobyte_ppi_a|y_o~24_papre_bus\,
+	paclr => \lobyte_ppi_a|y_o~24_paclr_bus\,
+	pena => \lobyte_ppi_a|y_o~24_pena_bus\,
+	dataout => \lobyte_ppi_a|y_o~24_dataout\);
+
+-- Location: PIN_44
+\addr_i[8]~I\ : max_io
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false",
+	operation_mode => "input",
+	weak_pull_up => "false")
+-- pragma translate_on
+PORT MAP (
+	oe => GND,
+	padio => ww_addr_i(8),
+	dataout => \addr_i~dataout\(8));
+
+-- Location: PIN_45
+\addr_i[9]~I\ : max_io
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false",
+	operation_mode => "input",
+	weak_pull_up => "false")
+-- pragma translate_on
+PORT MAP (
+	oe => GND,
+	padio => ww_addr_i(9),
+	dataout => \addr_i~dataout\(9));
+
+-- Location: PIN_67
+\addr_i[10]~I\ : max_io
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false",
+	operation_mode => "input",
+	weak_pull_up => "false")
+-- pragma translate_on
+PORT MAP (
+	oe => GND,
+	padio => ww_addr_i(10),
+	dataout => \addr_i~dataout\(10));
+
+-- Location: PIN_81
+\addr_i[11]~I\ : max_io
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false",
+	operation_mode => "input",
+	weak_pull_up => "false")
+-- pragma translate_on
+PORT MAP (
+	oe => GND,
+	padio => ww_addr_i(11),
+	dataout => \addr_i~dataout\(11));
+
+-- Location: PIN_5
+\addr_i[12]~I\ : max_io
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false",
+	operation_mode => "input",
+	weak_pull_up => "false")
+-- pragma translate_on
+PORT MAP (
+	oe => GND,
+	padio => ww_addr_i(12),
+	dataout => \addr_i~dataout\(12));
+
+-- Location: PIN_68
+\addr_i[13]~I\ : max_io
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false",
+	operation_mode => "input",
+	weak_pull_up => "false")
+-- pragma translate_on
+PORT MAP (
+	oe => GND,
+	padio => ww_addr_i(13),
+	dataout => \addr_i~dataout\(13));
+
+-- Location: PIN_42
+\addr_i[1]~I\ : max_io
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false",
+	operation_mode => "input",
+	weak_pull_up => "false")
+-- pragma translate_on
+PORT MAP (
+	oe => GND,
+	padio => ww_addr_i(1),
+	dataout => \addr_i~dataout\(1));
+
+-- Location: SEXP21
+\slot3_exp|exp_rd_s~4\ : max_sexp
+PORT MAP (
+	datain => \slot3_exp|exp_rd_s~4_datain_bus\,
+	dataout => \slot3_exp|exp_rd_s~4_dataout\);
+
+-- Location: SEXP19
 \idata_exp3_i[0]~10sexpand1\ : max_sexp
 PORT MAP (
 	datain => \idata_exp3_i[0]~10sexpand1_datain_bus\,
 	dataout => \idata_exp3_i[0]~10sexpand1_dataout\);
 
--- Location: LC22
+-- Location: LC25
 \idata_exp3_i[0]~57\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -3832,7 +3836,7 @@ PORT MAP (
 	pena => \idata_exp3_i[0]~57_pena_bus\,
 	dataout => \idata_exp3_i[0]~57_dataout\);
 
--- Location: SEXP19
+-- Location: SEXP20
 \slot3_exp|exp_wr_s~8\ : max_sexp
 PORT MAP (
 	datain => \slot3_exp|exp_wr_s~8_datain_bus\,
@@ -3938,7 +3942,7 @@ PORT MAP (
 	pena => \slot3_exp|exp_reg_s[1]_pena_bus\,
 	dataout => \slot3_exp|exp_reg_s\(1));
 
--- Location: LC17
+-- Location: LC24
 \data_io[1]$latch~6\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -3960,7 +3964,7 @@ PORT MAP (
 	pena => \data_io[1]$latch~6_pena_bus\,
 	dataout => \data_io[1]$latch~6_dataout\);
 
--- Location: SEXP50
+-- Location: SEXP51
 \idata_exp3_i[0]~95\ : max_sexp
 PORT MAP (
 	datain => \idata_exp3_i[0]~95_datain_bus\,
@@ -3988,7 +3992,7 @@ PORT MAP (
 	pena => \idata_exp3_i[2]~69_pena_bus\,
 	dataout => \idata_exp3_i[2]~69_dataout\);
 
--- Location: SEXP51
+-- Location: SEXP52
 \slot3_exp|exp_wr_s~16\ : max_sexp
 PORT MAP (
 	datain => \slot3_exp|exp_wr_s~16_datain_bus\,
@@ -4041,7 +4045,7 @@ PORT MAP (
 	pena => \data_io[2]$latch~6_pena_bus\,
 	dataout => \data_io[2]$latch~6_dataout\);
 
--- Location: LC50
+-- Location: LC63
 \idata_exp3_i[3]~53\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -4063,7 +4067,7 @@ PORT MAP (
 	pena => \idata_exp3_i[3]~53_pena_bus\,
 	dataout => \idata_exp3_i[3]~53_dataout\);
 
--- Location: LC58
+-- Location: LC52
 \slot3_exp|exp_reg_s[3]\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -4132,7 +4136,7 @@ PORT MAP (
 	pena => \idata_exp3_i[4]~61_pena_bus\,
 	dataout => \idata_exp3_i[4]~61_dataout\);
 
--- Location: LC63
+-- Location: LC58
 \slot3_exp|exp_reg_s[4]\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -4157,7 +4161,7 @@ PORT MAP (
 	pena => \slot3_exp|exp_reg_s[4]_pena_bus\,
 	dataout => \slot3_exp|exp_reg_s\(4));
 
--- Location: LC57
+-- Location: LC62
 \data_io[4]$latch~6\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -4201,7 +4205,7 @@ PORT MAP (
 	pena => \idata_exp3_i[5]~45_pena_bus\,
 	dataout => \idata_exp3_i[5]~45_dataout\);
 
--- Location: LC27
+-- Location: LC28
 \slot3_exp|exp_reg_s[5]\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -4270,7 +4274,7 @@ PORT MAP (
 	pena => \idata_exp3_i[6]~65_pena_bus\,
 	dataout => \idata_exp3_i[6]~65_dataout\);
 
--- Location: LC28
+-- Location: LC27
 \slot3_exp|exp_reg_s[6]\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -4295,7 +4299,7 @@ PORT MAP (
 	pena => \slot3_exp|exp_reg_s[6]_pena_bus\,
 	dataout => \slot3_exp|exp_reg_s\(6));
 
--- Location: LC24
+-- Location: LC21
 \data_io[6]$latch~6\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -4364,7 +4368,7 @@ PORT MAP (
 	pena => \slot3_exp|exp_reg_s[7]_pena_bus\,
 	dataout => \slot3_exp|exp_reg_s\(7));
 
--- Location: LC25
+-- Location: LC22
 \data_io[7]$latch~6\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -4386,7 +4390,7 @@ PORT MAP (
 	pena => \data_io[7]$latch~6_pena_bus\,
 	dataout => \data_io[7]$latch~6_dataout\);
 
--- Location: SEXP2
+-- Location: SEXP5
 \ram_cs_n_o~2\ : max_sexp
 PORT MAP (
 	datain => \ram_cs_n_o~2_datain_bus\,
@@ -4414,7 +4418,7 @@ PORT MAP (
 	pena => \ram_cs_n_o~7_pena_bus\,
 	dataout => \ram_cs_n_o~7_dataout\);
 
--- Location: PIN_90
+-- Location: PIN_72
 \en_ascii16_n_i~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -4450,32 +4454,32 @@ PORT MAP (
 	pena => \rom_cs_n_o~7_pena_bus\,
 	dataout => \rom_cs_n_o~7_dataout\);
 
--- Location: SEXP38
+-- Location: SEXP39
 \rom_addr_o[16]~47sexpand0\ : max_sexp
 PORT MAP (
 	datain => \rom_addr_o[16]~47sexpand0_datain_bus\,
 	dataout => \rom_addr_o[16]~47sexpand0_dataout\);
 
--- Location: SEXP41
+-- Location: SEXP43
 \process_5~14sexp\ : max_sexp
 PORT MAP (
 	datain => \process_5~14sexp_datain_bus\,
 	dataout => \process_5~14sexp_dataout\);
 
--- Location: SEXP39
+-- Location: SEXP41
 \rom_addr_o[16]~47sexpand1\ : max_sexp
 PORT MAP (
 	datain => \rom_addr_o[16]~47sexpand1_datain_bus\,
 	dataout => \rom_addr_o[16]~47sexpand1_dataout\);
 
--- Location: SEXP40
+-- Location: SEXP42
 \rom_addr_o[17]~48sexpand1\ : max_sexp
 PORT MAP (
 	datain => \rom_addr_o[17]~48sexpand1_datain_bus\,
 	dataout => \rom_addr_o[17]~48sexpand1_dataout\);
 
 -- Location: LC33
-\rom_addr_o[16]_632~6\ : max_mcell
+\rom_addr_o[16]_633~6\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
 	operation_mode => "invert",
@@ -4483,26 +4487,26 @@ GENERIC MAP (
 	pexp_mode => "off")
 -- pragma translate_on
 PORT MAP (
-	pterm0 => \rom_addr_o[16]_632~6_pterm0_bus\,
-	pterm1 => \rom_addr_o[16]_632~6_pterm1_bus\,
-	pterm2 => \rom_addr_o[16]_632~6_pterm2_bus\,
-	pterm3 => \rom_addr_o[16]_632~6_pterm3_bus\,
-	pterm4 => \rom_addr_o[16]_632~6_pterm4_bus\,
-	pterm5 => \rom_addr_o[16]_632~6_pterm5_bus\,
-	pxor => \rom_addr_o[16]_632~6_pxor_bus\,
-	pclk => \rom_addr_o[16]_632~6_pclk_bus\,
-	papre => \rom_addr_o[16]_632~6_papre_bus\,
-	paclr => \rom_addr_o[16]_632~6_paclr_bus\,
-	pena => \rom_addr_o[16]_632~6_pena_bus\,
-	dataout => \rom_addr_o[16]_632~6_dataout\);
+	pterm0 => \rom_addr_o[16]_633~6_pterm0_bus\,
+	pterm1 => \rom_addr_o[16]_633~6_pterm1_bus\,
+	pterm2 => \rom_addr_o[16]_633~6_pterm2_bus\,
+	pterm3 => \rom_addr_o[16]_633~6_pterm3_bus\,
+	pterm4 => \rom_addr_o[16]_633~6_pterm4_bus\,
+	pterm5 => \rom_addr_o[16]_633~6_pterm5_bus\,
+	pxor => \rom_addr_o[16]_633~6_pxor_bus\,
+	pclk => \rom_addr_o[16]_633~6_pclk_bus\,
+	papre => \rom_addr_o[16]_633~6_papre_bus\,
+	paclr => \rom_addr_o[16]_633~6_paclr_bus\,
+	pena => \rom_addr_o[16]_633~6_pena_bus\,
+	dataout => \rom_addr_o[16]_633~6_dataout\);
 
--- Location: SEXP71
+-- Location: SEXP70
 \imap_bank0_s[1]~6sexpand0\ : max_sexp
 PORT MAP (
 	datain => \imap_bank0_s[1]~6sexpand0_datain_bus\,
 	dataout => \imap_bank0_s[1]~6sexpand0_dataout\);
 
--- Location: LC70
+-- Location: LC69
 \imap_bank0_s[0]~20\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -4524,31 +4528,31 @@ PORT MAP (
 	pena => \imap_bank0_s[0]~20_pena_bus\,
 	dataout => \imap_bank0_s[0]~20_dataout\);
 
--- Location: SEXP11
+-- Location: SEXP12
 \slot3_exp|WideAnd0~5sexp\ : max_sexp
 PORT MAP (
 	datain => \slot3_exp|WideAnd0~5sexp_datain_bus\,
 	dataout => \slot3_exp|WideAnd0~5sexp_dataout\);
 
--- Location: SEXP12
+-- Location: SEXP13
 \slot3_exp|Mux1~10sexp1\ : max_sexp
 PORT MAP (
 	datain => \slot3_exp|Mux1~10sexp1_datain_bus\,
 	dataout => \slot3_exp|Mux1~10sexp1_dataout\);
 
--- Location: SEXP13
+-- Location: SEXP4
 \slot3_exp|Mux1~10sexp2\ : max_sexp
 PORT MAP (
 	datain => \slot3_exp|Mux1~10sexp2_datain_bus\,
 	dataout => \slot3_exp|Mux1~10sexp2_dataout\);
 
--- Location: SEXP4
+-- Location: SEXP1
 \slot3_exp|Mux1~13sexp1\ : max_sexp
 PORT MAP (
 	datain => \slot3_exp|Mux1~13sexp1_datain_bus\,
 	dataout => \slot3_exp|Mux1~13sexp1_dataout\);
 
--- Location: SEXP1
+-- Location: SEXP2
 \slot3_exp|Mux1~13sexp2\ : max_sexp
 PORT MAP (
 	datain => \slot3_exp|Mux1~13sexp2_datain_bus\,
@@ -4576,25 +4580,25 @@ PORT MAP (
 	pena => \process_5~16_pena_bus\,
 	dataout => \process_5~16_dataout\);
 
--- Location: SEXP5
+-- Location: SEXP6
 \slot3_exp|Mux0~13sexpand0\ : max_sexp
 PORT MAP (
 	datain => \slot3_exp|Mux0~13sexpand0_datain_bus\,
 	dataout => \slot3_exp|Mux0~13sexpand0_dataout\);
 
--- Location: SEXP6
+-- Location: SEXP9
 \slot3_exp|Mux0~13sexpand1\ : max_sexp
 PORT MAP (
 	datain => \slot3_exp|Mux0~13sexpand1_datain_bus\,
 	dataout => \slot3_exp|Mux0~13sexpand1_dataout\);
 
--- Location: SEXP9
+-- Location: SEXP10
 \slot3_exp|Mux0~13sexpand2\ : max_sexp
 PORT MAP (
 	datain => \slot3_exp|Mux0~13sexpand2_datain_bus\,
 	dataout => \slot3_exp|Mux0~13sexpand2_dataout\);
 
--- Location: SEXP10
+-- Location: SEXP11
 \slot3_exp|Mux0~13sexpand3\ : max_sexp
 PORT MAP (
 	datain => \slot3_exp|Mux0~13sexpand3_datain_bus\,
@@ -4622,13 +4626,13 @@ PORT MAP (
 	pena => \rom_addr_o[14]~56_pena_bus\,
 	dataout => \rom_addr_o[14]~56_dataout\);
 
--- Location: SEXP73
+-- Location: SEXP74
 \imap_bank1_s[0]~6sexpand0\ : max_sexp
 PORT MAP (
 	datain => \imap_bank1_s[0]~6sexpand0_datain_bus\,
 	dataout => \imap_bank1_s[0]~6sexpand0_dataout\);
 
--- Location: LC69
+-- Location: LC73
 \imap_bank1_s[0]~20\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -4694,13 +4698,13 @@ PORT MAP (
 	pena => \rom_addr_o[14]~74_pena_bus\,
 	pexpout => \rom_addr_o[14]~74_pexpout\);
 
--- Location: SEXP70
+-- Location: SEXP69
 \imap_bank2_s[1]~7sexpand0\ : max_sexp
 PORT MAP (
 	datain => \imap_bank2_s[1]~7sexpand0_datain_bus\,
 	dataout => \imap_bank2_s[1]~7sexpand0_dataout\);
 
--- Location: LC79
+-- Location: LC70
 \imap_bank2_s[0]~21\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -4722,7 +4726,7 @@ PORT MAP (
 	pena => \imap_bank2_s[0]~21_pena_bus\,
 	dataout => \imap_bank2_s[0]~21_dataout\);
 
--- Location: LC13
+-- Location: LC12
 \process_5~20\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -4744,13 +4748,13 @@ PORT MAP (
 	pena => \process_5~20_pena_bus\,
 	dataout => \process_5~20_dataout\);
 
--- Location: SEXP72
-\imap_bank3_s[0]~6sexpand0\ : max_sexp
+-- Location: SEXP73
+\imap_bank3_s[1]~6sexpand0\ : max_sexp
 PORT MAP (
-	datain => \imap_bank3_s[0]~6sexpand0_datain_bus\,
-	dataout => \imap_bank3_s[0]~6sexpand0_dataout\);
+	datain => \imap_bank3_s[1]~6sexpand0_datain_bus\,
+	dataout => \imap_bank3_s[1]~6sexpand0_dataout\);
 
--- Location: LC75
+-- Location: LC77
 \imap_bank3_s[0]~20\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -4772,7 +4776,7 @@ PORT MAP (
 	pena => \imap_bank3_s[0]~20_pena_bus\,
 	dataout => \imap_bank3_s[0]~20_dataout\);
 
--- Location: LC12
+-- Location: LC13
 \process_5~22\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -4795,12 +4799,12 @@ PORT MAP (
 	dataout => \process_5~22_dataout\);
 
 -- Location: SEXP34
-\iascii_mapper_reg0[1]~4sexpand1\ : max_sexp
+\iascii_mapper_reg0[2]~4sexpand1\ : max_sexp
 PORT MAP (
-	datain => \iascii_mapper_reg0[1]~4sexpand1_datain_bus\,
-	dataout => \iascii_mapper_reg0[1]~4sexpand1_dataout\);
+	datain => \iascii_mapper_reg0[2]~4sexpand1_datain_bus\,
+	dataout => \iascii_mapper_reg0[2]~4sexpand1_dataout\);
 
--- Location: LC40
+-- Location: LC42
 \iascii_mapper_reg0[0]~18\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -4822,7 +4826,7 @@ PORT MAP (
 	pena => \iascii_mapper_reg0[0]~18_pena_bus\,
 	dataout => \iascii_mapper_reg0[0]~18_dataout\);
 
--- Location: SEXP36
+-- Location: SEXP38
 \Equal4~3sexpand0\ : max_sexp
 PORT MAP (
 	datain => \Equal4~3sexpand0_datain_bus\,
@@ -4834,7 +4838,7 @@ PORT MAP (
 	datain => \iascii_mapper_reg1[2]~5sexpand1_datain_bus\,
 	dataout => \iascii_mapper_reg1[2]~5sexpand1_dataout\);
 
--- Location: LC41
+-- Location: LC43
 \iascii_mapper_reg1[0]~19\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -4929,7 +4933,7 @@ PORT MAP (
 	pena => \rom_addr_o[15]~77_pena_bus\,
 	pexpout => \rom_addr_o[15]~77_pexpout\);
 
--- Location: LC71
+-- Location: LC74
 \imap_bank2_s[1]~26\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -4951,7 +4955,7 @@ PORT MAP (
 	pena => \imap_bank2_s[1]~26_pena_bus\,
 	dataout => \imap_bank2_s[1]~26_dataout\);
 
--- Location: LC73
+-- Location: LC80
 \imap_bank0_s[1]~25\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -4973,7 +4977,7 @@ PORT MAP (
 	pena => \imap_bank0_s[1]~25_pena_bus\,
 	dataout => \imap_bank0_s[1]~25_dataout\);
 
--- Location: LC36
+-- Location: LC37
 \iascii_mapper_reg0[1]~22\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -4995,7 +4999,7 @@ PORT MAP (
 	pena => \iascii_mapper_reg0[1]~22_pena_bus\,
 	dataout => \iascii_mapper_reg0[1]~22_dataout\);
 
--- Location: LC39
+-- Location: LC38
 \iascii_mapper_reg1[1]~23\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -5017,7 +5021,7 @@ PORT MAP (
 	pena => \iascii_mapper_reg1[1]~23_pena_bus\,
 	dataout => \iascii_mapper_reg1[1]~23_dataout\);
 
--- Location: LC72
+-- Location: LC68
 \imap_bank3_s[1]~24\ : max_mcell
 -- pragma translate_off
 GENERIC MAP (
@@ -5061,6 +5065,19 @@ PORT MAP (
 	paclr => \rom_addr_o[15]~72_paclr_bus\,
 	pena => \rom_addr_o[15]~72_pena_bus\,
 	dataout => \rom_addr_o[15]~72_dataout\);
+
+-- Location: PIN_85
+\clk_i~I\ : max_io
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false",
+	operation_mode => "input",
+	weak_pull_up => "false")
+-- pragma translate_on
+PORT MAP (
+	oe => GND,
+	padio => ww_clk_i);
 
 -- Location: PIN_99
 \rom_addr_o[17]~I\ : max_io
@@ -5118,7 +5135,7 @@ PORT MAP (
 	oe => VCC,
 	padio => ww_vdp_csrd_n_o);
 
--- Location: PIN_28
+-- Location: PIN_31
 \psg_bc1_o~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -5160,7 +5177,7 @@ PORT MAP (
 	oe => VCC,
 	padio => data_io(0));
 
--- Location: PIN_14
+-- Location: PIN_9
 \data_io[1]~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -5202,7 +5219,7 @@ PORT MAP (
 	oe => VCC,
 	padio => data_io(3));
 
--- Location: PIN_31
+-- Location: PIN_28
 \data_io[4]~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -5230,7 +5247,7 @@ PORT MAP (
 	oe => VCC,
 	padio => data_io(5));
 
--- Location: PIN_9
+-- Location: PIN_12
 \data_io[6]~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -5244,7 +5261,7 @@ PORT MAP (
 	oe => VCC,
 	padio => data_io(6));
 
--- Location: PIN_8
+-- Location: PIN_10
 \data_io[7]~I\ : max_io
 -- pragma translate_off
 GENERIC MAP (
@@ -5296,7 +5313,7 @@ GENERIC MAP (
 	weak_pull_up => "false")
 -- pragma translate_on
 PORT MAP (
-	datain => \rom_addr_o[16]_632~6_dataout\,
+	datain => \rom_addr_o[16]_633~6_dataout\,
 	oe => VCC,
 	padio => ww_rom_addr_o(16));
 

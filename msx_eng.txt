@@ -41,7 +41,9 @@
 41	44	--	RESERVED_INPUT					41
 42	45	--	RESERVED_INPUT					42
 43	46	--	GND	gnd				43
+
 44	47	--	RESERVED_INPUT					44
+
 45	48	--	addr_inp14	input	3.3-V LVTTL		Y	45
 46	49	--	addr_inp15	input	3.3-V LVTTL		Y	46
 47	50	--	ppi_sl_out[7]	input	3.3-V LVTTL		Y	47
@@ -61,7 +63,9 @@
 61	60	--	addr_inp7	input	3.3-V LVTTL		Y	61
 62	61	--	TCK	input	3.3-V LVTTL		N	62
 63	62	--	RESERVED_INPUT					63
+
 64	63	--	RESERVED_INPUT					64
+
 65	64	--	GND	gnd				65
 66	65	--	VCCIO	power		3.3V		66
 67	66	--	RESERVED_INPUT					67

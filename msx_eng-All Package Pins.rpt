@@ -1,0 +1,141 @@
+All Package Pins report for msx_eng
+Sun May 14 02:10:56 2023
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. All Package Pins
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------------------------+
+; All Package Pins                                                                                       ;
++----------+------------+----------+-----------------+--------+--------------+---------+-----------------+
+; Location ; Pad Number ; I/O Bank ; Pin Name/Usage  ; Dir.   ; I/O Standard ; Voltage ; User Assignment ;
++----------+------------+----------+-----------------+--------+--------------+---------+-----------------+
+; 1        ; 12         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 2        ; 13         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 3        ; 14         ; --       ; VCCIO           ; power  ;              ; 5.0V    ;                 ;
+; 4        ; 15         ; --       ; TDI             ; input  ; TTL          ;         ; N               ;
+; 5        ; 16         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 6        ; 17         ; --       ; rom_addr_o[16]  ; output ; TTL          ;         ; Y               ;
+; 7        ; 18         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 8        ; 19         ; --       ; rom_addr_o[14]  ; output ; TTL          ;         ; Y               ;
+; 9        ; 20         ; --       ; ppi_port_a_i[0] ; input  ; TTL          ;         ; Y               ;
+; 10       ; 21         ; --       ; ppi_port_a_i[1] ; input  ; TTL          ;         ; Y               ;
+; 11       ; 22         ; --       ; GND             ; gnd    ;              ;         ;                 ;
+; 12       ; 23         ; --       ; rom_cs_n_o      ; output ; TTL          ;         ; Y               ;
+; 13       ; 24         ; --       ; ram_cs_n_o      ; output ; TTL          ;         ; Y               ;
+; 14       ; 25         ; --       ; rom_addr_o[17]  ; output ; TTL          ;         ; Y               ;
+; 15       ; 26         ; --       ; TMS             ; input  ; TTL          ;         ; N               ;
+; 16       ; 27         ; --       ; addr_i[11]      ; input  ; TTL          ;         ; Y               ;
+; 17       ; 28         ; --       ; ppi_port_a_i[3] ; input  ; TTL          ;         ; Y               ;
+; 18       ; 29         ; --       ; VCCIO           ; power  ;              ; 5.0V    ;                 ;
+; 19       ; 30         ; --       ; iorq_n_i        ; input  ; TTL          ;         ; Y               ;
+; 20       ; 31         ; --       ; m1_n_i          ; input  ; TTL          ;         ; Y               ;
+; 21       ; 32         ; --       ; data_io[6]      ; bidir  ; TTL          ;         ; Y               ;
+; 22       ; 33         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 23       ; 34         ; --       ; rom_addr_o[15]  ; output ; TTL          ;         ; Y               ;
+; 24       ; 35         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 25       ; 36         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 26       ; 37         ; --       ; GND             ; gnd    ;              ;         ;                 ;
+; 27       ; 38         ; --       ; wr_n_i          ; input  ; TTL          ;         ; Y               ;
+; 28       ; 39         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 29       ; 40         ; --       ; mreq_n_i        ; input  ; TTL          ;         ; Y               ;
+; 30       ; 41         ; --       ; rd_n_i          ; input  ; TTL          ;         ; Y               ;
+; 31       ; 42         ; --       ; psg_bdir_o      ; output ; TTL          ;         ; Y               ;
+; 32       ; 43         ; --       ; psg_bc1_o       ; output ; TTL          ;         ; Y               ;
+; 33       ; 44         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 34       ; 45         ; --       ; VCCIO           ; power  ;              ; 5.0V    ;                 ;
+; 35       ; 46         ; --       ; ppi_cs_n_o      ; output ; TTL          ;         ; Y               ;
+; 36       ; 47         ; --       ; vdp_cswr_n_o    ; output ; TTL          ;         ; Y               ;
+; 37       ; 48         ; --       ; vdp_csrd_n_o    ; output ; TTL          ;         ; Y               ;
+; 38       ; 49         ; --       ; GND             ; gnd    ;              ;         ;                 ;
+; 39       ; 50         ; --       ; VCCINT          ; power  ;              ; 5.0V    ;                 ;
+; 40       ; 51         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 41       ; 52         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 42       ; 53         ; --       ; addr_i[1]       ; input  ; TTL          ;         ; Y               ;
+; 43       ; 54         ; --       ; GND             ; gnd    ;              ;         ;                 ;
+; 44       ; 55         ; --       ; addr_i[8]       ; input  ; TTL          ;         ; Y               ;
+; 45       ; 56         ; --       ; addr_i[14]      ; input  ; TTL          ;         ; Y               ;
+; 46       ; 57         ; --       ; addr_i[15]      ; input  ; TTL          ;         ; Y               ;
+; 47       ; 58         ; --       ; ppi_port_a_i[7] ; input  ; TTL          ;         ; Y               ;
+; 48       ; 59         ; --       ; ppi_port_a_i[6] ; input  ; TTL          ;         ; Y               ;
+; 49       ; 60         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 50       ; 61         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 51       ; 62         ; --       ; VCCIO           ; power  ;              ; 5.0V    ;                 ;
+; 52       ; 63         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 53       ; 64         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 54       ; 65         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 55       ; 66         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 56       ; 67         ; --       ; addr_i[0]       ; input  ; TTL          ;         ; Y               ;
+; 57       ; 68         ; --       ; data_io[7]      ; bidir  ; TTL          ;         ; Y               ;
+; 58       ; 69         ; --       ; ppi_port_a_i[4] ; input  ; TTL          ;         ; Y               ;
+; 59       ; 70         ; --       ; GND             ; gnd    ;              ;         ;                 ;
+; 60       ; 71         ; --       ; addr_i[13]      ; input  ; TTL          ;         ; Y               ;
+; 61       ; 72         ; --       ; addr_i[7]       ; input  ; TTL          ;         ; Y               ;
+; 62       ; 73         ; --       ; TCK             ; input  ; TTL          ;         ; N               ;
+; 63       ; 74         ; --       ; addr_i[9]       ; input  ; TTL          ;         ; Y               ;
+; 64       ; 75         ; --       ; addr_i[10]      ; input  ; TTL          ;         ; Y               ;
+; 65       ; 76         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 66       ; 77         ; --       ; VCCIO           ; power  ;              ; 5.0V    ;                 ;
+; 67       ; 78         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 68       ; 79         ; --       ; data_io[0]      ; bidir  ; TTL          ;         ; Y               ;
+; 69       ; 80         ; --       ; addr_i[5]       ; input  ; TTL          ;         ; Y               ;
+; 70       ; 81         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 71       ; 82         ; --       ; rfsh_n_i        ; input  ; TTL          ;         ; Y               ;
+; 72       ; 83         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 73       ; 84         ; --       ; TDO             ; output ; TTL          ;         ; N               ;
+; 74       ; 85         ; --       ; GND             ; gnd    ;              ;         ;                 ;
+; 75       ; 86         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 76       ; 87         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 77       ; 88         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 78       ; 89         ; --       ; RESERVED        ;        ;              ;         ;                 ;
+; 79       ; 90         ; --       ; data_io[5]      ; bidir  ; TTL          ;         ; Y               ;
+; 80       ; 91         ; --       ; data_io[3]      ; bidir  ; TTL          ;         ; Y               ;
+; 81       ; 92         ; --       ; addr_i[2]       ; input  ; TTL          ;         ; Y               ;
+; 82       ; 93         ; --       ; VCCIO           ; power  ;              ; 5.0V    ;                 ;
+; 83       ; 94         ; --       ; addr_i[3]       ; input  ; TTL          ;         ; Y               ;
+; 84       ; 95         ; --       ; ppi_port_a_i[2] ; input  ; TTL          ;         ; Y               ;
+; 85       ; 96         ; --       ; data_io[1]      ; bidir  ; TTL          ;         ; Y               ;
+; 86       ; 97         ; --       ; GND             ; gnd    ;              ;         ;                 ;
+; 87       ; 98         ; --       ; clk_i           ; input  ; TTL          ;         ; Y               ;
+; 88       ; 99         ; --       ; GND+            ;        ;              ;         ;                 ;
+; 89       ; 0          ; --       ; GND+            ;        ;              ;         ;                 ;
+; 90       ; 1          ; --       ; reset_n_i       ; input  ; TTL          ;         ; Y               ;
+; 91       ; 2          ; --       ; VCCINT          ; power  ;              ; 5.0V    ;                 ;
+; 92       ; 3          ; --       ; en_ascii16_n_i  ; input  ; TTL          ;         ; Y               ;
+; 93       ; 4          ; --       ; addr_i[6]       ; input  ; TTL          ;         ; Y               ;
+; 94       ; 5          ; --       ; data_io[2]      ; bidir  ; TTL          ;         ; Y               ;
+; 95       ; 6          ; --       ; GND             ; gnd    ;              ;         ;                 ;
+; 96       ; 7          ; --       ; addr_i[12]      ; input  ; TTL          ;         ; Y               ;
+; 97       ; 8          ; --       ; ppi_port_a_i[5] ; input  ; TTL          ;         ; Y               ;
+; 98       ; 9          ; --       ; data_io[4]      ; bidir  ; TTL          ;         ; Y               ;
+; 99       ; 10         ; --       ; addr_i[4]       ; input  ; TTL          ;         ; Y               ;
+; 100      ; 11         ; --       ; RESERVED        ;        ;              ;         ;                 ;
++----------+------------+----------+-----------------+--------+--------------+---------+-----------------+
+Note: Pin directions (input, output or bidir) are based on device operating in user mode.
+
+

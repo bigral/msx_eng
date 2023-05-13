@@ -3,8 +3,8 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Setup 'addr_i[0]'
-Slack : -30.000
-TNS   : -240.000
+Slack : -39.000
+TNS   : -249.000
 
 Type  : Hold 'addr_i[0]'
 Slack : 5.000

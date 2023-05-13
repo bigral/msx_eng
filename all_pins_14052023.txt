@@ -1,0 +1,104 @@
+1	12	--	RESERVED					1
+2	13	--	RESERVED					2
+3	14	--	VCCIO	power		5.0V		3
+4	15	--	TDI	input	TTL		N	4
+5	16	--	RESERVED					5
+6	17	--	rom_addr_o[16]	output	TTL		Y	6
+7	18	--	RESERVED					7
+8	19	--	rom_addr_o[14]	output	TTL		Y	8
+9	20	--	ppi_port_a_i[0]	input	TTL		Y	9
+10	21	--	ppi_port_a_i[1]	input	TTL		Y	10
+11	22	--	GND	gnd				11
+12	23	--	rom_cs_n_o	output	TTL		Y	12
+13	24	--	ram_cs_n_o	output	TTL		Y	13
+14	25	--	rom_addr_o[17]	output	TTL		Y	14
+15	26	--	TMS	input	TTL		N	15
+16	27	--	addr_i[11]	input	TTL		Y	16
+17	28	--	ppi_port_a_i[3]	input	TTL		Y	17
+18	29	--	VCCIO	power		5.0V		18
+19	30	--	iorq_n_i	input	TTL		Y	19
+20	31	--	m1_n_i	input	TTL		Y	20
+21	32	--	data_io[6]	bidir	TTL		Y	21
+22	33	--	RESERVED					22
+23	34	--	rom_addr_o[15]	output	TTL		Y	23
+24	35	--	RESERVED					24
+25	36	--	RESERVED					25
+26	37	--	GND	gnd				26
+27	38	--	wr_n_i	input	TTL		Y	27
+28	39	--	RESERVED					28
+29	40	--	mreq_n_i	input	TTL		Y	29
+30	41	--	rd_n_i	input	TTL		Y	30
+31	42	--	psg_bdir_o	output	TTL		Y	31
+32	43	--	psg_bc1_o	output	TTL		Y	32
+33	44	--	RESERVED					33
+34	45	--	VCCIO	power		5.0V		34
+35	46	--	ppi_cs_n_o	output	TTL		Y	35
+36	47	--	vdp_cswr_n_o	output	TTL		Y	36
+37	48	--	vdp_csrd_n_o	output	TTL		Y	37
+38	49	--	GND	gnd				38
+39	50	--	VCCINT	power		5.0V		39
+40	51	--	RESERVED					40
+41	52	--	RESERVED					41
+42	53	--	addr_i[1]	input	TTL		Y	42
+43	54	--	GND	gnd				43
+
+44	55	--	addr_i[8]	input	TTL		Y	44
+
+45	56	--	addr_i[14]	input	TTL		Y	45
+46	57	--	addr_i[15]	input	TTL		Y	46
+47	58	--	ppi_port_a_i[7]	input	TTL		Y	47
+48	59	--	ppi_port_a_i[6]	input	TTL		Y	48
+49	60	--	RESERVED					49
+50	61	--	RESERVED					50
+51	62	--	VCCIO	power		5.0V		51
+52	63	--	RESERVED					52
+53	64	--	RESERVED					53
+54	65	--	RESERVED					54
+55	66	--	RESERVED					55
+56	67	--	addr_i[0]	input	TTL		Y	56
+57	68	--	data_io[7]	bidir	TTL		Y	57
+58	69	--	ppi_port_a_i[4]	input	TTL		Y	58
+59	70	--	GND	gnd				59
+60	71	--	addr_i[13]	input	TTL		Y	60
+61	72	--	addr_i[7]	input	TTL		Y	61
+62	73	--	TCK	input	TTL		N	62
+63	74	--	addr_i[9]	input	TTL		Y	63
+
+64	75	--	addr_i[10]	input	TTL		Y	64
+
+65	76	--	RESERVED					65
+66	77	--	VCCIO	power		5.0V		66
+67	78	--	RESERVED					67
+68	79	--	data_io[0]	bidir	TTL		Y	68
+69	80	--	addr_i[5]	input	TTL		Y	69
+70	81	--	RESERVED					70
+71	82	--	rfsh_n_i	input	TTL		Y	71
+72	83	--	RESERVED					72
+73	84	--	TDO	output	TTL		N	73
+74	85	--	GND	gnd				74
+75	86	--	RESERVED					75
+76	87	--	RESERVED					76
+77	88	--	RESERVED					77
+78	89	--	RESERVED					78
+79	90	--	data_io[5]	bidir	TTL		Y	79
+80	91	--	data_io[3]	bidir	TTL		Y	80
+81	92	--	addr_i[2]	input	TTL		Y	81
+82	93	--	VCCIO	power		5.0V		82
+83	94	--	addr_i[3]	input	TTL		Y	83
+84	95	--	ppi_port_a_i[2]	input	TTL		Y	84
+85	96	--	data_io[1]	bidir	TTL		Y	85
+86	97	--	GND	gnd				86
+87	98	--	clk_i	input	TTL		Y	87
+88	99	--	GND+					88
+89	0	--	GND+					89
+90	1	--	reset_n_i	input	TTL		Y	90
+91	2	--	VCCINT	power		5.0V		91
+92	3	--	en_ascii16_n_i	input	TTL		Y	92
+93	4	--	addr_i[6]	input	TTL		Y	93
+94	5	--	data_io[2]	bidir	TTL		Y	94
+95	6	--	GND	gnd				95
+96	7	--	addr_i[12]	input	TTL		Y	96
+97	8	--	ppi_port_a_i[5]	input	TTL		Y	97
+98	9	--	data_io[4]	bidir	TTL		Y	98
+99	10	--	addr_i[4]	input	TTL		Y	99
+100	11	--	RESERVED					100
