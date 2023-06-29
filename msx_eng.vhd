@@ -200,12 +200,12 @@ begin
 	slot3_exp: entity work.exp_slot
 	port map (
 		reset_i		=> not reset_n_i,
-		ipl_en_i		=> '0',
+		ipl_en_i	=> '0',
 		addr_i		=> addr_i,
 		sltsl_n_i	=> iprim_slot_n_s(3),
 		rd_n_i		=> rd_n_i,
 		wr_n_i		=> wr_n_i,
-		data_i		=> idata_exp3_i,
+		data_i		=> data_io,
 		
 		has_data_o		=> exp3_has_data,
 		expsltsl_n_o	=> exp3_slt_s_n_o,
@@ -213,14 +213,22 @@ begin
 		data_o			=> idata_exp3_o
 	);
 	
-	process(idata_exp3_o, rd_n_i, exp3_has_data, iprim_slot_n_s)
+-- after chatgpt consulting = i need to have two processes one for input from inout and other for output to inout !!!
+-- can not mix in and out in same process
+	
+	process(exp3_has_data)
 	begin
-		if exp3_has_data = '1' and rd_n_i = '0' and iprim_slot_n_s(3) = '0' then
-			data_io <= idata_exp3_o;
-			
-		elsif wr_n_i = '0' and iprim_slot_n_s(3) = '0' then
-			idata_exp3_i <= data_io;
-			
+		if exp3_has_data = '1' then
+			--data_io <= idata_exp3_o;
+			for i in idata_exp3_o'range loop
+                if idata_exp3_o(i) = '1' then
+                    data_io(i) <= 'Z';  -- Replace '1' with 'Z'
+                else
+                    data_io(i) <= idata_exp3_o(i);  -- Pass through other bits
+                end if;
+            end loop;
+		else
+			data_io <= (others => 'Z');
 		end if;
 	end process;
 	
@@ -274,46 +282,52 @@ begin
 -- produce following msx2 rom-in-slots configuration
 -- slot0, page0 and page1 - msx2.rom, page2 and page3 are EMPTY
 -- slot1 and slot2 (supposed to be cartridge slots), TODO: put zanac game here
--- slot3-0, page0 - msx2ex.rom, page1 and page2 and psge3 are EMPTY
--- slot3-1, all pages are EMPTY
--- slot3-2, all pages are RAM
+-- slot3-0, all pages are EMPTY
+-- slot3-1, page0 - msx2ex.rom; page1, page2 and page3 are EMPTY
+-- slot3-2, all pages are RAM (no address lines are formed by this core, all addresses from CPU)
 -- slot3-3, all pages are EMPTY
 	process (imreq_rd_n_s, iprim_slot_n_s, exp3_slt_s_n_o, imem_page_s, addr_i(14), addr_i(15))
 	begin
 		-- msx2rom in slot0
 		if iprim_slot_n_s(0) = '0' and (imem_page_s(0) = '1' or imem_page_s(1) = '1') then
+			rom_addr_o(17) <= '0';
+			rom_addr_o(16) <= '0';
 			rom_addr_o(15) <= '0';
 			if addr_i(14) = '1' then rom_addr_o(14) <= 'Z'; else rom_addr_o(14) <= '0'; end if;
 --			rom_addr_o(14) <= 'Z' when addr_i(14) = '1' else (others => '0');
 			rom_cs_n_o <= '0';
 			ram_cs_n_o <= 'Z';
-		-- msx2ext.rom in slot3-0
-		elsif exp3_slt_s_n_o(0) = '0' and imem_page_s(0) = '1' then
+
+		-- msx2ext.rom in slot3-1
+		elsif iprim_slot_n_s(3) = '0' and exp3_slt_s_n_o(1) = '0' and imem_page_s(0) = '1' then
+			rom_addr_o(17) <= '0';
+			rom_addr_o(16) <= '0';
 			rom_addr_o(15) <= 'Z';
 			if addr_i(14) = '1' then rom_addr_o(14) <= 'Z'; else rom_addr_o(14) <= '0'; end if;
 			rom_cs_n_o <= '0';
 			ram_cs_n_o <= 'Z';
+
 		-- msx2 mapped ram in slot3-2
-		elsif exp3_slt_s_n_o(2) = '0' and imem_page_s(0) = '1' then
-			if imap_bank0_s(1) = '1' then rom_addr_o(15) <= 'Z'; else rom_addr_o(15) <= '0'; end if;
-			if imap_bank0_s(0) = '1' then rom_addr_o(14) <= 'Z'; else rom_addr_o(14) <= '0'; end if;
+		elsif iprim_slot_n_s(3) = '0' and exp3_slt_s_n_o(2) = '0' and imem_page_s /= "0000" then
+--			if imap_bank0_s(1) = '1' then rom_addr_o(15) <= 'Z'; else rom_addr_o(15) <= '0'; end if;
+--			if imap_bank0_s(0) = '1' then rom_addr_o(14) <= 'Z'; else rom_addr_o(14) <= '0'; end if;
 			rom_cs_n_o <= 'Z';
 			ram_cs_n_o <= '0';
-		elsif exp3_slt_s_n_o(2) = '0' and imem_page_s(1) = '1' then
-			if imap_bank1_s(1) = '1' then rom_addr_o(15) <= 'Z'; else rom_addr_o(15) <= '0'; end if;
-			if imap_bank1_s(0) = '1' then rom_addr_o(14) <= 'Z'; else rom_addr_o(14) <= '0'; end if;
-			rom_cs_n_o <= 'Z';
-			ram_cs_n_o <= '0';
-		elsif exp3_slt_s_n_o(2) = '0' and imem_page_s(2) = '1' then
-			if imap_bank2_s(1) = '1' then rom_addr_o(15) <= 'Z'; else rom_addr_o(15) <= '0'; end if;
-			if imap_bank2_s(0) = '1' then rom_addr_o(14) <= 'Z'; else rom_addr_o(14) <= '0'; end if;
-			rom_cs_n_o <= 'Z';
-			ram_cs_n_o <= '0';
-		elsif exp3_slt_s_n_o(2) = '0' and imem_page_s(3) = '1' then
-			if imap_bank3_s(1) = '1' then rom_addr_o(15) <= 'Z'; else rom_addr_o(15) <= '0'; end if;
-			if imap_bank3_s(0) = '1' then rom_addr_o(14) <= 'Z'; else rom_addr_o(14) <= '0'; end if;
-			rom_cs_n_o <= 'Z';
-			ram_cs_n_o <= '0';
+--		elsif iprim_slot_n_s(3) = '0' and exp3_slt_s_n_o(2) = '0' and imem_page_s(1) = '1' then
+--			if imap_bank1_s(1) = '1' then rom_addr_o(15) <= 'Z'; else rom_addr_o(15) <= '0'; end if;
+--			if imap_bank1_s(0) = '1' then rom_addr_o(14) <= 'Z'; else rom_addr_o(14) <= '0'; end if;
+--			rom_cs_n_o <= 'Z';
+--			ram_cs_n_o <= '0';
+--		elsif iprim_slot_n_s(3) = '0' and exp3_slt_s_n_o(2) = '0' and imem_page_s(2) = '1' then
+--			if imap_bank2_s(1) = '1' then rom_addr_o(15) <= 'Z'; else rom_addr_o(15) <= '0'; end if;
+--			if imap_bank2_s(0) = '1' then rom_addr_o(14) <= 'Z'; else rom_addr_o(14) <= '0'; end if;
+--			rom_cs_n_o <= 'Z';
+--			ram_cs_n_o <= '0';
+--		elsif iprim_slot_n_s(3) = '0' and exp3_slt_s_n_o(2) = '0' and imem_page_s(3) = '1' then
+--			if imap_bank3_s(1) = '1' then rom_addr_o(15) <= 'Z'; else rom_addr_o(15) <= '0'; end if;
+--			if imap_bank3_s(0) = '1' then rom_addr_o(14) <= 'Z'; else rom_addr_o(14) <= '0'; end if;
+--			rom_cs_n_o <= 'Z';
+--			ram_cs_n_o <= '0';
 			
 		-- ascii16 mapper in slot1
 		elsif en_ascii16_n_i = '0' and imreq_rd_n_s = '0' and iprim_slot_n_s(1) = '0'
@@ -338,6 +352,8 @@ begin
 		
 		-- no rom/ram slot/page selected
 		else
+			rom_addr_o(17) <= 'Z';
+			rom_addr_o(16) <= 'Z';
 			rom_addr_o(15) <= 'Z';
 			rom_addr_o(14) <= 'Z';
 			rom_cs_n_o <= 'Z';

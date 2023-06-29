@@ -46,7 +46,7 @@ use ieee.std_logic_misc.and_reduce;
 entity exp_slot is
 	port(
 		reset_i			: in  std_logic;
-		ipl_en_i			: in  std_logic;
+		ipl_en_i		: in  std_logic;
 		addr_i			: in  std_logic_vector(15 downto 0);
 		data_i			: in  std_logic_vector(7 downto 0);
 		data_o			: out std_logic_vector(7 downto 0);
@@ -63,8 +63,8 @@ architecture rtl of exp_slot is
 	signal ffff_s		: std_logic;
 	signal exp_reg_s	: std_logic_vector(7 downto 0);
 	signal exp_sel_s	: std_logic_vector(1 downto 0);
-	signal exp_wr_s	: std_logic;
-	signal exp_rd_s	: std_logic;
+	signal exp_wr_s		: std_logic;
+	signal exp_rd_s		: std_logic;
 
 begin
 
