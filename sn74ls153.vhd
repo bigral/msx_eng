@@ -15,7 +15,7 @@ end entity;
 
 architecture rtl of sn74ls153 is
 begin
-	process(g_n_i, a_i, b_i, c_i)
+	process(g_n_i, a_i, b_i)
 	begin
 		if g_n_i = '1' then
 			y_o <= '0';

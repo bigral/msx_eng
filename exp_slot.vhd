@@ -46,7 +46,6 @@ use ieee.std_logic_misc.and_reduce;
 entity exp_slot is
 	port(
 		reset_i			: in  std_logic;
-		ipl_en_i		: in  std_logic;
 		addr_i			: in  std_logic_vector(15 downto 0);
 		data_i			: in  std_logic_vector(7 downto 0);
 		data_o			: out std_logic_vector(7 downto 0);
@@ -73,23 +72,18 @@ begin
 	exp_wr_s <= not (sltsl_n_i or wr_n_i or not ffff_s);
 	exp_rd_s <= not (sltsl_n_i or rd_n_i or not ffff_s);
 
-	process(reset_i, ipl_en_i, exp_wr_s)
+	process(reset_i, exp_wr_s)
 	begin
 		if reset_i = '1' then
-			if ipl_en_i = '1' then
-				exp_reg_s <= X"FF";
-			else
-				exp_reg_s <= X"00";
-			end if;
-		elsif falling_edge(exp_wr_s) then
+			exp_reg_s <= X"FF";
+		elsif exp_wr_s = '1' then
 			exp_reg_s <= data_i;
 		end if;
 	end process;
 
 	-- Read
 	has_data_o	<= exp_rd_s;
-	data_o		<= (not exp_reg_s) when exp_rd_s = '1' else
-						(others => '1');
+	data_o		<= (not exp_reg_s) when exp_rd_s = '1' else (others => '1');
 
 	-- subslot mux
 	with addr_i(15 downto 14) select exp_sel_s <=
